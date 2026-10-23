@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- WizSmith Homepage Page Template -->
+    <template id="wizsmith_homepage" name="WizSmith Homepage" page="True">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <!-- Section A & B: Hero with Smart Property HUD -->
+                <t t-call="website_wizsmith_theme.s_wizsmith_hero"/>
+
+                <!-- Section C: Customer Problems -->
+                <t t-call="website_wizsmith_theme.s_wizsmith_problems"/>
+
+                <!-- Section D: Why WizSmith -->
+                <t t-call="website_wizsmith_theme.s_wizsmith_why"/>
+
+                <!-- Section E: Solutions by Space -->
+                <t t-call="website_wizsmith_theme.s_wizsmith_solutions"/>
+
+                <!-- Section F: AI Property Assessment Preview -->
+                <t t-call="website_wizsmith_theme.s_wizsmith_assessment"/>
+
+                <!-- Section G: Subscription Packages -->
+                <t t-call="website_wizsmith_theme.s_wizsmith_pricing"/>
+
+                <!-- Section H: Testimonials -->
+                <t t-call="website_wizsmith_theme.s_wizsmith_testimonials"/>
+
+                <!-- Section I: Final CTA -->
+                <t t-call="website_wizsmith_theme.s_wizsmith_cta"/>
+            </div>
+        </t>
+    </template>
+
+    <!-- Page: Comment ça fonctionne (/comment-ca-fonctionne) -->
+    <template id="wizsmith_page_how_it_works" name="Comment ça fonctionne" page="True">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <!-- Header Banner -->
+                <section class="py-5 bg-light border-bottom text-center">
+                    <div class="container py-4">
+                        <span class="badge px-3 py-1 rounded-pill mb-2" style="background: rgba(0,71,171,0.1); color: #0047AB;">
+                            Processus Simple &amp; Garanti
+                        </span>
+                        <h1 class="display-5 fw-extrabold text-dark mb-3" style="color: #1A1A2E;">Comment fonctionne WizSmith ?</h1>
+                        <p class="lead text-secondary max-w-xl mx-auto fs-6">
+                            De l'audit initial à votre tranquillité quotidienne : découvrez nos 4 étapes d'automatisation intelligente.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Workflow Steps -->
+                <section class="py-5 bg-white">
+                    <div class="container py-lg-4">
+                        <div class="row g-4">
+                            <!-- Step 1 -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
+                                    <span class="badge bg-primary rounded-circle mb-3 p-3 align-self-start fs-5" style="background-color: #0047AB !important;">1</span>
+                                    <h5 class="fw-bold text-dark mb-2">Audit &amp; Diagnostic</h5>
+                                    <p class="text-secondary small">Évaluation en ligne via notre IA ou visite technique sur site à Abidjan pour répertorier vos accès, caméras et habitudes.</p>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
+                                    <span class="badge bg-primary rounded-circle mb-3 p-3 align-self-start fs-5" style="background-color: #0047AB !important;">2</span>
+                                    <h5 class="fw-bold text-dark mb-2">Installation Certifiée</h5>
+                                    <p class="text-secondary small">Pose de serrures intelligentes WizLock, raccordement de vos caméras existantes à notre module IA, configuration réseau.</p>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
+                                    <span class="badge bg-primary rounded-circle mb-3 p-3 align-self-start fs-5" style="background-color: #0047AB !important;">3</span>
+                                    <h5 class="fw-bold text-dark mb-2">Automatisation sur-mesure</h5>
+                                    <p class="text-secondary small">Synchronisation avec vos comptes Airbnb/Booking, paramétrage des alertes IA nocturnes et scénarios éco d'énergie.</p>
+                                </div>
+                            </div>
+                            <!-- Step 4 -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
+                                    <span class="badge bg-primary rounded-circle mb-3 p-3 align-self-start fs-5" style="background-color: #0047AB !important;">4</span>
+                                    <h5 class="fw-bold text-dark mb-2">Tranquillité 24/7</h5>
+                                    <p class="text-secondary small">Contrôlez tout depuis votre smartphone. Maintenance continue WizFix et support technique réactif disponible 7j/7.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <a href="/support-ia" class="btn btn-primary px-4 py-3 fw-bold text-white rounded-3" style="background-color: #E8630A; border-color: #E8630A;">
+                                Démarrer avec un diagnostic gratuit
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Page: Résidences & Airbnb (/residences-airbnb) -->
+    <template id="wizsmith_page_residences_airbnb" name="Résidences &amp; Airbnb" page="True">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="py-5 bg-white border-bottom">
+                    <div class="container py-4">
+                        <div class="row align-items-center g-5">
+                            <div class="col-lg-6">
+                                <span class="badge px-3 py-1 rounded-pill mb-3" style="background: rgba(0,71,171,0.1); color: #0047AB;">
+                                    Location Courte Durée &amp; Résidences Privées
+                                </span>
+                                <h1 class="display-5 fw-extrabold text-dark mb-3" style="color: #1A1A2E;">
+                                    Gérez votre propriété depuis n'importe où.
+                                </h1>
+                                <p class="lead text-secondary mb-4 fs-6">
+                                    Finie la contrainte des remises de clés et les factures d'électricité surprises. WizSmith automatise vos accès voyageurs et surveille votre bien 24h/24.
+                                </p>
+                                <div class="d-flex flex-column gap-3 mb-4">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <span class="fs-4">🔑</span>
+                                        <div>
+                                            <strong class="d-block text-dark">Check-in autonome sans contact</strong>
+                                            <small class="text-secondary">Chaque voyageur reçoit un code PIN valide uniquement pendant la durée exacte de son séjour.</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <span class="fs-4">💡</span>
+                                        <div>
+                                            <strong class="d-block text-dark">Économies d'électricité automatiques</strong>
+                                            <small class="text-secondary">Extinction automatique des climatiseurs et lumières après le départ des occupants.</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <span class="fs-4">🛡️</span>
+                                        <div>
+                                            <strong class="d-block text-dark">Surveillance proactive des intrusions</strong>
+                                            <small class="text-secondary">Alerte immédiate en cas de mouvement inhabituel en période de vacance locative.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/packs" class="btn btn-primary px-4 py-3 fw-bold text-white rounded-3" style="background-color: #0047AB;">
+                                    Découvrir le Pack Élite
+                                </a>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="p-4 rounded-4 shadow-xl border bg-light">
+                                    <h5 class="fw-bold text-dark mb-3">Simulation de revenus &amp; gains Airbnb</h5>
+                                    <div class="p-3 bg-white rounded-3 border mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="text-secondary small">Temps gagné par mois :</span>
+                                            <span class="fw-bold text-dark">18 heures</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="text-secondary small">Économie électricité estimée :</span>
+                                            <span class="fw-bold text-success">-30% à -40%</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <span class="text-secondary small">Satisfaction voyageurs :</span>
+                                            <span class="fw-bold text-primary">4.9 / 5 étoiles</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-muted small mb-0">Recommandé pour tous les hôtes opérant à Abidjan (Cocody, Zone 4, Marcory, Plateau).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Page: Hôtels intelligents (/hotels-intelligents) -->
+    <template id="wizsmith_page_smart_hotels" name="Hôtels intelligents" page="True">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="py-5 bg-light border-bottom">
+                    <div class="container py-4 text-center">
+                        <span class="badge px-3 py-1 rounded-pill mb-2" style="background: rgba(232, 99, 10, 0.1); color: #E8630A;">
+                            Hospitality &amp; Résidences Hôtelières
+                        </span>
+                        <h1 class="display-5 fw-extrabold text-dark mb-3" style="color: #1A1A2E;">
+                            L'hôtel du futur commence aujourd'hui.
+                        </h1>
+                        <p class="lead text-secondary max-w-xl mx-auto fs-6">
+                            Centralisez la gestion de vos chambres, optimisez vos coûts d'exploitation et offrez une expérience sans friction à vos clients.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="py-5 bg-white">
+                    <div class="container py-lg-4">
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
+                                    <span class="fs-1 mb-2">🛎️</span>
+                                    <h5 class="fw-bold text-dark mb-2">Expérience client fluide</h5>
+                                    <p class="text-secondary small">Accès aux chambres par smartphone ou digicode confidentiel sans file d'attente à la réception.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
+                                    <span class="fs-1 mb-2">📊</span>
+                                    <h5 class="fw-bold text-dark mb-2">Supervision des chambres</h5>
+                                    <p class="text-secondary small">Statut en temps réel de chaque chambre (occupée, vacante, en cours de nettoyage) avec traçabilité du personnel.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
+                                    <span class="fs-1 mb-2">⚡</span>
+                                    <h5 class="fw-bold text-dark mb-2">Réduction des charges</h5>
+                                    <p class="text-secondary small">Coupure intelligente de la climatisation dès le check-out ou détection de fenêtres ouvertes.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center p-4 rounded-4 bg-light border">
+                            <h4 class="fw-bold mb-2">Planifier une démonstration pour votre établissement</h4>
+                            <p class="text-secondary small mb-3">Nos ingénieurs vous présentent la plateforme en direct sur vos équipements.</p>
+                            <a href="/page/appointment" class="btn btn-primary px-4 py-2 fw-semibold" style="background-color: #0047AB;">
+                                Prendre rendez-vous
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Page: Prise de Rendez-Vous & Diagnostic Terrain (/page/appointment) -->
+    <!-- Compatible avec le module Probuse Website Customer Appointment Management & Integration with Calendar -->
+    <template id="wizsmith_page_appointment" name="Rendez-Vous Expert WizSmith" page="True">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <!-- Header Banner -->
+                <section class="py-5 bg-light border-bottom text-center">
+                    <div class="container py-4">
+                        <span class="badge px-3 py-1 rounded-pill mb-2" style="background: rgba(0,71,171,0.1); color: #0047AB;">
+                            Audit &amp; Rendez-Vous Expert
+                        </span>
+                        <h1 class="display-5 fw-extrabold text-dark mb-3" style="color: #1A1A2E;">
+                            Planifier votre diagnostic sur site à Abidjan
+                        </h1>
+                        <p class="lead text-secondary max-w-xl mx-auto fs-6">
+                            Un ingénieur certifié WizSmith évalue vos accès, vos caméras et vos économies potentielles. Gratuit et sans engagement.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Appointment Booking Section & Backend Calendar Hook -->
+                <section class="py-5 bg-white">
+                    <div class="container py-lg-4">
+                        <t t-if="request.params.get('status') == 'success'">
+                            <div class="alert alert-success rounded-4 p-4 mb-4 text-center border-0 shadow-sm">
+                                <h4 class="fw-bold text-success mb-2">🎉 Rendez-vous d'audit enregistré avec succès !</h4>
+                                <p class="mb-2 text-dark">
+                                    Numéro de dossier : <strong class="badge bg-success font-monospace fs-6" t-esc="request.params.get('ref') or 'WZ-RDV-2026'"/>
+                                </p>
+                                <p class="small text-secondary mb-0">
+                                    Merci pour votre confiance. Un expert WizSmith vous contactera sur WhatsApp pour confirmer la visite sur site à Abidjan.
+                                </p>
+                            </div>
+                        </t>
+
+                        <div class="row g-5 align-items-start justify-content-center">
+                            <!-- Booking Form Column -->
+                            <div class="col-lg-7">
+                                <div class="card p-4 p-lg-5 rounded-4 border shadow-sm">
+                                    <h4 class="fw-bold mb-4 text-dark">Réservation en Ligne</h4>
+                                    <form action="/website/appointment/submit" method="post" class="d-flex flex-column gap-3">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label small fw-bold">Type de propriété</label>
+                                                <select name="property_type" class="form-select form-select-sm">
+                                                    <option value="villa">Villa / Maison privée</option>
+                                                    <option value="airbnb">Appartement / Location Airbnb</option>
+                                                    <option value="hotel">Hôtel / Résidence hôtelière</option>
+                                                    <option value="office">Bureaux / Siège d'entreprise</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label small fw-bold">Commune à Abidjan</label>
+                                                <select name="commune" class="form-select form-select-sm">
+                                                    <option value="cocody">Cocody (Riviera, Angré, Deux Plateaux)</option>
+                                                    <option value="marcory">Marcory (Zone 4, Biétry)</option>
+                                                    <option value="plateau">Plateau</option>
+                                                    <option value="bingerville">Bingerville</option>
+                                                    <option value="yopougon">Yopougon</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label small fw-bold">Date souhaitée</label>
+                                                <input type="date" name="appointment_date" class="form-control form-control-sm" required="required"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label small fw-bold">Créneau horaire</label>
+                                                <select name="time_slot" class="form-select form-select-sm">
+                                                    <option value="09:00 - 10:30">09:00 - 10:30 (Matin)</option>
+                                                    <option value="10:30 - 12:00">10:30 - 12:00 (Matin)</option>
+                                                    <option value="14:00 - 15:30">14:00 - 15:30 (Après-midi)</option>
+                                                    <option value="15:30 - 17:00">15:30 - 17:00 (Fin de journée)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label small fw-bold">Nom et Prénom</label>
+                                                <input type="text" name="customer_name" class="form-control form-control-sm" placeholder="ex: Jean-Marc K." required="required"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label small fw-bold">Téléphone WhatsApp</label>
+                                                <input type="tel" name="phone" class="form-control form-control-sm" placeholder="+225 07 00 00 00 00" required="required"/>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label class="form-label small fw-bold">Précisions (Optionnel)</label>
+                                            <textarea name="notes" rows="2" class="form-control form-control-sm" placeholder="Ex: Nombre d'accès, caméras existantes..."></textarea>
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-3" style="background-color: #0047AB; border-color: #0047AB;">
+                                                Confirmer mon rendez-vous
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Customer Reassurance & Value Column -->
+                            <div class="col-lg-5">
+                                <div class="card p-4 rounded-4 border bg-light shadow-sm">
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                        <span class="fs-4">✨</span>
+                                        <h5 class="fw-bold mb-0 text-dark">Pourquoi planifier votre audit ?</h5>
+                                    </div>
+                                    <p class="small text-secondary mb-3">
+                                        Nos ingénieurs certifiés se déplacent gratuitement à Abidjan pour concevoir votre installation domotique et sécurité sur-mesure.
+                                    </p>
+                                    <ul class="list-unstyled small d-flex flex-column gap-2 mb-3 text-secondary">
+                                        <li>✓ <strong>100% Gratuit &amp; Sans engagement :</strong> étude de faisabilité complète sur site</li>
+                                        <li>✓ <strong>Démonstration en direct :</strong> test des serrures connectées et caméras IA sur mallette</li>
+                                        <li>✓ <strong>Chiffrage sous 24h :</strong> remise d'un plan d'implantation et devis détaillé</li>
+                                        <li>✓ <strong>Garantie WizRenouv :</strong> éligibilité au renouvellement annuel du matériel</li>
+                                    </ul>
+                                    <div class="p-3 rounded-3 bg-white border small">
+                                        <strong class="text-dark d-block mb-1">Astreinte &amp; Assistance Abidjan :</strong>
+                                        <span class="text-muted">WhatsApp direct : <strong>+225 07 48 92 11 04</strong> (Lun - Sam, 08h-19h)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Page: WizFix - Déclaration de Panne & Support SAV (/claim) -->
+    <!-- Mappé sur le modèle Odoo maintenance.request -->
+    <template id="wizsmith_page_claim" name="WizFix Maintenance &amp; Dépannage" page="True">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="py-5 bg-light border-bottom text-center">
+                    <div class="container py-4">
+                        <span class="badge px-3 py-1 rounded-pill mb-2" style="background: rgba(0,71,171,0.1); color: #0047AB;">
+                            SAV &amp; Intervention Rapide 24h
+                        </span>
+                        <h1 class="display-5 fw-extrabold text-dark mb-3" style="color: #1A1A2E;">
+                            Services WizFix : Dépannage &amp; Support
+                        </h1>
+                        <p class="lead text-secondary max-w-xl mx-auto fs-6">
+                            Signalez une anomalie technique sur vos serrures, caméras ou passerelles. Nos techniciens d'astreinte interviennent à Abidjan.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="py-5 bg-white">
+                    <div class="container py-lg-4">
+                        <div class="row g-5 justify-content-center">
+                            <div class="col-lg-7">
+                                <div class="card p-4 p-lg-5 rounded-4 border shadow-sm">
+                                    <h4 class="fw-bold mb-4 text-dark">Déclarer un Incident Matériel</h4>
+                                    <form action="/website/claim/submit" method="post" class="d-flex flex-column gap-3">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label small fw-bold">Votre Nom &amp; Prénom</label>
+                                                <input type="text" name="customer_name" class="form-control form-control-sm" required="required" placeholder="ex: Patrick Boni"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label small fw-bold">Téléphone WhatsApp</label>
+                                                <input type="tel" name="phone" class="form-control form-control-sm" required="required" placeholder="+225 07..."/>
+                                            </div>
+                                        </div>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label small fw-bold">Équipement concerné</label>
+                                                <select name="equipment_type" class="form-select form-select-sm">
+                                                    <option value="lock">Serrure WizLock (Batterie ou blocage)</option>
+                                                    <option value="camera">Caméra WizVision / Module IA</option>
+                                                    <option value="gateway">Passerelle Wifi / Zigbee déconnectée</option>
+                                                    <option value="ac">Thermostat ou relais clim</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label small fw-bold">Commune à Abidjan</label>
+                                                <select name="commune" class="form-select form-select-sm">
+                                                    <option value="cocody">Cocody (Riviera, Angré)</option>
+                                                    <option value="marcory">Marcory (Zone 4)</option>
+                                                    <option value="plateau">Plateau</option>
+                                                    <option value="bingerville">Bingerville</option>
+                                                    <option value="yopougon">Yopougon</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="form-label small fw-bold">Description de la panne</label>
+                                            <textarea name="description" rows="3" class="form-control form-control-sm" required="required" placeholder="Précisez le symptôme constaté..."></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-3 mt-2" style="background-color: #0047AB; border-color: #0047AB;">
+                                            Envoyer ma demande d'assistance WizFix
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="card p-4 rounded-4 border bg-light">
+                                    <h5 class="fw-bold mb-3 text-dark">Intégration Odoo Maintenance</h5>
+                                    <p class="small text-secondary mb-3">
+                                        Cette demande crée un ordre d'intervention dans le module <code>maintenance.request</code> d'Odoo.
+                                    </p>
+                                    <ul class="list-unstyled small text-secondary d-flex flex-column gap-2 mb-0">
+                                        <li>✓ Suivi d'astreinte 24h/24</li>
+                                        <li>✓ Historique des pièces et batteries remplacées</li>
+                                        <li>✓ Rapport d'intervention sur smartphone</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Page: WizRenouv - Garanties & Remplacement Matériel (/warranty) -->
+    <!-- Mappé sur le modèle Odoo maintenance.equipment -->
+    <template id="wizsmith_page_warranty" name="WizRenouv Garanties &amp; Renouvellement" page="True">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="py-5 bg-light border-bottom text-center">
+                    <div class="container py-4">
+                        <span class="badge px-3 py-1 rounded-pill mb-2" style="background: rgba(232,99,10,0.1); color: #E8630A;">
+                            Garanties Continues &amp; Renouvellement
+                        </span>
+                        <h1 class="display-5 fw-extrabold text-dark mb-3" style="color: #1A1A2E;">
+                            Services WizRenouv : Vos Équipements Garantis
+                        </h1>
+                        <p class="lead text-secondary max-w-xl mx-auto fs-6">
+                            Consultez la validité de vos garanties matérielles et activez le remplacement préventif par du matériel de dernière génération.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="py-5 bg-white">
+                    <div class="container py-lg-4 max-w-xl">
+                        <div class="card p-4 p-lg-5 rounded-4 border shadow-sm">
+                            <h4 class="fw-bold mb-3 text-dark">Vérification de Garantie Matérielle</h4>
+                            <p class="text-secondary small mb-4">
+                                Renseignez votre numéro de contrat ou numéro de série IMEI pour vérifier votre statut de garantie Odoo.
+                            </p>
+                            <form action="/website/warranty/check" method="get" class="d-flex flex-column gap-3">
+                                <div>
+                                    <label class="form-label small fw-bold">Numéro de contrat ou IMEI</label>
+                                    <input type="text" name="serial" class="form-control" required="required" placeholder="ex: WZ-2024-ABJ-891"/>
+                                </div>
+                                <button type="submit" class="btn btn-warning text-white fw-bold py-3 rounded-3" style="background-color: #E8630A; border-color: #E8630A;">
+                                    Vérifier mon contrat WizRenouv
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

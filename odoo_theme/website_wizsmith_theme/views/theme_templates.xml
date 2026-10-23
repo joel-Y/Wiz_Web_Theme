@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit website.layout to add custom header, footer, Shuri assistant and Cookie banner -->
+    <template id="wizsmith_layout_inherit" inherit_id="website.layout" name="WizSmith Layout Extension">
+        <!-- Add Open Graph & meta branding in head -->
+        <xpath expr="//head" position="inside">
+            <meta name="theme-color" content="#0047AB"/>
+            <link rel="preconnect" href="https://fonts.googleapis.com"/>
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+        </xpath>
+
+        <!-- Append Shuri AI Assistant Widget to page bottom -->
+        <xpath expr="//div[@id='wrapwrap']" position="inside">
+            <!-- Shuri Chatbot Widget Container -->
+            <div id="wizsmith-shuri-widget" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1040;">
+                <button id="shuri-launcher" class="btn btn-primary rounded-circle shadow-lg d-flex align-items-center justify-content-center p-0"
+                        style="width: 58px; height: 58px; background: linear-gradient(135deg, #0047AB 0%, #1A1A2E 100%); border: 2px solid rgba(255,255,255,0.2);"
+                        aria-label="Ouvrir l'assistant Shuri" title="Discuter avec Shuri IA">
+                    <span class="fs-4" role="img" aria-label="Robot">⚡</span>
+                </button>
+
+                <div id="shuri-frame" class="shuri-frame-container shadow-2xl rounded-4 overflow-hidden position-fixed"
+                     style="display: none; bottom: 84px; right: 20px; width: 380px; max-width: calc(100vw - 32px); height: 580px; max-height: calc(100vh - 110px); background: #ffffff; border: 1px solid #E2E8F0; z-index: 1050;">
+                    <div class="shuri-frame-header d-flex align-items-center justify-content-between px-3 py-2 text-white"
+                         style="background: #1A1A2E; border-bottom: 2px solid #E8630A;">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-primary rounded-circle p-2">IA</span>
+                            <div>
+                                <h6 class="mb-0 text-white fw-bold" style="font-size: 0.95rem;">Shuri Assistant</h6>
+                                <small class="text-white-50" style="font-size: 0.75rem;">Propulsé par WizSmith Intelligence</small>
+                            </div>
+                        </div>
+                        <button id="shuri-close" class="btn btn-sm btn-link text-white text-decoration-none p-1 fs-5" aria-label="Fermer Shuri">✕</button>
+                    </div>
+                    <div class="shuri-frame-body" style="height: calc(100% - 50px);">
+                        <iframe id="shuri-iframe" src="https://shuri-chat.vercel.app/" allow="microphone; camera"
+                                style="width: 100%; height: 100%; border: none;" title="Assistant Shuri WizSmith"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cookie Consent Banner -->
+            <div id="cookie-banner" class="wiz-cookie-banner position-fixed bottom-0 start-50 translate-middle-x p-4 shadow-xl"
+                 style="display: none; z-index: 1030; width: 92%; max-width: 520px; margin-bottom: 20px; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border-radius: 16px; border: 1px solid #E2E8F0;">
+                <div class="d-flex align-items-start gap-3">
+                    <div class="p-2 rounded-3 bg-light text-primary fs-4">🛡️</div>
+                    <div>
+                        <h6 class="fw-bold text-dark mb-1">Protection &amp; Respect de votre vie privée</h6>
+                        <p class="text-muted small mb-3">
+                            WizSmith utilise des cookies indispensables pour assurer le bon fonctionnement du site et, avec votre accord, des outils d'analyse pour améliorer votre expérience immobilière connectée.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" id="btn-accept-cookies" class="btn btn-sm btn-primary px-3 fw-semibold" style="background-color: #0047AB; border-color: #0047AB;">
+                                Accepter tout
+                            </button>
+                            <button type="button" id="btn-decline-cookies" class="btn btn-sm btn-outline-secondary px-3">
+                                Refuser
+                            </button>
+                            <button type="button" id="btn-customize-cookies" class="btn btn-sm btn-link text-muted text-decoration-none px-2">
+                                Personnaliser
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cookie Customization Modal -->
+            <div id="cookie-settings-modal" class="modal fade" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true" style="z-index: 1060;">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow-2xl rounded-4">
+                        <div class="modal-header border-0 pb-0">
+                            <h5 class="modal-title fw-bold" id="cookieModalLabel">Préférences de cookies WizSmith</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                        </div>
+                        <div class="modal-body py-3">
+                            <form id="cookie-settings-form">
+                                <div class="p-3 mb-2 rounded-3 bg-light">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="fw-semibold text-dark">Cookies essentiels</span>
+                                            <p class="small text-muted mb-0">Nécessaires au fonctionnement du panier, sécurité et authentification.</p>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" checked="checked" disabled="disabled"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-3 mb-2 rounded-3 bg-light">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="fw-semibold text-dark">Cookies analytiques</span>
+                                            <p class="small text-muted mb-0">Mesure d'audience anonyme pour optimiser la navigation.</p>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="cookie-opt-analytics" name="analytics" checked="checked"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-3 rounded-3 bg-light">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="fw-semibold text-dark">Cookies marketing</span>
+                                            <p class="small text-muted mb-0">Recommandations personnalisées de nos packs et solutions.</p>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="cookie-opt-marketing" name="marketing"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer border-0 pt-0">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button>
+                            <button type="button" id="btn-save-cookie-settings" class="btn btn-primary" style="background-color: #0047AB;">Enregistrer mes choix</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Header Customization for WizSmith Theme -->
+    <template id="wizsmith_header" inherit_id="website.template_header_default" name="WizSmith Premium Header">
+        <xpath expr="//header//nav" position="replace">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-2 py-lg-3 sticky-top shadow-xs">
+                <div class="container">
+                    <!-- Brand Logo -->
+                    <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+                        <span class="fw-extrabold text-primary fs-3 tracking-tight" style="color: #0047AB !important; letter-spacing: -0.03em;">Wiz<span style="color: #E8630A;">Smith</span></span>
+                    </a>
+
+                    <!-- Mobile Toggler -->
+                    <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#wizNavbarCollapse"
+                            aria-controls="wizNavbarCollapse" aria-expanded="false" aria-label="Basculer la navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Nav Links & Actions -->
+                    <div class="collapse navbar-collapse" id="wizNavbarCollapse">
+                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-1">
+                            <li class="nav-item">
+                                <a class="nav-link px-3 fw-medium text-dark" href="/">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3 fw-medium text-dark" href="/comment-ca-fonctionne">Comment ça fonctionne</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3 fw-medium text-dark" href="/packs">Solutions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3 fw-medium text-dark" href="/residences-airbnb">Résidences &amp; Airbnb</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3 fw-medium text-dark" href="/hotels-intelligents">Hôtels intelligents</a>
+                            </li>
+                        </ul>
+
+                        <!-- Right CTA Area -->
+                        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+                            <a href="/page/appointment" class="btn btn-outline-dark btn-sm px-3 py-2 fw-semibold d-none d-xl-inline-block">
+                                Rendez-vous
+                            </a>
+                            <a href="/support-ia" class="btn btn-primary btn-sm px-4 py-2 fw-semibold text-white shadow-sm"
+                               style="background-color: #E8630A; border-color: #E8630A;">
+                                Diagnostic Gratuit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </xpath>
+    </template>
+
+    <!-- Footer Customization for WizSmith Theme -->
+    <template id="wizsmith_footer" inherit_id="website.footer_default" name="WizSmith Premium Footer">
+        <xpath expr="//footer" position="replace">
+            <footer class="bg-dark text-white pt-5 pb-4" style="background-color: #1A1A2E !important;">
+                <div class="container">
+                    <div class="row g-4 pb-5 border-bottom border-secondary border-opacity-25">
+                        <!-- Col 1: Brand & Mission -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="mb-3">
+                                <span class="fw-bold fs-3 text-white">Wiz<span style="color: #E8630A;">Smith</span></span>
+                            </div>
+                            <p class="text-white-50 pe-lg-4 small mb-4" style="line-height: 1.7;">
+                                WizSmith transforme et protège vos propriétés immobilières en Côte d’Ivoire et en Afrique de l'Ouest. Caméras intelligentes, serrures connectées, contrôle d'accès sans clé et IA proactive au service de votre tranquillité.
+                            </p>
+                            <div class="d-flex gap-3 text-white-50">
+                                <span class="small">Sécurité</span> · <span class="small">Automatisation</span> · <span class="small">Intelligence</span>
+                            </div>
+                        </div>
+
+                        <!-- Col 2: Solutions -->
+                        <div class="col-lg-2 col-md-6 col-6">
+                            <h6 class="text-uppercase fw-bold text-white mb-3 small tracking-wider" style="letter-spacing: 0.08em;">Solutions</h6>
+                            <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
+                                <li><a href="/packs" class="text-white-50 text-decoration-none hover-white">Pack Business</a></li>
+                                <li><a href="/packs" class="text-white-50 text-decoration-none hover-white">Pack Élite</a></li>
+                                <li><a href="/packs" class="text-white-50 text-decoration-none hover-white">Pack Prestige</a></li>
+                                <li><a href="/residences-airbnb" class="text-white-50 text-decoration-none hover-white">Maisons &amp; Airbnb</a></li>
+                                <li><a href="/hotels-intelligents" class="text-white-50 text-decoration-none hover-white">Hôtels Connectés</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Col 3: Services & Support -->
+                        <div class="col-lg-3 col-md-6 col-6">
+                            <h6 class="text-uppercase fw-bold text-white mb-3 small tracking-wider" style="letter-spacing: 0.08em;">Services &amp; Outils</h6>
+                            <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
+                                <li><a href="/support-ia" class="text-white-50 text-decoration-none hover-white">Diagnostic IA Gratuit</a></li>
+                                <li><a href="/comment-ca-fonctionne" class="text-white-50 text-decoration-none hover-white">Comment ça marche</a></li>
+                                <li><a href="/page/appointment" class="text-white-50 text-decoration-none hover-white">Prendre rendez-vous</a></li>
+                                <li><a href="/claim" class="text-white-50 text-decoration-none hover-white">WizFix (Maintenance)</a></li>
+                                <li><a href="/warranty" class="text-white-50 text-decoration-none hover-white">WizRenouv (Garanties)</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Col 4: Contact & Engagement -->
+                        <div class="col-lg-3 col-md-6">
+                            <h6 class="text-uppercase fw-bold text-white mb-3 small tracking-wider" style="letter-spacing: 0.08em;">Contact</h6>
+                            <ul class="list-unstyled small mb-3 text-white-50 d-flex flex-column gap-2">
+                                <li>📍 Abidjan, Côte d’Ivoire</li>
+                                <li>✉️ contact@wizsmith.com</li>
+                                <li>🌐 https://wizsmith.com</li>
+                            </ul>
+                            <div class="p-3 rounded-3" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);">
+                                <small class="text-white fw-semibold d-block mb-1">Besoin d'un audit sur mesure ?</small>
+                                <a href="/page/appointment" class="btn btn-sm btn-outline-light w-100 mt-1" style="font-size: 0.8rem;">
+                                    Consulter nos experts
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Bar -->
+                    <div class="pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                        <small class="text-white-50">
+                            © 2026 WizSmith. Tous droits réservés.
+                        </small>
+                        <div class="d-flex align-items-center gap-3">
+                            <button type="button" class="btn btn-link text-white-50 text-decoration-none p-0 small" onclick="window.wizsmithCustomizeCookies &amp;&amp; window.wizsmithCustomizeCookies()">
+                                Gestion des cookies
+                            </button>
+                            <span class="text-white-50">·</span>
+                            <a href="/privacy" class="text-white-50 text-decoration-none small">Confidentialité</a>
+                            <span class="text-white-50">·</span>
+                            <a href="/terms" class="text-white-50 text-decoration-none small">Conditions Générales</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </xpath>
+    </template>
+</odoo>

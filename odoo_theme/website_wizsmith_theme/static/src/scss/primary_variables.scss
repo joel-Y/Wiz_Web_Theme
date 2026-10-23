@@ -1,0 +1,27 @@
+// Part of WizSmith. Theme Primary Variables override
+$primary: #0047AB;
+$dark: #1A1A2E;
+$warning: #E8630A;
+$secondary: #475569;
+$light: #F8FAFC;
+$success: #10B981;
+
+// Font family override
+$font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$headings-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$headings-font-weight: 700;
+
+// Border radii
+$border-radius: 0.5rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 1.25rem;
+
+// WizSmith palette definition for theme builder
+$o-theme-color-palette: (
+    'primary': #0047AB,
+    'secondary': #475569,
+    'dark': #1A1A2E,
+    'light': #F8FAFC,
+    'warning': #E8630A,
+    'success': #10B981,
+);

@@ -1,0 +1,6 @@
+{
+  "name": "WizSmith - Smart Property Technology",
+  "description": "Plateforme technologique immobilière intelligente WizSmith (Sécurité, Automatisation, IA) en Côte d'Ivoire.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

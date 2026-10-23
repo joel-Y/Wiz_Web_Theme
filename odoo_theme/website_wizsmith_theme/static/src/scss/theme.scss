@@ -1,0 +1,87 @@
+// WizSmith Theme Stylesheet
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1E293B;
+    background-color: #F8FAFC;
+    -webkit-font-smoothing: antialiased;
+}
+
+// Navigation enhancements
+.navbar {
+    transition: all 0.2s ease-in-out;
+    .navbar-brand {
+        letter-spacing: -0.02em;
+    }
+    .nav-link {
+        font-weight: 500;
+        color: #1E293B !important;
+        transition: color 0.15s ease;
+        &:hover {
+            color: #0047AB !important;
+        }
+    }
+}
+
+// Buttons & CTAs
+.btn {
+    font-weight: 600;
+    transition: all 0.2s ease;
+    &:focus-visible {
+        outline: 2px solid #0047AB;
+        outline-offset: 2px;
+    }
+}
+
+// Cards
+.card {
+    border-color: #E2E8F0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    &.hover-shadow:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    }
+}
+
+// Footer styling
+footer {
+    a.hover-white:hover {
+        color: #FFFFFF !important;
+    }
+}
+
+// Mobile responsive constraints
+@media (max-width: 767.98px) {
+    .navbar-collapse {
+        background: #FFFFFF;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        margin-top: 0.75rem;
+    }
+    #shuri-launcher {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    #shuri-frame {
+        width: calc(100vw - 24px) !important;
+        right: 12px !important;
+        bottom: 74px !important;
+    }
+}
+
+// Micro-interactions and subtle feedback
+.btn:active {
+    transform: scale(0.985);
+}
+
+// Accessibility: Respect user reduced-motion preferences
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transform: none !important;
+    }
+}
+

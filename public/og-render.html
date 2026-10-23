@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>WizSmith OG Card Renderer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #0B0F19;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #FFFFFF;
+      position: relative;
+    }
+
+    /* Ambient cyber-physical gradients */
+    .glow-blue {
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      top: -200px;
+      right: -100px;
+      background: radial-gradient(circle, rgba(0, 71, 171, 0.45) 0%, rgba(11, 15, 25, 0) 70%);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .glow-orange {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      bottom: -150px;
+      left: -100px;
+      background: radial-gradient(circle, rgba(232, 99, 10, 0.28) 0%, rgba(11, 15, 25, 0) 70%);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    /* Subtle grid overlay */
+    .grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .card-container {
+      position: relative;
+      z-index: 10;
+      width: 1200px;
+      height: 630px;
+      padding: 60px 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Top bar */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #0047AB 0%, #E8630A 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 8px 24px rgba(0, 71, 171, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .brand-text {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-accent {
+      color: #E8630A;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #94A3B8;
+    }
+
+    .badge-pill .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 10px #10B981;
+    }
+
+    /* Content main area */
+    .main-content {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .text-column {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .category-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #38BDF8;
+    }
+
+    .title {
+      font-size: 46px;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+    }
+
+    .title-highlight {
+      background: linear-gradient(135deg, #60A5FA 0%, #FFFFFF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .description {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #94A3B8;
+      max-width: 580px;
+    }
+
+    /* Visual HUD Card on the right */
+    .hud-card {
+      background: rgba(26, 34, 52, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .hud-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hud-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #F1F5F9;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hud-status {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #10B981;
+      background: rgba(16, 185, 129, 0.12);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .hud-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .metric-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+
+    .metric-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748B;
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .metric-sub {
+      font-size: 11px;
+      color: #38BDF8;
+      margin-top: 2px;
+    }
+
+    .hud-banner {
+      background: linear-gradient(90deg, rgba(0, 71, 171, 0.25) 0%, rgba(232, 99, 10, 0.2) 100%);
+      border: 1px solid rgba(0, 71, 171, 0.35);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+
+    /* Bottom footer */
+    .footer-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 14px;
+      color: #64748B;
+    }
+
+    .footer-tags {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .footer-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-domain {
+      font-family: 'JetBrains Mono', monospace;
+      color: #E2E8F0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-blue"></div>
+  <div class="glow-orange"></div>
+  <div class="grid-pattern"></div>
+
+  <div class="card-container" id="cardContainer">
+    <!-- Rendered dynamically by script -->
+  </div>
+
+  <script>
+    const cardsData = {
+      'home': {
+        tag: 'PropTech Immobilière · Côte d\'Ivoire',
+        title: 'Sécurité, Automatisation & Intelligence Immobilière',
+        desc: 'Serrures intelligentes WizLock, vidéosurveillance IA proactive et réduction énergétique CIE pour résidences, Airbnb et hôtels.',
+        badge: 'Plateforme Active 24/7',
+        hudTitle: 'Centrale Intelligente WizSmith',
+        hudStatus: 'Système Opérationnel',
+        metrics: [
+          { label: 'Serrures WizLock', val: '100% Sécurisé', sub: 'Accès sans clé chiffré' },
+          { label: 'Détection IA', val: 'Vision Proactive', sub: 'Zéro faux positif' },
+          { label: 'Facture CIE', val: '-34% Réduction', sub: 'Coupure auto clim' },
+          { label: 'Temps d\'intervention', val: '< 15 min', sub: 'Équipe dédiée Abidjan' }
+        ],
+        hudBanner: '🛡️ Audit gratuit & installation certifiée à Abidjan'
+      },
+      'how-it-works': {
+        tag: 'Processus & Méthodologie',
+        title: 'Comment fonctionne la PropTech WizSmith ?',
+        desc: 'De l\'audit initial à votre tranquillité quotidienne : 4 étapes d\'automatisation sans clé, de surveillance IA et de maintenance continue.',
+        badge: 'Processus Garanti',
+        hudTitle: 'Workflow d\'Automatisation',
+        hudStatus: '4 Étapes Clés',
+        metrics: [
+          { label: 'Étape 1', val: 'Audit & Diagnostic', sub: 'Sur site ou en ligne' },
+          { label: 'Étape 2', val: 'Installation Certifiée', sub: 'Serrures & modules IA' },
+          { label: 'Étape 3', val: 'Synchronisation', sub: 'Airbnb / PMS / Énergie' },
+          { label: 'Étape 4', val: 'Support WizFix', sub: 'Maintenance continue' }
+        ],
+        hudBanner: '⚡ Déploiement express en moins de 48 heures'
+      },
+      'packs': {
+        tag: 'Tarifs & Abonnements',
+        title: 'Packs Immobiliers Clés en Main',
+        desc: 'Packs Business, Élite et Prestige. Matériel certifié WizLock, caméras IA et gestion d\'énergie. Tous les prix sont à partir de.',
+        badge: 'Dès 29 900 FCFA / mois',
+        hudTitle: 'Formules Sans Engagement',
+        hudStatus: 'À partir de :',
+        metrics: [
+          { label: 'Pack Business', val: '29 900 CFA/m', sub: 'À partir de · 1 Accès + Cam' },
+          { label: 'Pack Élite', val: '59 900 CFA/m', sub: 'À partir de · Serrures + Clim' },
+          { label: 'Pack Prestige', val: 'Sur devis', sub: 'Hôtels & Grands complexes' },
+          { label: 'Matériel Inclus', val: '100% Garanti', sub: 'Remplacement WizRenouv' }
+        ],
+        hudBanner: '💎 Tarifs transparents : tous nos prix sont « À partir de : »'
+      },
+      'airbnb': {
+        tag: 'Résidences & Locations Courte Durée',
+        title: 'Gestion Autonome Airbnb & Résidences Meublées',
+        desc: 'Automatisez vos locations à Abidjan : codes temporaires synchronisés Airbnb/Booking, extinction auto climatiseurs et surveillance discrète.',
+        badge: 'Self Check-in 24/7',
+        hudTitle: 'Module Host Airbnb & Booking',
+        hudStatus: 'Sync Instantanée',
+        metrics: [
+          { label: 'Check-in Invité', val: 'Code Éphémère', sub: 'Généré par réservation' },
+          { label: 'Climatisation', val: 'Extinction Auto', sub: 'Dès départ du voyageur' },
+          { label: 'Économie Moyenne', val: '+45 000 CFA/m', sub: 'Par logement meublé' },
+          { label: 'Avis Voyageurs', val: '4.9 ★ Moyenne', sub: 'Expérience sans friction' }
+        ],
+        hudBanner: '🔑 Fini les remises de clés physiques à minuit'
+      },
+      'hotels': {
+        tag: 'Hôtellerie & Grands Ensembles',
+        title: 'Hôtels Intelligents & Économies d\'Énergie',
+        desc: 'Modernisez vos chambres d\'hôtel : serrures RFID/BLE centralisées, supervision des accès et coupure automatique des climatiseurs inoccupés.',
+        badge: 'Audit Hôtelier Offert',
+        hudTitle: 'Gestion Multi-Chambres PMS',
+        hudStatus: 'Centralisé Cloud',
+        metrics: [
+          { label: 'Facture CIE', val: '-34% d\'Énergie', sub: 'Capteurs d\'occupation' },
+          { label: 'Badges RFID / BLE', val: 'Gestion Clé', sub: 'Encodage instantané' },
+          { label: 'Tableau de bord', val: 'Temps Réel', sub: 'Supervision globale' },
+          { label: 'Amortissement', val: '< 6 Mois', sub: 'Retour sur investissement' }
+        ],
+        hudBanner: '🏨 Compatible avec les principaux PMS hôteliers du marché'
+      },
+      'appointment': {
+        tag: 'Consultation & Audit sur Site',
+        title: 'Prenez Rendez-vous avec nos Ingénieurs PropTech',
+        desc: 'Planifiez un audit technique sur site à Abidjan (Cocody, Marcory, Plateau) ou une visioconférence personnalisée pour sécuriser vos biens.',
+        badge: 'Réponse sous 24h',
+        hudTitle: 'Consultation d\'Ingénierie',
+        hudStatus: 'Créneaux Disponibles',
+        metrics: [
+          { label: 'Zone d\'intervention', val: 'Grand Abidjan', sub: 'Cocody, Plateau, Zone 4' },
+          { label: 'Type d\'audit', val: 'Sur site / Visio', sub: 'Au choix du propriétaire' },
+          { label: 'Étude technique', val: 'Rapport Chiffré', sub: 'Devis & recommandations' },
+          { label: 'Accompagnement', val: 'Sur-mesure', sub: 'Ingénieurs certifiés' }
+        ],
+        hudBanner: '📅 Réservation directe en ligne en 3 clics'
+      },
+      'diagnostic': {
+        tag: 'Intelligence Immobilière & Simulateur',
+        title: 'Diagnostic de Sécurité & Simulateur d\'Économies',
+        desc: 'Évaluez en 2 minutes le potentiel d\'automatisation de votre propriété : score de sécurité connectée et estimation précise des économies CIE.',
+        badge: 'Calcul Immédiat',
+        hudTitle: 'Simulateur d\'Économies CIE',
+        hudStatus: 'IA Propriétaire',
+        metrics: [
+          { label: 'Durée du test', val: '2 minutes', sub: 'Questionnaire interactif' },
+          { label: 'Score calculé', val: 'Sécurité & Éco', sub: 'Note sur 100 points' },
+          { label: 'Rapport généré', val: 'PDF Personnalisé', sub: 'Recommandations matériel' },
+          { label: 'Accès', val: '100% Gratuit', sub: 'Sans engagement' }
+        ],
+        hudBanner: '📊 Basé sur plus de 150 audits réalisés en Côte d\'Ivoire'
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const cardKey = params.get('card') || 'home';
+    const data = cardsData[cardKey] || cardsData['home'];
+
+    const container = document.getElementById('cardContainer');
+    container.innerHTML = `
+      <!-- Top Bar -->
+      <div class="top-bar">
+        <div class="brand-logo">
+          <div class="brand-icon">⚡</div>
+          <div class="brand-text">Wiz<span class="brand-accent">Smith</span></div>
+        </div>
+        <div class="badge-pill">
+          <div class="dot"></div>
+          <span>${data.badge}</span>
+        </div>
+      </div>
+
+      <!-- Main Grid -->
+      <div class="main-content">
+        <div class="text-column">
+          <div class="category-tag">
+            <span>●</span>
+            <span>${data.tag}</span>
+          </div>
+          <h1 class="title">
+            ${data.title}
+          </h1>
+          <p class="description">
+            ${data.desc}
+          </p>
+        </div>
+
+        <div class="hud-card">
+          <div class="hud-header">
+            <div class="hud-title">
+              <span>🖥️</span>
+              <span>${data.hudTitle}</span>
+            </div>
+            <div class="hud-status">${data.hudStatus}</div>
+          </div>
+          <div class="hud-metrics">
+            ${data.metrics.map(m => `
+              <div class="metric-box">
+                <div class="metric-label">${m.label}</div>
+                <div class="metric-value">${m.val}</div>
+                <div class="metric-sub">${m.sub}</div>
+              </div>
+            `).join('')}
+          </div>
+          <div class="hud-banner">
+            <span>${data.hudBanner}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bar -->
+      <div class="footer-bar">
+        <div class="footer-tags">
+          <div class="footer-tag">📍 <span>Abidjan, Côte d'Ivoire</span></div>
+          <div class="footer-tag">🔒 <span>Serrures Connectées & IA</span></div>
+          <div class="footer-tag">🌱 <span>Efficacité Énergétique</span></div>
+        </div>
+        <div class="footer-domain">
+          <span>wizsmith.com</span>
+          <span style="color: #E8630A;">●</span>
+        </div>
+      </div>
+    `;
+  </script>
+</body>
+</html>

@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- WizSmith Hero Snippet -->
+    <template id="s_wizsmith_hero" name="WizSmith Hero Section">
+        <section class="s_wizsmith_hero py-5 py-lg-6 position-relative overflow-hidden" style="background: radial-gradient(120% 80% at 50% 0%, #F1F5F9 0%, #FFFFFF 100%);">
+            <div class="container position-relative">
+                <div class="row align-items-center g-5">
+                    <!-- Left Column: Copy & CTAs -->
+                    <div class="col-lg-6">
+                        <!-- Brand Statement -->
+                        <div class="d-inline-flex align-items-center gap-2 mb-3 px-3 py-1 rounded-pill bg-light border border-secondary border-opacity-25">
+                            <span class="badge rounded-circle p-1" style="background-color: #E8630A;"></span>
+                            <span class="small fw-semibold text-secondary" style="letter-spacing: 0.04em;">Sécurité · Automatisation · Intelligence</span>
+                        </div>
+
+                        <!-- Main Headline -->
+                        <h1 class="display-5 fw-extrabold text-dark mb-4 tracking-tight" style="line-height: 1.15; color: #1A1A2E !important;">
+                            Votre propriété. <br class="d-none d-sm-inline"/>
+                            <span style="color: #0047AB;">Plus intelligente.</span> Plus sûre. <br class="d-none d-sm-inline"/>
+                            <span style="color: #E8630A;">Sous contrôle.</span>
+                        </h1>
+
+                        <!-- Supporting Text -->
+                        <p class="lead text-secondary mb-4 mb-lg-5" style="font-size: 1.15rem; line-height: 1.6;">
+                            WizSmith protège et automatise votre maison, votre Airbnb, votre hôtel ou votre entreprise grâce à l'intelligence artificielle et aux appareils connectés.
+                        </p>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex flex-column flex-sm-row gap-3">
+                            <a href="/support-ia" class="btn btn-lg px-4 py-3 fw-bold text-white shadow-md rounded-3 text-center"
+                               style="background-color: #E8630A; border-color: #E8630A;">
+                                Découvrir mon score de sécurité gratuit
+                            </a>
+                            <a href="/packs" class="btn btn-lg btn-outline-dark px-4 py-3 fw-semibold rounded-3 text-center"
+                               style="border-color: #1A1A2E; color: #1A1A2E;">
+                                Explorer nos solutions
+                            </a>
+                        </div>
+
+                        <!-- Micro trust signals -->
+                        <div class="mt-4 pt-3 border-top border-secondary border-opacity-10 d-flex flex-wrap gap-4 text-secondary small">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="text-success fw-bold">✓</span> Compatible caméras existantes
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="text-success fw-bold">✓</span> Installation professionnelle certifiée
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="text-success fw-bold">✓</span> Support local Abidjan 7j/7
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Clean Smart Property Tech Showcase Card -->
+                    <div class="col-lg-6">
+                        <div class="card p-4 p-lg-5 rounded-4 border shadow-lg bg-white">
+                            <div class="d-flex align-items-center justify-content-between pb-3 mb-4 border-bottom">
+                                <span class="small fw-bold text-uppercase text-secondary tracking-wider" style="font-size: 0.75rem;">Applications Spécifiques</span>
+                                <span class="badge rounded-pill px-3 py-1" style="background-color: rgba(0, 71, 171, 0.1); color: #0047AB;">Solutions Clé en Main</span>
+                            </div>
+
+                            <div class="d-flex align-items-start justify-content-between gap-3 mb-4">
+                                <div>
+                                    <span class="small fw-bold text-uppercase tracking-wider" style="color: #E8630A; font-size: 0.75rem;">Location Courte Durée &amp; Résidences</span>
+                                    <h4 class="fw-bold text-dark mt-1 mb-0">Airbnb &amp; Propriétés Meublées</h4>
+                                </div>
+                                <div class="p-3 rounded-3 text-end" style="background: rgba(0, 71, 171, 0.06); border: 1px solid rgba(0, 71, 171, 0.15);">
+                                    <span class="fs-5 fw-bold font-monospace d-block" style="color: #0047AB; line-height: 1;">18h / mois</span>
+                                    <small class="text-secondary" style="font-size: 0.7rem;">Temps moyen gagné</small>
+                                </div>
+                            </div>
+
+                            <div class="p-3 rounded-3 mb-4 small text-secondary border" style="background-color: #F8FAFC;">
+                                ✨ <strong>Check-in 100% autonome :</strong> Vos voyageurs reçoivent leur code confidentiel par SMS sans que vous ayez à vous déplacer.
+                            </div>
+
+                            <div class="d-flex flex-column gap-2 mb-4">
+                                <div class="p-3 rounded-3 bg-white border d-flex align-items-center gap-3">
+                                    <span class="fs-5">🔑</span>
+                                    <span class="small text-dark font-medium">Codes PIN temporaires à validité synchronisée aux séjours</span>
+                                </div>
+                                <div class="p-3 rounded-3 bg-white border d-flex align-items-center gap-3">
+                                    <span class="fs-5">⚡</span>
+                                    <span class="small text-dark font-medium">Coupure automatique de la climatisation au check-out (-35% CIE)</span>
+                                </div>
+                                <div class="p-3 rounded-3 bg-white border d-flex align-items-center gap-3">
+                                    <span class="fs-5">🛡️</span>
+                                    <span class="small text-dark font-medium">Alertes immédiates en cas d'intrusion en période de vacance</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-3 border-top d-flex align-items-center justify-content-between">
+                                <small class="text-muted" style="font-size: 0.75rem;">📍 Déployé à Cocody, Marcory, Plateau, Zone 4</small>
+                                <a href="/support-ia" class="btn btn-sm btn-link fw-bold text-decoration-none p-0" style="color: #0047AB;">
+                                    Calculer mon score →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Section C: Customer Problems Snippet -->
+    <template id="s_wizsmith_problems" name="WizSmith Problems Section">
+        <section class="s_wizsmith_problems py-5 bg-white border-top border-bottom">
+            <div class="container py-lg-4">
+                <div class="text-center max-w-2xl mx-auto mb-5">
+                    <h2 class="fw-bold text-dark mb-3" style="color: #1A1A2E;">Vous gérez encore votre propriété manuellement ?</h2>
+                    <p class="text-secondary lead fs-6">
+                        Pendant que vous gérez les problèmes, votre propriété devrait travailler pour vous.
+                    </p>
+                </div>
+
+                <div class="row g-4 mb-5">
+                    <!-- 1. Lost keys -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 p-4 border rounded-4 shadow-xs hover-shadow transition">
+                            <div class="fs-2 mb-3">🔑</div>
+                            <h5 class="fw-bold text-dark mb-2">Pertes de clés &amp; accès non contrôlés</h5>
+                            <p class="text-secondary small mb-0">Doubles de clés en circulation, serrures à remplacer après chaque départ, risque d'accès non autorisé constant.</p>
+                        </div>
+                    </div>
+                    <!-- 2. Security incidents -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 p-4 border rounded-4 shadow-xs hover-shadow transition">
+                            <div class="fs-2 mb-3">🚨</div>
+                            <h5 class="fw-bold text-dark mb-2">Incidents constatés trop tard</h5>
+                            <p class="text-secondary small mb-0">Caméras passives qui enregistrent après coup sans envoyer d'alerte proactive lors d'une intrusion réelle.</p>
+                        </div>
+                    </div>
+                    <!-- 3. Airbnb check-ins -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 p-4 border rounded-4 shadow-xs hover-shadow transition">
+                            <div class="fs-2 mb-3">🕒</div>
+                            <h5 class="fw-bold text-dark mb-2">Check-ins Airbnb contraignants</h5>
+                            <p class="text-secondary small mb-0">Attentes interminables des voyageurs en retard, remises de clés en main propre et avis pénalisés.</p>
+                        </div>
+                    </div>
+                    <!-- 4. Staff supervision -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 p-4 border rounded-4 shadow-xs hover-shadow transition">
+                            <div class="fs-2 mb-3">👥</div>
+                            <h5 class="fw-bold text-dark mb-2">Supervision du personnel complexe</h5>
+                            <p class="text-secondary small mb-0">Impossibilité de vérifier précisément les heures d'arrivée, de départ et d'intervention sur site.</p>
+                        </div>
+                    </div>
+                    <!-- 5. Energy waste -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 p-4 border rounded-4 shadow-xs hover-shadow transition">
+                            <div class="fs-2 mb-3">💡</div>
+                            <h5 class="fw-bold text-dark mb-2">Gaspillage d'énergie massif</h5>
+                            <p class="text-secondary small mb-0">Climatiseurs laissés allumés dans des pièces vides, entraînant des factures d'électricité démesurées.</p>
+                        </div>
+                    </div>
+                    <!-- 6. Lack of visibility -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 p-4 border rounded-4 shadow-xs hover-shadow transition">
+                            <div class="fs-2 mb-3">📱</div>
+                            <h5 class="fw-bold text-dark mb-2">Manque total de visibilité à distance</h5>
+                            <p class="text-secondary small mb-0">Angoisse et incertitude permanente dès que vous quittez la ville ou êtes en déplacement professionnel.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center p-4 rounded-4 bg-light border">
+                    <h4 class="fw-bold mb-3" style="color: #0047AB;">WizSmith automatise tout ça !</h4>
+                    <p class="text-secondary small mb-3">Bénéficiez d'une solution clé en main installée par des experts à Abidjan.</p>
+                    <a href="/support-ia" class="btn btn-primary px-4 py-2 fw-semibold" style="background-color: #0047AB; border-color: #0047AB;">
+                        Faire mon diagnostic gratuit
+                    </a>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Section D: Why WizSmith Snippet -->
+    <template id="s_wizsmith_why" name="WizSmith Benefits Section">
+        <section class="s_wizsmith_why py-5" style="background-color: #F8FAFC;">
+            <div class="container py-lg-4">
+                <div class="text-center max-w-2xl mx-auto mb-5">
+                    <h2 class="fw-bold text-dark mb-3" style="color: #1A1A2E;">Pourquoi WizSmith ?</h2>
+                    <p class="text-secondary lead fs-6">Une technologie éprouvée pour protéger vos investissements et libérer votre temps.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="p-4 bg-white rounded-4 border h-100 shadow-xs">
+                            <div class="fw-bold fs-4 text-primary mb-2" style="color: #0047AB !important;">01</div>
+                            <h5 class="fw-bold text-dark mb-2">Sécurité réellement intelligente</h5>
+                            <p class="text-secondary small mb-0">Détection IA des silhouettes humaines et véhicules, alertes filtrées sans fausses alarmes d'animaux ou de vent.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="p-4 bg-white rounded-4 border h-100 shadow-xs">
+                            <div class="fw-bold fs-4 text-primary mb-2" style="color: #0047AB !important;">02</div>
+                            <h5 class="fw-bold text-dark mb-2">Plateforme centralisée</h5>
+                            <p class="text-secondary small mb-0">Contrôlez vos serrures, caméras, éclairages et climatisations depuis une seule interface intuitive.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="p-4 bg-white rounded-4 border h-100 shadow-xs">
+                            <div class="fw-bold fs-4 text-primary mb-2" style="color: #0047AB !important;">03</div>
+                            <h5 class="fw-bold text-dark mb-2">Pensé pour les usages réels</h5>
+                            <p class="text-secondary small mb-0">Gestion automatisée des flux Airbnb, check-in autonome sans contact et contrôle du personnel de maison ou d'entreprise.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="p-4 bg-white rounded-4 border h-100 shadow-xs">
+                            <div class="fw-bold fs-4 text-primary mb-2" style="color: #0047AB !important;">04</div>
+                            <h5 class="fw-bold text-dark mb-2">Automatisation complète</h5>
+                            <p class="text-secondary small mb-0">Scénarios intelligents : verrouillage nocturne automatique, extinction d'énergie à l'inoccupation et alertes immédiates.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="p-4 bg-white rounded-4 border h-100 shadow-xs">
+                            <div class="fw-bold fs-4 text-primary mb-2" style="color: #0047AB !important;">05</div>
+                            <h5 class="fw-bold text-dark mb-2">Réduction des pertes et des coûts</h5>
+                            <p class="text-secondary small mb-0">Jusqu'à 35% d'économies sur vos factures énergétiques et fin des coûts de remplacement de barillets de serrures.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="p-4 bg-white rounded-4 border h-100 shadow-xs">
+                            <div class="fw-bold fs-4 text-primary mb-2" style="color: #0047AB !important;">06</div>
+                            <h5 class="fw-bold text-dark mb-2">Toujours connecté, toujours en contrôle</h5>
+                            <p class="text-secondary small mb-0">Accès direct et alertes chiffrées sur votre smartphone où que vous soyez dans le monde.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Section E: Customer-Specific Solutions Snippet -->
+    <template id="s_wizsmith_solutions" name="WizSmith Solutions by Space">
+        <section class="s_wizsmith_solutions py-5 bg-white border-top">
+            <div class="container py-lg-4">
+                <div class="text-center max-w-2xl mx-auto mb-5">
+                    <h2 class="fw-bold text-dark mb-3" style="color: #1A1A2E;">Une seule plateforme. Tous vos espaces.</h2>
+                    <p class="text-secondary lead fs-6">Des configurations spécialisées pour répondre aux exigences uniques de chaque environnement.</p>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Maisons intelligentes -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 border rounded-4 overflow-hidden shadow-xs">
+                            <div class="p-4 bg-light text-center border-bottom">
+                                <span class="fs-1">🏡</span>
+                            </div>
+                            <div class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold text-dark mb-2">Maisons &amp; Villas</h5>
+                                <p class="text-secondary small flex-grow-1">Sécurité périmétrique, serrures connectées, surveillance familiale et confort automatisé pour votre résidence.</p>
+                                <a href="/residences-airbnb" class="btn btn-outline-primary btn-sm w-100 mt-3" style="border-color: #0047AB; color: #0047AB;">
+                                    Explorer Résidences
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Airbnb automatisés -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 border rounded-4 overflow-hidden shadow-xs">
+                            <div class="p-4 bg-light text-center border-bottom">
+                                <span class="fs-1">🔑</span>
+                            </div>
+                            <div class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold text-dark mb-2">Airbnb &amp; Meublés</h5>
+                                <p class="text-secondary small flex-grow-1">Codes temporaires synchronisés aux réservations, check-in 24/7 sans déplacement, économie d'électricité.</p>
+                                <a href="/residences-airbnb" class="btn btn-outline-primary btn-sm w-100 mt-3" style="border-color: #0047AB; color: #0047AB;">
+                                    Découvrir Airbnb
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hôtels connectés -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 border rounded-4 overflow-hidden shadow-xs">
+                            <div class="p-4 bg-light text-center border-bottom">
+                                <span class="fs-1">🏨</span>
+                            </div>
+                            <div class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold text-dark mb-2">Hôtels &amp; Résidences</h5>
+                                <p class="text-secondary small flex-grow-1">Supervision centralisée des chambres, optimisation énergétique, traçabilité du ménage et expérience client VIP.</p>
+                                <a href="/hotels-intelligents" class="btn btn-outline-primary btn-sm w-100 mt-3" style="border-color: #0047AB; color: #0047AB;">
+                                    Voir Hôtels
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Entreprises -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 border rounded-4 overflow-hidden shadow-xs">
+                            <div class="p-4 bg-light text-center border-bottom">
+                                <span class="fs-1">🏢</span>
+                            </div>
+                            <div class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold text-dark mb-2">Entreprises &amp; PME</h5>
+                                <p class="text-secondary small flex-grow-1">Contrôle d'accès employés par badges/codes, enregistrement des horaires, protection des stocks et bureaux.</p>
+                                <a href="/packs" class="btn btn-outline-primary btn-sm w-100 mt-3" style="border-color: #0047AB; color: #0047AB;">
+                                    Découvrir Business
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Section F: Property Security Assessment Snippet -->
+    <template id="s_wizsmith_assessment" name="WizSmith Property Assessment">
+        <section class="s_wizsmith_assessment py-5 position-relative" style="background: linear-gradient(180deg, #1A1A2E 0%, #0D0D17 100%); color: white;">
+            <div class="container py-lg-4">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <span class="badge px-3 py-2 rounded-pill mb-3" style="background: rgba(232, 99, 10, 0.2); color: #E8630A; border: 1px solid #E8630A;">
+                            Intelligence Artificielle WizSmith
+                        </span>
+                        <h2 class="display-6 fw-bold text-white mb-3">Votre propriété analysée par notre IA</h2>
+                        <p class="text-white-50 lead fs-6 mb-4">
+                            Évaluez en moins de 2 minutes le niveau de sécurité et d'automatisation de votre bien. Notre algorithme identifie les failles critiques et génère votre plan d'action personnalisé.
+                        </p>
+
+                        <div class="d-flex flex-column gap-3 mb-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="p-2 rounded-circle bg-primary bg-opacity-25 text-white">📊</div>
+                                <div>
+                                    <strong class="text-white d-block">Score de sécurité WizSmith</strong>
+                                    <small class="text-white-50">Évaluation objective de 0 à 100 basée sur votre configuration réelle.</small>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="p-2 rounded-circle bg-warning bg-opacity-25 text-white">⚠️</div>
+                                <div>
+                                    <strong class="text-white d-block">Risques potentiels identifiés</strong>
+                                    <small class="text-white-50">Points d'accès vulnérables, pertes de clés, absence de traçabilité.</small>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="p-2 rounded-circle bg-success bg-opacity-25 text-white">🛡️</div>
+                                <div>
+                                    <strong class="text-white d-block">Équipements &amp; Automatisations recommandés</strong>
+                                    <small class="text-white-50">Serrures WizLock, modules IA caméras et scénarios d'économies d'énergie.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="/support-ia" class="btn btn-lg px-4 py-3 fw-bold text-white rounded-3"
+                           style="background-color: #E8630A; border-color: #E8630A;">
+                            Analyser ma propriété gratuitement
+                        </a>
+                    </div>
+
+                    <!-- Right Column: Interactive Diagnostic Widget -->
+                    <div class="col-lg-6">
+                        <div class="p-4 rounded-4 shadow-2xl" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <div class="d-flex justify-content-between align-items-center pb-3 mb-4 border-bottom border-secondary border-opacity-25">
+                                <span class="fw-bold text-white">Exemple de rapport IA WizSmith</span>
+                                <span class="badge bg-success px-2 py-1">Score Calculé</span>
+                            </div>
+
+                            <div class="text-center py-3">
+                                <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
+                                     style="width: 120px; height: 120px; border: 6px solid #E8630A; background: rgba(232, 99, 10, 0.1);">
+                                    <span class="fs-1 fw-extrabold text-white">74<span class="fs-6 text-white-50">/100</span></span>
+                                </div>
+                                <h5 class="text-white fw-bold mb-1">Vulnérabilités Modérées</h5>
+                                <p class="text-white-50 small mb-4">Villa / Meublé 150m² · 3 accès</p>
+                            </div>
+
+                            <div class="p-3 rounded-3 mb-3" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06);">
+                                <small class="text-white-50 d-block mb-1">Plan recommandé :</small>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold text-white">Pack ÉLITE (Airbnb &amp; Résidences)</span>
+                                    <span class="badge bg-primary">À partir de 40 000 FCFA/mois</span>
+                                </div>
+                            </div>
+
+                            <small class="text-white-50 d-block text-center" style="font-size: 0.75rem;">
+                                *Cette analyse préliminaire en ligne ne se substitue pas à l'audit physique complet réalisé par un technicien WizSmith.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Section G: Subscription Packages Snippet -->
+    <template id="s_wizsmith_pricing" name="WizSmith Subscription Packages">
+        <section class="s_wizsmith_pricing py-5 bg-white border-top border-bottom">
+            <div class="container py-lg-4">
+                <div class="text-center max-w-2xl mx-auto mb-5">
+                    <h2 class="fw-bold text-dark mb-3" style="color: #1A1A2E;">Nos solutions WizSmith</h2>
+                    <p class="text-secondary lead fs-6">Choisissez le niveau d'automatisation et de sécurité adapté à votre propriété.</p>
+                </div>
+
+                <div class="row g-4 align-items-stretch">
+                    <!-- BUSINESS: 25,000 CFA/mois -->
+                    <div class="col-lg-4">
+                        <div class="card h-100 border rounded-4 p-4 shadow-xs d-flex flex-column">
+                            <div class="mb-3">
+                                <span class="fw-bold text-secondary text-uppercase small tracking-wider">BUSINESS</span>
+                                <small class="text-muted fw-bold d-block text-uppercase mt-2" style="font-size: 0.72rem;">À partir de :</small>
+                                <h3 class="fw-extrabold text-dark mt-1 mb-0">25 000 <span class="fs-6 text-muted fw-normal">CFA/mois</span></h3>
+                                <p class="text-muted small mt-2">Bureaux, commerces, restaurants, écoles et PME</p>
+                            </div>
+
+                            <hr class="my-3"/>
+
+                            <ul class="list-unstyled small d-flex flex-column gap-2 mb-4 flex-grow-1">
+                                <li class="d-flex align-items-center gap-2"><span class="text-success fw-bold">✓</span> Contrôle des accès employés (Badges/Codes)</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-success fw-bold">✓</span> Surveillance intelligente des locaux</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-success fw-bold">✓</span> Alertes en temps réel sur smartphone</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-success fw-bold">✓</span> Rapports d'activité &amp; journal de présence</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-success fw-bold">✓</span> Contrôle à distance des ouvertures</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-success fw-bold">✓</span> Installation professionnelle certifiée</li>
+                            </ul>
+
+                            <a href="/packs" class="btn btn-outline-dark w-100 py-2 fw-semibold rounded-3">
+                                S'abonner Business
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ÉLITE: 40,000 CFA/mois (Featured) -->
+                    <div class="col-lg-4">
+                        <div class="card h-100 border-2 rounded-4 p-4 shadow-lg d-flex flex-column position-relative"
+                             style="border-color: #0047AB !important; background: #FFFFFF;">
+                            <div class="position-absolute top-0 start-50 translate-middle">
+                                <span class="badge px-3 py-1 rounded-pill text-white fw-bold shadow-sm" style="background-color: #0047AB;">
+                                    Le plus populaire
+                                </span>
+                            </div>
+
+                            <div class="mb-3 pt-2">
+                                <span class="fw-bold text-primary text-uppercase small tracking-wider" style="color: #0047AB !important;">ÉLITE</span>
+                                <small class="text-muted fw-bold d-block text-uppercase mt-2" style="font-size: 0.72rem;">À partir de :</small>
+                                <h3 class="fw-extrabold text-dark mt-1 mb-0">40 000 <span class="fs-6 text-muted fw-normal">CFA/mois</span></h3>
+                                <p class="text-muted small mt-2">Résidences privées, meublés et propriétés Airbnb</p>
+                            </div>
+
+                            <hr class="my-3"/>
+
+                            <ul class="list-unstyled small d-flex flex-column gap-2 mb-4 flex-grow-1">
+                                <li class="d-flex align-items-center gap-2"><span class="text-primary fw-bold">✓</span> <strong>Accès sans clé complet (Serrure WizLock)</strong></li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-primary fw-bold">✓</span> Codes invités temporaires &amp; automatisés</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-primary fw-bold">✓</span> Check-in autonome pour voyageurs Airbnb 24/7</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-primary fw-bold">✓</span> Gestion énergétique intelligente (Clim &amp; Éco)</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-primary fw-bold">✓</span> Détection d'incidents &amp; alertes intrusions</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-primary fw-bold">✓</span> Contrôle à distance illimité</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-primary fw-bold">✓</span> Installation et paramétrage inclus</li>
+                            </ul>
+
+                            <a href="/packs" class="btn btn-primary w-100 py-2 fw-bold text-white rounded-3 shadow-sm"
+                               style="background-color: #0047AB; border-color: #0047AB;">
+                                S'abonner Élite
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- PRESTIGE: 50,000 CFA/mois -->
+                    <div class="col-lg-4">
+                        <div class="card h-100 border rounded-4 p-4 shadow-xs d-flex flex-column">
+                            <div class="mb-3">
+                                <span class="fw-bold text-secondary text-uppercase small tracking-wider" style="color: #E8630A !important;">PRESTIGE</span>
+                                <small class="text-muted fw-bold d-block text-uppercase mt-2" style="font-size: 0.72rem;">À partir de :</small>
+                                <h3 class="fw-extrabold text-dark mt-1 mb-0">50 000 <span class="fs-6 text-muted fw-normal">CFA/mois</span></h3>
+                                <p class="text-muted small mt-2">Grandes villas, résidences hôtelières et propriétés premium</p>
+                            </div>
+
+                            <hr class="my-3"/>
+
+                            <ul class="list-unstyled small d-flex flex-column gap-2 mb-4 flex-grow-1">
+                                <li class="d-flex align-items-center gap-2"><span class="text-success fw-bold">✓</span> Tous les avantages du pack ÉLITE inclus</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-success fw-bold">✓</span> Intégration Apple HomeKit &amp; Google Home</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-success fw-bold">✓</span> IA de pointe &amp; analyse comportementale</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-success fw-bold">✓</span> Rapports de sécurité détaillés mensuels</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-success fw-bold">✓</span> Installation VIP &amp; priorité support technique</li>
+                                <li class="d-flex align-items-center gap-2"><span class="text-success fw-bold">✓</span> Maintenance continue &amp; garantie WizRenouv</li>
+                            </ul>
+
+                            <a href="/packs" class="btn btn-outline-dark w-100 py-2 fw-semibold rounded-3">
+                                S'abonner Prestige
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Section H: Testimonials Snippet -->
+    <template id="s_wizsmith_testimonials" name="WizSmith Testimonials">
+        <section class="s_wizsmith_testimonials py-5" style="background-color: #F8FAFC;">
+            <div class="container py-lg-4">
+                <div class="text-center max-w-2xl mx-auto mb-5">
+                    <h2 class="fw-bold text-dark mb-3" style="color: #1A1A2E;">Témoignages de nos clients</h2>
+                    <p class="text-secondary lead fs-6">Découvrez comment WizSmith sécurise le quotidien de propriétaires et gestionnaires à Abidjan.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 p-4 border rounded-4 bg-white shadow-xs">
+                            <div class="text-warning mb-3">★★★★★</div>
+                            <p class="text-secondary small fst-italic mb-4">
+                                "Pour mes 3 appartements en location courte durée à Cocody, WizSmith a été une révolution. Les codes temporaires automatiques m'ont fait gagner un temps précieux chaque semaine."
+                            </p>
+                            <div class="mt-auto d-flex align-items-center gap-3">
+                                <div class="rounded-circle bg-light d-flex align-items-center justify-content-center fw-bold text-primary" style="width: 44px; height: 44px;">
+                                    AK
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-dark">Amadou K.</h6>
+                                    <small class="text-muted">Propriétaire Airbnb · Cocody</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 p-4 border rounded-4 bg-white shadow-xs">
+                            <div class="text-warning mb-3">★★★★★</div>
+                            <p class="text-secondary small fst-italic mb-4">
+                                "L'ajout de l'IA à mes caméras existantes nous alerte uniquement en cas de passage réel la nuit. Plus de fausses alertes à cause du vent. Service après-vente impeccable."
+                            </p>
+                            <div class="mt-auto d-flex align-items-center gap-3">
+                                <div class="rounded-circle bg-light d-flex align-items-center justify-content-center fw-bold text-primary" style="width: 44px; height: 44px;">
+                                    SB
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-dark">Serge B.</h6>
+                                    <small class="text-muted">Directeur d'Agence · Zone 4</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 p-4 border rounded-4 bg-white shadow-xs">
+                            <div class="text-warning mb-3">★★★★★</div>
+                            <p class="text-secondary small fst-italic mb-4">
+                                "La gestion énergétique automatique a fait baisser nos dépenses de climatisation de 30% dès le premier mois. Un investissement rentabilisé immédiatement."
+                            </p>
+                            <div class="mt-auto d-flex align-items-center gap-3">
+                                <div class="rounded-circle bg-light d-flex align-items-center justify-content-center fw-bold text-primary" style="width: 44px; height: 44px;">
+                                    ME
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-dark">Marie-Esther D.</h6>
+                                    <small class="text-muted">Gestionnaire Résidence Hôtelière</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Section I: Final CTA Snippet -->
+    <template id="s_wizsmith_cta" name="WizSmith Final Call to Action">
+        <section class="s_wizsmith_cta py-5 text-white position-relative" style="background-color: #1A1A2E;">
+            <div class="container py-lg-4 text-center">
+                <div class="max-w-2xl mx-auto">
+                    <span class="badge px-3 py-2 rounded-pill mb-3" style="background: rgba(232, 99, 10, 0.2); color: #E8630A; border: 1px solid #E8630A;">
+                        Passez à la propriété connectée
+                    </span>
+                    <h2 class="display-6 fw-extrabold text-white mb-3">Prêt à transformer la gestion de votre propriété ?</h2>
+                    <p class="text-white-50 lead fs-6 mb-4">
+                        Rejoignez les propriétaires et professionnels qui font confiance à WizSmith pour automatiser et sécuriser leurs espaces.
+                    </p>
+                    <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+                        <a href="/support-ia" class="btn btn-lg px-4 py-3 fw-bold text-white rounded-3 shadow-md"
+                           style="background-color: #E8630A; border-color: #E8630A;">
+                            Faire mon diagnostic gratuit
+                        </a>
+                        <a href="/page/appointment" class="btn btn-lg btn-outline-light px-4 py-3 fw-semibold rounded-3">
+                            Planifier un rendez-vous
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Register WizSmith Custom Snippets in Odoo 18 Website Builder Drawer -->
+    <template id="wizsmith_snippets_registration" inherit_id="website.snippets" name="WizSmith Snippets Registration">
+        <xpath expr="//div[@id='snippet_structure']" position="inside">
+            <t t-snippet="website_wizsmith_theme.s_wizsmith_hero" string="WizSmith - Hero Showcase" t-thumbnail="/website_wizsmith_theme/static/description/icon.png"/>
+            <t t-snippet="website_wizsmith_theme.s_wizsmith_problems" string="WizSmith - Problèmes Propriété" t-thumbnail="/website_wizsmith_theme/static/description/icon.png"/>
+            <t t-snippet="website_wizsmith_theme.s_wizsmith_why" string="WizSmith - 6 Avantages Clés" t-thumbnail="/website_wizsmith_theme/static/description/icon.png"/>
+            <t t-snippet="website_wizsmith_theme.s_wizsmith_solutions" string="WizSmith - Solutions par Espace" t-thumbnail="/website_wizsmith_theme/static/description/icon.png"/>
+            <t t-snippet="website_wizsmith_theme.s_wizsmith_assessment" string="WizSmith - Diagnostic IA" t-thumbnail="/website_wizsmith_theme/static/description/icon.png"/>
+            <t t-snippet="website_wizsmith_theme.s_wizsmith_pricing" string="WizSmith - Formules d'Abonnement" t-thumbnail="/website_wizsmith_theme/static/description/icon.png"/>
+            <t t-snippet="website_wizsmith_theme.s_wizsmith_testimonials" string="WizSmith - Témoignages Clients" t-thumbnail="/website_wizsmith_theme/static/description/icon.png"/>
+            <t t-snippet="website_wizsmith_theme.s_wizsmith_cta" string="WizSmith - Appel à l'Action" t-thumbnail="/website_wizsmith_theme/static/description/icon.png"/>
+        </xpath>
+    </template>
+</odoo>
