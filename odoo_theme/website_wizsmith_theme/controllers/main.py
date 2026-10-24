@@ -3,12 +3,12 @@
 
 import logging
 import re
-from datetime import datetime, timedelta
+from datetime import datetime
 
 import pytz
 from markupsafe import Markup, escape
 
-from odoo import fields, http
+from odoo import http
 from odoo.http import request
 
 _logger = logging.getLogger(__name__)
@@ -41,15 +41,6 @@ COMMUNE_LABELS = {
     'bingerville': 'Bingerville',
     'yopougon': 'Yopougon',
 }
-EQUIPMENT_LABELS = {
-    'lock': 'Serrure WizLock',
-    'camera': 'Caméra WizVision / Module IA',
-    'gateway': 'Passerelle Wifi / Zigbee',
-    'ac': 'Thermostat / relais clim',
-}
-PRIORITIES = {'normal': ('Standard', '1'), 'urgent': ('Urgent 24h', '3')}
-
-
 def _clean(value, max_len):
     """Strip and truncate a free-text form value."""
     return (value or '').strip()[:max_len]
@@ -67,8 +58,10 @@ def _html_lines(lines):
 
 class WizsmithAppointmentController(http.Controller):
     """
-    Website controller for WizSmith appointments, WizFix claims and WizRenouv
-    warranty look-ups.
+    Website controller for WizSmith appointments.
+
+    WizFix (/claim) and WizRenouv (/warranty) are provided by the
+    pways_warranty_management module and are intentionally not handled here.
 
     Appointments are written to the native Odoo calendar (``calendar.event``),
     visible to staff under Calendar > Meetings.
@@ -182,90 +175,3 @@ class WizsmithAppointmentController(http.Controller):
             return request.redirect('/page/appointment?status=error&msg=server')
 
         return request.redirect('/page/appointment?status=success&ref=%s' % ref_code)
-
-    # ------------------------------------------------------------------
-    # WizFix maintenance claims
-    # ------------------------------------------------------------------
-    @http.route('/website/claim/submit', type='http', auth='public', website=True,
-                methods=['POST'], csrf=True)
-    def submit_maintenance_claim(self, **post):
-        customer_name = _clean(post.get('customer_name'), 128)
-        phone = _clean(post.get('phone'), 20)
-        description = _clean(post.get('description'), 2000)
-        equipment = post.get('equipment_type') if post.get('equipment_type') in EQUIPMENT_LABELS else 'lock'
-        commune = post.get('commune') if post.get('commune') in COMMUNE_LABELS else 'cocody'
-        priority = post.get('priority') if post.get('priority') in PRIORITIES else 'normal'
-
-        if not customer_name or not PHONE_RE.match(phone) or not description:
-            return request.redirect('/claim?status=error')
-
-        equipment_title = EQUIPMENT_LABELS[equipment]
-        commune_title = COMMUNE_LABELS[commune]
-        priority_title, odoo_priority = PRIORITIES[priority]
-
-        try:
-            partner = self._find_or_create_partner(customer_name, phone)
-            ref_code = None
-            lines_tpl = [
-                'Priorité : %s' % priority_title,
-                'Équipement : %s' % equipment_title,
-                'Localisation : Abidjan (%s)' % commune_title,
-                'Description de la panne : %s' % description,
-                'Contact client : %s (%s)' % (customer_name, phone),
-            ]
-
-            if 'maintenance.request' in request.env:
-                # Optional integration: only used when the Maintenance app is installed.
-                req = request.env['maintenance.request'].sudo().create({
-                    'name': '[WizFix] %s - %s' % (equipment_title, customer_name),
-                    'priority': odoo_priority,
-                    'maintenance_type': 'corrective',
-                    'description': _html_lines(lines_tpl),
-                })
-                ref_code = 'WZ-FIX-%s-%05d' % (datetime.now(LOCAL_TZ).year, req.id)
-            else:
-                start_dt = fields.Datetime.now() + timedelta(hours=2)
-                event = request.env['calendar.event'].sudo().create({
-                    'name': '[WizFix SAV %s] %s - %s' % (priority.upper(), equipment_title, customer_name),
-                    'partner_ids': [(4, partner.id)],
-                    'start': start_dt,
-                    'stop': start_dt + timedelta(hours=1),
-                    'location': 'Abidjan, %s (intervention SAV WizFix)' % commune_title,
-                    'user_id': self._organizer_id(),
-                })
-                ref_code = 'WZ-FIX-%s-%05d' % (datetime.now(LOCAL_TZ).year, event.id)
-                event.write({'description': _html_lines(['Référence SAV : %s' % ref_code] + lines_tpl)})
-        except Exception:
-            _logger.exception('Failed to log WizFix claim')
-            return request.redirect('/claim?status=error')
-
-        return request.redirect('/claim?status=success&ref=%s' % ref_code)
-
-    # ------------------------------------------------------------------
-    # WizRenouv warranty look-up
-    # ------------------------------------------------------------------
-    @http.route('/website/warranty/check', type='http', auth='public', website=True,
-                methods=['GET'], sitemap=False)
-    def check_warranty(self, serial='', **kw):
-        serial = _clean(serial, 64)
-        result = {'found': False}
-
-        if len(serial) < 4:
-            pass
-        elif 'maintenance.equipment' not in request.env:
-            result = {'found': False, 'unavailable': True}
-        else:
-            equipment = request.env['maintenance.equipment'].sudo().search(
-                [('serial_no', '=', serial)], limit=1)
-            if equipment:
-                # Expose only what the visitor needs: never customer or internal data.
-                result = {
-                    'found': True,
-                    'name': equipment.category_id.name or 'Équipement WizSmith',
-                    'warranty_date': (
-                        fields.Date.to_string(equipment.warranty_date)
-                        if equipment.warranty_date else False),
-                }
-
-        return request.render('website_wizsmith_theme.wizsmith_page_warranty',
-                              {'warranty_result': result})
