@@ -21,7 +21,7 @@ Caractéristiques principales :
 * Intégration backend des rendez-vous avec le Calendrier Odoo (compatible avec le module Probuse Website Appointment Customer Management and Integration with Calendar)
     """,
     'category': 'Theme/Corporate',
-    'version': '18.0.1.0.0',
+    'version': '1.0.0',
     'author': 'WizSmith Engineering',
     'website': 'https://wizsmith.com',
     'license': 'LGPL-3',
