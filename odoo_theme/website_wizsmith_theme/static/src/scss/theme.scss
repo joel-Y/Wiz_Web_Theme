@@ -119,3 +119,119 @@ section[id] { scroll-margin-top: 5rem; }
     }
 }
 
+
+// ---------------------------------------------------------------------------
+// Design port of the WizSmith React home page (hero, cards, pricing, CTA)
+// ---------------------------------------------------------------------------
+.fw-black { font-weight: 900; }
+.rounded-5 { border-radius: 1.5rem !important; }
+.wiz-dot { display: inline-block; width: 0.5rem; height: 0.5rem; border-radius: 50%; }
+
+// Logo (shield mark + wordmark)
+.wiz-logo-mark {
+    width: 2.5rem; height: 2.5rem; font-size: 1.25rem;
+    background: linear-gradient(135deg, #0047AB, #1A1A2E);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.2);
+}
+.wiz-footer .wiz-logo-mark { width: 2rem; height: 2rem; font-size: 1rem; }
+.wiz-logo-text { color: #0047AB; letter-spacing: -0.03em; }
+.wiz-logo-sub { font-size: 0.62rem; letter-spacing: 0.18em; color: #94A3B8; margin-top: 0.15rem; }
+
+// Header: active page pill + calendar icon on the appointment entry
+.navbar.navbar-light .navbar-nav .nav-link {
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    &.active { background-color: rgba(0, 71, 171, 0.07); }
+    &:hover { background-color: #F8FAFC; }
+    &[href="/page/appointment"]::before {
+        content: "\f073"; // fa-calendar
+        font-family: FontAwesome;
+        margin-right: 0.4rem;
+        color: #64748B;
+    }
+}
+
+// Hero
+.s_wizsmith_hero {
+    background: linear-gradient(180deg, rgba(241, 245, 249, 0.75) 0%, #FFFFFF 50%, #F8FAFC 100%);
+    .wiz-hero-title {
+        font-size: clamp(2.25rem, 5vw, 3.75rem);
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+        color: #1A1A2E;
+    }
+    .wiz-hero-card { box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.15); }
+    .wiz-space-tabs {
+        background: rgba(241, 245, 249, 0.9);
+        .nav-link {
+            color: #475569;
+            background: transparent;
+            &:hover { color: #0F172A; }
+            &.active { background: #FFFFFF; color: #0047AB; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.1); }
+        }
+    }
+    .wiz-space-tabs { flex-wrap: wrap !important; .nav-item { flex: 1 1 45%; } }
+    @media (min-width: 576px) {
+        .wiz-space-tabs { flex-wrap: nowrap !important; .nav-item { flex: 1 1 0; } }
+    }
+    .wiz-photo { aspect-ratio: 16 / 9; background: #0F172A; }
+    .wiz-feature { transition: border-color 0.2s ease; &:hover { border-color: #93C5FD !important; } }
+    .wiz-feature-icon { width: 2rem; height: 2rem; }
+}
+.wiz-photo-shade { background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.15) 55%, transparent); }
+.wiz-chip-dark { background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(6px); }
+.wiz-chip-blue { background: rgba(0, 71, 171, 0.9); font-size: 0.7rem; }
+.wiz-metric-box {
+    background: linear-gradient(135deg, #EFF6FF, rgba(238, 242, 255, 0.6));
+    border: 1px solid #DBEAFE;
+}
+.wiz-cta-primary {
+    background-color: #E8630A; border-color: #E8630A;
+    box-shadow: 0 4px 10px rgba(232, 99, 10, 0.25);
+    &:hover, &:focus-visible { background-color: #D45806; border-color: #D45806; color: #fff; }
+}
+
+// Solutions cards
+.wiz-solution-card {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    &:hover { box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.18); }
+    .wiz-solution-photo { aspect-ratio: 4 / 3; background: #0F172A; overflow: hidden; }
+    .wiz-solution-photo img { transition: transform 0.5s ease; }
+    &:hover .wiz-solution-photo img { transform: scale(1.05); }
+}
+
+// Icon tiles (problems / benefits)
+.wiz-icon-tile {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 3rem; height: 3rem; border-radius: 0.75rem; font-size: 1.25rem;
+    background: #FFFFFF; border: 1px solid #E2E8F0;
+}
+.wiz-icon-tile-blue { width: 2.5rem; height: 2.5rem; background: #EFF6FF; border-color: #EFF6FF; font-size: 1.1rem; }
+.wiz-callout { background: linear-gradient(90deg, #1A1A2E, #0047AB, #1A1A2E); box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.2); }
+
+// Pricing
+.wiz-billing-toggle .btn {
+    color: #475569; border: 0; background: transparent;
+    &.active { background: #0047AB; color: #FFFFFF; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12); }
+}
+.wiz-price-featured { box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.12); }
+@media (min-width: 992px) { .wiz-price-featured { transform: translateY(-0.5rem); } }
+.wiz-tick {
+    width: 1rem; height: 1rem; margin-top: 0.15rem; font-size: 0.6rem; font-weight: 700;
+    background: #D1FAE5; color: #047857;
+    &.wiz-tick-off { background: #F1F5F9; color: #94A3B8; }
+}
+.wiz-compare tbody tr { border-bottom: 1px solid rgba(226, 232, 240, 0.8); &:last-child { border-bottom: 0; } }
+
+// Testimonials
+.wiz-testimonial .wiz-quote { color: #E2E8F0; font-size: 1.5rem; transition: color 0.2s ease; }
+.wiz-testimonial:hover .wiz-quote { color: #0047AB; }
+.wiz-avatar { width: 2.5rem; height: 2.5rem; font-size: 0.75rem; background: linear-gradient(45deg, #0047AB, #1A1A2E); }
+
+// Final CTA glows
+.wiz-glow {
+    position: absolute; width: 24rem; height: 24rem; border-radius: 50%; filter: blur(64px); pointer-events: none;
+    &.wiz-glow-blue { top: 0; right: 25%; background: rgba(0, 71, 171, 0.2); }
+    &.wiz-glow-orange { bottom: 0; left: 25%; background: rgba(232, 99, 10, 0.15); }
+}

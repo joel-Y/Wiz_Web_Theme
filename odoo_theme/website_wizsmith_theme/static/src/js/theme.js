@@ -9,7 +9,28 @@ export const WizSmithThemeWidget = publicWidget.Widget.extend({
         this._super(...arguments);
         this._setupMobileNav();
         this._setupSmoothScroll();
+        this._setupBillingToggle();
         return Promise.resolve();
+    },
+
+    _setupBillingToggle() {
+        // Monthly / annual (-10%) switch on the pricing snippet
+        this.el.querySelectorAll('.wiz-billing-toggle').forEach((toggle) => {
+            const section = toggle.closest('section');
+            toggle.querySelectorAll('button[data-billing]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const mode = btn.dataset.billing;
+                    toggle.querySelectorAll('button[data-billing]').forEach((b) => {
+                        const on = b === btn;
+                        b.classList.toggle('active', on);
+                        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+                    });
+                    section.querySelectorAll('.wiz-price').forEach((el) => {
+                        el.textContent = el.dataset[mode] || el.textContent;
+                    });
+                });
+            });
+        });
     },
 
     _setupMobileNav() {
