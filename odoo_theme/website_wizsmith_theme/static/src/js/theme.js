@@ -9,6 +9,7 @@ export const WizSmithThemeWidget = publicWidget.Widget.extend({
         this._super(...arguments);
         this._setupMobileNav();
         this._setupSmoothScroll();
+        return Promise.resolve();
     },
 
     _setupMobileNav() {
@@ -32,10 +33,16 @@ export const WizSmithThemeWidget = publicWidget.Widget.extend({
             anchor.addEventListener('click', (e) => {
                 const targetId = anchor.getAttribute('href');
                 if (targetId && targetId !== '#') {
-                    const targetEl = document.querySelector(targetId);
+                    let targetEl = null;
+                    try {
+                        targetEl = document.querySelector(targetId);
+                    } catch (err) {
+                        return; // not a valid selector (e.g. "#a:b"): let the browser handle it
+                    }
                     if (targetEl) {
                         e.preventDefault();
-                        targetEl.scrollIntoView({ behavior: 'smooth' });
+                        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                        targetEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
                     }
                 }
             });

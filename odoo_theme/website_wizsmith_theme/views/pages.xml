@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- WizSmith Homepage Page Template -->
-    <template id="wizsmith_homepage" name="WizSmith Homepage" page="True">
+    <template id="wizsmith_homepage" name="WizSmith Homepage">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
                 <!-- Section A & B: Hero with Smart Property HUD -->
@@ -32,7 +32,7 @@
     </template>
 
     <!-- Page: Comment ça fonctionne (/comment-ca-fonctionne) -->
-    <template id="wizsmith_page_how_it_works" name="Comment ça fonctionne" page="True">
+    <template id="wizsmith_page_how_it_works" name="Comment ça fonctionne">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
                 <!-- Header Banner -->
@@ -98,7 +98,7 @@
     </template>
 
     <!-- Page: Résidences & Airbnb (/residences-airbnb) -->
-    <template id="wizsmith_page_residences_airbnb" name="Résidences &amp; Airbnb" page="True">
+    <template id="wizsmith_page_residences_airbnb" name="Résidences &amp; Airbnb">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
                 <section class="py-5 bg-white border-bottom">
@@ -170,7 +170,7 @@
     </template>
 
     <!-- Page: Hôtels intelligents (/hotels-intelligents) -->
-    <template id="wizsmith_page_smart_hotels" name="Hôtels intelligents" page="True">
+    <template id="wizsmith_page_smart_hotels" name="Hôtels intelligents">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
                 <section class="py-5 bg-light border-bottom">
@@ -228,7 +228,7 @@
 
     <!-- Page: Prise de Rendez-Vous & Diagnostic Terrain (/page/appointment) -->
     <!-- Compatible avec le module Probuse Website Customer Appointment Management & Integration with Calendar -->
-    <template id="wizsmith_page_appointment" name="Rendez-Vous Expert WizSmith" page="True">
+    <template id="wizsmith_page_appointment" name="Rendez-Vous Expert WizSmith">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
                 <!-- Header Banner -->
@@ -249,6 +249,15 @@
                 <!-- Appointment Booking Section & Backend Calendar Hook -->
                 <section class="py-5 bg-white">
                     <div class="container py-lg-4">
+                        <t t-if="request.params.get('status') == 'error'">
+                            <div class="alert alert-danger rounded-4 p-4 mb-4 text-center border-0 shadow-sm" role="alert">
+                                <p class="mb-0 fw-semibold">
+                                    <t t-if="request.params.get('msg') == 'missing_fields'">Merci de renseigner au minimum votre nom et un numéro de téléphone valide.</t>
+                                    <t t-elif="request.params.get('msg') == 'invalid_date'">Merci de choisir une date d'audit à venir.</t>
+                                    <t t-else="">Votre demande n'a pas pu être enregistrée. Merci de réessayer ou de nous contacter sur WhatsApp.</t>
+                                </p>
+                            </div>
+                        </t>
                         <t t-if="request.params.get('status') == 'success'">
                             <div class="alert alert-success rounded-4 p-4 mb-4 text-center border-0 shadow-sm">
                                 <h4 class="fw-bold text-success mb-2">🎉 Rendez-vous d'audit enregistré avec succès !</h4>
@@ -294,7 +303,7 @@
                                         <div class="row g-3">
                                             <div class="col-md-6">
                                                 <label class="form-label small fw-bold">Date souhaitée</label>
-                                                <input type="date" name="appointment_date" class="form-control form-control-sm" required="required"/>
+                                                <input type="date" name="appointment_date" class="form-control form-control-sm" required="required" t-att-min="(datetime.date.today() + datetime.timedelta(days=1)).isoformat()"/>
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label small fw-bold">Créneau horaire</label>
@@ -363,7 +372,7 @@
 
     <!-- Page: WizFix - Déclaration de Panne & Support SAV (/claim) -->
     <!-- Mappé sur le modèle Odoo maintenance.request -->
-    <template id="wizsmith_page_claim" name="WizFix Maintenance &amp; Dépannage" page="True">
+    <template id="wizsmith_page_claim" name="WizFix Maintenance &amp; Dépannage">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
                 <section class="py-5 bg-light border-bottom text-center">
@@ -382,6 +391,17 @@
 
                 <section class="py-5 bg-white">
                     <div class="container py-lg-4">
+                        <t t-if="request.params.get('status') == 'success'">
+                            <div class="alert alert-success rounded-4 p-4 mb-4 text-center border-0 shadow-sm" role="status">
+                                <h4 class="fw-bold text-success mb-2">Demande WizFix enregistrée</h4>
+                                <p class="mb-0 text-dark">Référence : <strong class="badge bg-success font-monospace fs-6" t-esc="request.params.get('ref')"/> — un technicien vous recontactera très vite.</p>
+                            </div>
+                        </t>
+                        <t t-if="request.params.get('status') == 'error'">
+                            <div class="alert alert-danger rounded-4 p-4 mb-4 text-center border-0 shadow-sm" role="alert">
+                                Merci de renseigner votre nom, un numéro de téléphone valide et la description de la panne.
+                            </div>
+                        </t>
                         <div class="row g-5 justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card p-4 p-lg-5 rounded-4 border shadow-sm">
@@ -420,6 +440,13 @@
                                             </div>
                                         </div>
                                         <div>
+                                            <label class="form-label small fw-bold">Niveau d'urgence</label>
+                                            <select name="priority" class="form-select form-select-sm">
+                                                <option value="normal">Standard</option>
+                                                <option value="urgent">Urgent (intervention sous 24h)</option>
+                                            </select>
+                                        </div>
+                                        <div>
                                             <label class="form-label small fw-bold">Description de la panne</label>
                                             <textarea name="description" rows="3" class="form-control form-control-sm" required="required" placeholder="Précisez le symptôme constaté..."></textarea>
                                         </div>
@@ -431,9 +458,9 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="card p-4 rounded-4 border bg-light">
-                                    <h5 class="fw-bold mb-3 text-dark">Intégration Odoo Maintenance</h5>
+                                    <h5 class="fw-bold mb-3 text-dark">Comment ça se passe ?</h5>
                                     <p class="small text-secondary mb-3">
-                                        Cette demande crée un ordre d'intervention dans le module <code>maintenance.request</code> d'Odoo.
+                                        Votre demande est transmise à notre équipe d'astreinte, qui planifie l'intervention à Abidjan.
                                     </p>
                                     <ul class="list-unstyled small text-secondary d-flex flex-column gap-2 mb-0">
                                         <li>✓ Suivi d'astreinte 24h/24</li>
@@ -451,7 +478,7 @@
 
     <!-- Page: WizRenouv - Garanties & Remplacement Matériel (/warranty) -->
     <!-- Mappé sur le modèle Odoo maintenance.equipment -->
-    <template id="wizsmith_page_warranty" name="WizRenouv Garanties &amp; Renouvellement" page="True">
+    <template id="wizsmith_page_warranty" name="WizRenouv Garanties &amp; Renouvellement">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
                 <section class="py-5 bg-light border-bottom text-center">
@@ -473,12 +500,23 @@
                         <div class="card p-4 p-lg-5 rounded-4 border shadow-sm">
                             <h4 class="fw-bold mb-3 text-dark">Vérification de Garantie Matérielle</h4>
                             <p class="text-secondary small mb-4">
-                                Renseignez votre numéro de contrat ou numéro de série IMEI pour vérifier votre statut de garantie Odoo.
+                                Renseignez votre numéro de contrat ou numéro de série IMEI pour vérifier votre statut de garantie.
                             </p>
+                            <t t-if="warranty_result">
+                                <div t-attf-class="alert #{'alert-success' if warranty_result.get('found') else 'alert-warning'} rounded-3" role="status">
+                                    <t t-if="warranty_result.get('found')">
+                                        <strong t-esc="warranty_result.get('name')"/> —
+                                        <t t-if="warranty_result.get('warranty_date')">garantie jusqu'au <strong t-esc="warranty_result.get('warranty_date')"/>.</t>
+                                        <t t-else="">garantie non renseignée, notre équipe vous contactera.</t>
+                                    </t>
+                                    <t t-elif="warranty_result.get('unavailable')">Le service de vérification est momentanément indisponible. Contactez-nous directement.</t>
+                                    <t t-else="">Aucun équipement trouvé pour ce numéro. Vérifiez la saisie ou contactez-nous.</t>
+                                </div>
+                            </t>
                             <form action="/website/warranty/check" method="get" class="d-flex flex-column gap-3">
                                 <div>
                                     <label class="form-label small fw-bold">Numéro de contrat ou IMEI</label>
-                                    <input type="text" name="serial" class="form-control" required="required" placeholder="ex: WZ-2024-ABJ-891"/>
+                                    <input type="text" name="serial" class="form-control" required="required" minlength="4" maxlength="64" placeholder="ex: WZ-2024-ABJ-891"/>
                                 </div>
                                 <button type="submit" class="btn btn-warning text-white fw-bold py-3 rounded-3" style="background-color: #E8630A; border-color: #E8630A;">
                                     Vérifier mon contrat WizRenouv
@@ -490,4 +528,47 @@
             </div>
         </t>
     </template>
+
+    <!-- Explicit website.page records: the URLs below are the ones referenced by the menus, header, footer and controllers. -->
+    <record id="wizsmith_page_how_it_works_page" model="website.page">
+        <field name="url">/comment-ca-fonctionne</field>
+        <field name="view_id" ref="wizsmith_page_how_it_works"/>
+        <field name="is_published" eval="True"/>
+        <field name="website_indexed" eval="True"/>
+    </record>
+    <record id="wizsmith_page_residences_airbnb_page" model="website.page">
+        <field name="url">/residences-airbnb</field>
+        <field name="view_id" ref="wizsmith_page_residences_airbnb"/>
+        <field name="is_published" eval="True"/>
+        <field name="website_indexed" eval="True"/>
+    </record>
+    <record id="wizsmith_page_smart_hotels_page" model="website.page">
+        <field name="url">/hotels-intelligents</field>
+        <field name="view_id" ref="wizsmith_page_smart_hotels"/>
+        <field name="is_published" eval="True"/>
+        <field name="website_indexed" eval="True"/>
+    </record>
+    <record id="wizsmith_page_appointment_page" model="website.page">
+        <field name="url">/page/appointment</field>
+        <field name="view_id" ref="wizsmith_page_appointment"/>
+        <field name="is_published" eval="True"/>
+        <field name="website_indexed" eval="True"/>
+    </record>
+    <record id="wizsmith_page_claim_page" model="website.page">
+        <field name="url">/claim</field>
+        <field name="view_id" ref="wizsmith_page_claim"/>
+        <field name="is_published" eval="True"/>
+        <field name="website_indexed" eval="True"/>
+    </record>
+    <record id="wizsmith_page_warranty_page" model="website.page">
+        <field name="url">/warranty</field>
+        <field name="view_id" ref="wizsmith_page_warranty"/>
+        <field name="is_published" eval="True"/>
+        <field name="website_indexed" eval="True"/>
+    </record>
+
+    <!-- Homepage: point the stock "/" page at the WizSmith homepage template -->
+    <record id="website.homepage_page" model="website.page">
+        <field name="view_id" ref="wizsmith_homepage"/>
+    </record>
 </odoo>

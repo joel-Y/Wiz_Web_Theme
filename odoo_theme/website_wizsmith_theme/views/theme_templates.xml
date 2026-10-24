@@ -16,11 +16,11 @@
             <div id="wizsmith-shuri-widget" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1040;">
                 <button id="shuri-launcher" class="btn btn-primary rounded-circle shadow-lg d-flex align-items-center justify-content-center p-0"
                         style="width: 58px; height: 58px; background: linear-gradient(135deg, #0047AB 0%, #1A1A2E 100%); border: 2px solid rgba(255,255,255,0.2);"
-                        aria-label="Ouvrir l'assistant Shuri" title="Discuter avec Shuri IA">
-                    <span class="fs-4" role="img" aria-label="Robot">⚡</span>
+                        aria-label="Ouvrir l'assistant Shuri" aria-expanded="false" aria-controls="shuri-frame" title="Discuter avec Shuri IA">
+                    <span class="fs-4" aria-hidden="true">⚡</span>
                 </button>
 
-                <div id="shuri-frame" class="shuri-frame-container shadow-2xl rounded-4 overflow-hidden position-fixed"
+                <div id="shuri-frame" role="dialog" aria-label="Assistant Shuri" class="shuri-frame-container shadow-2xl rounded-4 overflow-hidden position-fixed"
                      style="display: none; bottom: 84px; right: 20px; width: 380px; max-width: calc(100vw - 32px); height: 580px; max-height: calc(100vh - 110px); background: #ffffff; border: 1px solid #E2E8F0; z-index: 1050;">
                     <div class="shuri-frame-header d-flex align-items-center justify-content-between px-3 py-2 text-white"
                          style="background: #1A1A2E; border-bottom: 2px solid #E8630A;">
@@ -31,10 +31,10 @@
                                 <small class="text-white-50" style="font-size: 0.75rem;">Propulsé par WizSmith Intelligence</small>
                             </div>
                         </div>
-                        <button id="shuri-close" class="btn btn-sm btn-link text-white text-decoration-none p-1 fs-5" aria-label="Fermer Shuri">✕</button>
+                        <button id="shuri-close" class="btn btn-sm btn-link text-white text-decoration-none p-1 fs-5" aria-label="Fermer Shuri"><span aria-hidden="true">✕</span></button>
                     </div>
                     <div class="shuri-frame-body" style="height: calc(100% - 50px);">
-                        <iframe id="shuri-iframe" src="https://shuri-chat.vercel.app/" allow="microphone; camera"
+                        <iframe id="shuri-iframe" data-src="https://shuri-chat.vercel.app/" loading="lazy" allow="microphone; camera"
                                 style="width: 100%; height: 100%; border: none;" title="Assistant Shuri WizSmith"></iframe>
                     </div>
                 </div>
@@ -121,8 +121,10 @@
     </template>
 
     <!-- Header Customization for WizSmith Theme -->
-    <template id="wizsmith_header" inherit_id="website.template_header_default" name="WizSmith Premium Header">
-        <xpath expr="//header//nav" position="replace">
+    <!-- NB: website.template_header_default itself extends website.layout and swaps <nav> for a t-call, so no literal
+         <nav> exists in its arch. We extend website.layout with a higher priority and target the t-call instead. -->
+    <template id="wizsmith_header" inherit_id="website.layout" name="WizSmith Premium Header" priority="99">
+        <xpath expr="//header//t[@t-call='website.navbar']" position="replace">
             <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-2 py-lg-3 sticky-top shadow-xs">
                 <div class="container">
                     <!-- Brand Logo -->
@@ -138,29 +140,17 @@
 
                     <!-- Nav Links & Actions -->
                     <div class="collapse navbar-collapse" id="wizNavbarCollapse">
-                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-1">
-                            <li class="nav-item">
-                                <a class="nav-link px-3 fw-medium text-dark" href="/">Accueil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link px-3 fw-medium text-dark" href="/comment-ca-fonctionne">Comment ça fonctionne</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link px-3 fw-medium text-dark" href="/packs">Solutions</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link px-3 fw-medium text-dark" href="/residences-airbnb">Résidences &amp; Airbnb</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link px-3 fw-medium text-dark" href="/hotels-intelligents">Hôtels intelligents</a>
-                            </li>
+                        <ul id="top_menu" class="nav navbar-nav top_menu mx-auto mb-2 mb-lg-0 gap-lg-1" role="menu">
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link px-3 fw-medium"/>
+                                </t>
+                            </t>
                         </ul>
 
                         <!-- Right CTA Area -->
                         <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
-                            <a href="/page/appointment" class="btn btn-outline-dark btn-sm px-3 py-2 fw-semibold d-none d-xl-inline-block">
-                                Rendez-vous
-                            </a>
                             <a href="/support-ia" class="btn btn-primary btn-sm px-4 py-2 fw-semibold text-white shadow-sm"
                                style="background-color: #E8630A; border-color: #E8630A;">
                                 Diagnostic Gratuit
@@ -170,12 +160,15 @@
                 </div>
             </nav>
         </xpath>
+        <!-- The stock mobile navbar would duplicate ours (ours is responsive) -->
+        <xpath expr="//header//t[@t-call='website.template_header_mobile']" position="replace"/>
     </template>
 
     <!-- Footer Customization for WizSmith Theme -->
-    <template id="wizsmith_footer" inherit_id="website.footer_default" name="WizSmith Premium Footer">
-        <xpath expr="//footer" position="replace">
-            <footer class="bg-dark text-white pt-5 pb-4" style="background-color: #1A1A2E !important;">
+    <!-- website.footer_default does not exist in Odoo 18: footers are variants of website.layout that replace div#footer. -->
+    <template id="wizsmith_footer" inherit_id="website.layout" name="WizSmith Premium Footer" priority="99">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="oe_structure oe_structure_solo wiz-footer bg-dark text-white pt-5 pb-4" t-ignore="true" t-if="not no_footer">
                 <div class="container">
                     <div class="row g-4 pb-5 border-bottom border-secondary border-opacity-25">
                         <!-- Col 1: Brand & Mission -->
@@ -248,7 +241,7 @@
                         </div>
                     </div>
                 </div>
-            </footer>
+            </div>
         </xpath>
     </template>
 </odoo>

@@ -12,13 +12,19 @@ body {
     .navbar-brand {
         letter-spacing: -0.02em;
     }
-    .nav-link {
-        font-weight: 500;
-        color: #1E293B !important;
-        transition: color 0.15s ease;
-        &:hover {
-            color: #0047AB !important;
-        }
+}
+
+// Specificity (0,4,0) beats Bootstrap's `.navbar-light .navbar-nav .nav-link` without !important
+.navbar.navbar-light .navbar-nav .nav-link {
+    font-weight: 500;
+    color: #1E293B;
+    transition: color 0.15s ease;
+    &:hover,
+    &:focus-visible {
+        color: #0047AB;
+    }
+    &.active {
+        color: #0047AB;
     }
 }
 
@@ -43,11 +49,29 @@ body {
 }
 
 // Footer styling
-footer {
-    a.hover-white:hover {
-        color: #FFFFFF !important;
+.wiz-footer {
+    background-color: #1A1A2E;
+    a.hover-white:hover,
+    a.hover-white:focus-visible {
+        color: #FFFFFF !important; // beats Bootstrap's .text-white-50 !important
     }
 }
+
+// Utility classes used by the templates that Bootstrap 5 does not ship
+.fw-extrabold { font-weight: 800; }
+.tracking-tight { letter-spacing: -0.02em; }
+.tracking-wider { letter-spacing: 0.08em; }
+.max-w-xl { max-width: 36rem; }
+.max-w-2xl { max-width: 42rem; }
+.shadow-xs { box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06); }
+.shadow-xl { box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.08); }
+.shadow-2xl { box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.35); }
+@media (min-width: 992px) {
+    .py-lg-6 { padding-top: 4.5rem !important; padding-bottom: 4.5rem !important; }
+}
+
+// Anchored sections (e.g. /#packs) must clear the sticky header
+section[id] { scroll-margin-top: 5rem; }
 
 // Mobile responsive constraints
 @media (max-width: 767.98px) {
@@ -58,6 +82,7 @@ footer {
         box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         margin-top: 0.75rem;
     }
+    // IDs outrank the inline styles' classes only with !important: the inline sizes come from the template
     #shuri-launcher {
         width: 50px !important;
         height: 50px !important;
@@ -67,6 +92,10 @@ footer {
         right: 12px !important;
         bottom: 74px !important;
     }
+    // keep the cookie banner clear of the Shuri launcher
+    .wiz-cookie-banner {
+        margin-bottom: 70px !important;
+    }
 }
 
 // Micro-interactions and subtle feedback
@@ -75,13 +104,18 @@ footer {
 }
 
 // Accessibility: Respect user reduced-motion preferences
+// NB: do NOT reset `transform` globally: Bootstrap's .translate-middle-x (cookie banner)
+// relies on it for positioning and would be thrown off-centre.
 @media (prefers-reduced-motion: reduce) {
     *, ::before, ::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
-        transform: none !important;
+    }
+    .card.hover-shadow:hover,
+    .btn:active {
+        transform: none;
     }
 }
 

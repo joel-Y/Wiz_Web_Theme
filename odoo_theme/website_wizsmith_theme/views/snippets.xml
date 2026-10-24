@@ -359,13 +359,13 @@
                         <div class="p-4 rounded-4 shadow-2xl" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
                             <div class="d-flex justify-content-between align-items-center pb-3 mb-4 border-bottom border-secondary border-opacity-25">
                                 <span class="fw-bold text-white">Exemple de rapport IA WizSmith</span>
-                                <span class="badge bg-success px-2 py-1">Score Calculé</span>
+                                <span class="badge bg-secondary px-2 py-1">Exemple</span>
                             </div>
 
                             <div class="text-center py-3">
                                 <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
                                      style="width: 120px; height: 120px; border: 6px solid #E8630A; background: rgba(232, 99, 10, 0.1);">
-                                    <span class="fs-1 fw-extrabold text-white">74<span class="fs-6 text-white-50">/100</span></span>
+                                    <span class="fs-1 fw-extrabold text-white"><span class="wiz-score-value">74</span><span class="fs-6 text-white-50">/100</span></span>
                                 </div>
                                 <h5 class="text-white fw-bold mb-1">Vulnérabilités Modérées</h5>
                                 <p class="text-white-50 small mb-4">Villa / Meublé 150m² · 3 accès</p>
@@ -391,7 +391,7 @@
 
     <!-- Section G: Subscription Packages Snippet -->
     <template id="s_wizsmith_pricing" name="WizSmith Subscription Packages">
-        <section class="s_wizsmith_pricing py-5 bg-white border-top border-bottom">
+        <section id="packs" class="s_wizsmith_pricing py-5 bg-white border-top border-bottom">
             <div class="container py-lg-4">
                 <div class="text-center max-w-2xl mx-auto mb-5">
                     <h2 class="fw-bold text-dark mb-3" style="color: #1A1A2E;">Nos solutions WizSmith</h2>
@@ -589,7 +589,7 @@
 
     <!-- Register WizSmith Custom Snippets in Odoo 18 Website Builder Drawer -->
     <template id="wizsmith_snippets_registration" inherit_id="website.snippets" name="WizSmith Snippets Registration">
-        <xpath expr="//div[@id='snippet_structure']" position="inside">
+        <xpath expr="//snippets[@id='snippet_structure']" position="inside">
             <t t-snippet="website_wizsmith_theme.s_wizsmith_hero" string="WizSmith - Hero Showcase" t-thumbnail="/website_wizsmith_theme/static/description/icon.png"/>
             <t t-snippet="website_wizsmith_theme.s_wizsmith_problems" string="WizSmith - Problèmes Propriété" t-thumbnail="/website_wizsmith_theme/static/description/icon.png"/>
             <t t-snippet="website_wizsmith_theme.s_wizsmith_why" string="WizSmith - 6 Avantages Clés" t-thumbnail="/website_wizsmith_theme/static/description/icon.png"/>

@@ -37,7 +37,8 @@ Caractéristiques principales :
     ],
     'assets': {
         'web._assets_primary_variables': [
-            'website_wizsmith_theme/static/src/scss/primary_variables.scss',
+            ('after', 'website/static/src/scss/primary_variables.scss',
+             'website_wizsmith_theme/static/src/scss/primary_variables.scss'),
         ],
         'web.assets_frontend': [
             'website_wizsmith_theme/static/src/scss/theme.scss',

@@ -2,6 +2,25 @@
 
 import publicWidget from "@web/legacy/js/public/public_widget";
 
+const CONSENT_KEY = 'cookieConsent';
+const PREFS_KEY = 'cookiePreferences';
+
+// localStorage can throw (private mode, blocked site data): never let that break the page.
+function storageGet(key) {
+    try {
+        return window.localStorage.getItem(key);
+    } catch (e) {
+        return null;
+    }
+}
+function storageSet(key, value) {
+    try {
+        window.localStorage.setItem(key, value);
+    } catch (e) {
+        /* consent simply isn't remembered */
+    }
+}
+
 export const CookieConsentWidget = publicWidget.Widget.extend({
     selector: '#wrapwrap',
     events: {
@@ -16,74 +35,86 @@ export const CookieConsentWidget = publicWidget.Widget.extend({
         this.banner = this.el.querySelector('#cookie-banner');
         this.modal = this.el.querySelector('#cookie-settings-modal');
 
-        // Expose global opener for footer link
+        // Global opener for the footer "Gestion des cookies" button
         window.wizsmithCustomizeCookies = () => this._onOpenSettings();
 
-        // Check stored consent
-        const consent = localStorage.getItem('cookieConsent');
-        if (!consent && this.banner) {
-            setTimeout(() => {
+        if (!storageGet(CONSENT_KEY) && this.banner) {
+            this._bannerTimer = setTimeout(() => {
                 this.banner.style.display = 'block';
             }, 800);
         }
+        return Promise.resolve();
+    },
+
+    destroy() {
+        clearTimeout(this._bannerTimer);
+        if (window.wizsmithCustomizeCookies) {
+            delete window.wizsmithCustomizeCookies;
+        }
+        this._super(...arguments);
+    },
+
+    _storePrefs(consent, prefs) {
+        storageSet(PREFS_KEY, JSON.stringify(prefs));
+        storageSet(CONSENT_KEY, consent);
     },
 
     _onAcceptAll(ev) {
         if (ev) ev.preventDefault();
-        const prefs = { essential: true, analytics: true, marketing: true };
-        localStorage.setItem('cookiePreferences', JSON.stringify(prefs));
-        localStorage.setItem('cookieConsent', 'accepted');
+        this._storePrefs('accepted', { essential: true, analytics: true, marketing: true });
         this._hideBanner();
     },
 
     _onDeclineAll(ev) {
         if (ev) ev.preventDefault();
-        const prefs = { essential: true, analytics: false, marketing: false };
-        localStorage.setItem('cookiePreferences', JSON.stringify(prefs));
-        localStorage.setItem('cookieConsent', 'declined');
+        this._storePrefs('declined', { essential: true, analytics: false, marketing: false });
         this._hideBanner();
+    },
+
+    _getModal() {
+        const Modal = window.bootstrap && window.bootstrap.Modal;
+        return this.modal && Modal ? Modal.getOrCreateInstance(this.modal) : null;
     },
 
     _onOpenSettings(ev) {
         if (ev) ev.preventDefault();
-        if (this.modal && window.bootstrap && window.bootstrap.Modal) {
-            const modalInstance = new window.bootstrap.Modal(this.modal);
-            modalInstance.show();
-        } else if (this.modal) {
-            this.modal.classList.add('show');
-            this.modal.style.display = 'block';
+        if (!this.modal) return;
+
+        // Reflect the visitor's saved choices in the toggles
+        try {
+            const saved = JSON.parse(storageGet(PREFS_KEY) || 'null');
+            if (saved) {
+                this.modal.querySelector('#cookie-opt-analytics').checked = !!saved.analytics;
+                this.modal.querySelector('#cookie-opt-marketing').checked = !!saved.marketing;
+            }
+        } catch (e) { /* ignore corrupted value */ }
+
+        const instance = this._getModal();
+        if (instance) {
+            instance.show();
         }
     },
 
     _onSaveSettings(ev) {
         if (ev) ev.preventDefault();
-        const form = this.el.querySelector('#cookie-settings-form');
-        const analytics = form ? form.querySelector('#cookie-opt-analytics').checked : false;
-        const marketing = form ? form.querySelector('#cookie-opt-marketing').checked : false;
+        const analytics = !!this.modal.querySelector('#cookie-opt-analytics')?.checked;
+        const marketing = !!this.modal.querySelector('#cookie-opt-marketing')?.checked;
+        this._storePrefs('customized', { essential: true, analytics, marketing });
 
-        const prefs = { essential: true, analytics, marketing };
-        localStorage.setItem('cookiePreferences', JSON.stringify(prefs));
-        localStorage.setItem('cookieConsent', 'customized');
-
-        if (this.modal && window.bootstrap && window.bootstrap.Modal) {
-            const modalInstance = window.bootstrap.Modal.getInstance(this.modal);
-            if (modalInstance) modalInstance.hide();
-        } else if (this.modal) {
-            this.modal.classList.remove('show');
-            this.modal.style.display = 'none';
+        const instance = this._getModal();
+        if (instance) {
+            instance.hide();
         }
-
         this._hideBanner();
     },
 
     _hideBanner() {
-        if (this.banner) {
-            this.banner.style.opacity = '0';
-            this.banner.style.transition = 'opacity 0.4s ease';
-            setTimeout(() => {
-                this.banner.style.display = 'none';
-            }, 400);
-        }
+        if (!this.banner) return;
+        this.banner.style.transition = 'opacity 0.4s ease';
+        this.banner.style.opacity = '0';
+        setTimeout(() => {
+            this.banner.style.display = 'none';
+        }, 400);
     },
 });
 

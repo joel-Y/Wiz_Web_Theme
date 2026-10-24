@@ -134,7 +134,7 @@ Le thème intègre également une gestion complète du Service Après-Vente et d
 
 ### A. WizFix (Dépannage & Maintenance d'Urgence)
 - **Front-Office** : Formulaire `/claim` permettant aux clients de déclarer une anomalie (serrure, caméra, passerelle, climatisation) avec niveau d'urgence.
-- **Backend Odoo (`maintenance.request`)** :
+- **Backend Odoo (`maintenance.request`, optionnel : utilisé si l'app Maintenance est installée, sinon repli sur un événement Calendrier)** :
   - Génère automatiquement un ticket d'intervention dans le module **Maintenance** Odoo.
   - Attribution d'un technicien d'astreinte (`user_id`) avec priorité (Standard / Urgent 24h).
   - Suivi des étapes : *Nouveau*, *Assigné*, *En intervention*, *Résolu*.

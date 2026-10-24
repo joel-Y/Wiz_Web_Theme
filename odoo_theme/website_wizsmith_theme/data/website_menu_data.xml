@@ -2,10 +2,9 @@
 <odoo>
     <data noupdate="1">
         <!-- Main WizSmith Header Menu Records -->
-        <record id="menu_wizsmith_home" model="website.menu">
+        <!-- The stock "Home" menu already points to "/": rename it instead of adding a duplicate entry -->
+        <record id="website.menu_home" model="website.menu">
             <field name="name">Accueil</field>
-            <field name="url">/</field>
-            <field name="parent_id" ref="website.main_menu"/>
             <field name="sequence" type="int">10</field>
         </record>
 

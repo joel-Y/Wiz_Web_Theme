@@ -2,6 +2,12 @@
 
 import publicWidget from "@web/legacy/js/public/public_widget";
 
+/**
+ * Optional interactive scoring. The shipped snippet displays a static sample
+ * report, so with no `.assessment-input` fields the widget leaves the markup
+ * untouched. If inputs are added (data-score = points awarded when checked),
+ * the displayed score is computed from them.
+ */
 export const PropertyAssessmentWidget = publicWidget.Widget.extend({
     selector: '.s_wizsmith_assessment',
     events: {
@@ -12,6 +18,7 @@ export const PropertyAssessmentWidget = publicWidget.Widget.extend({
     start() {
         this._super(...arguments);
         this._calculateScore();
+        return Promise.resolve();
     },
 
     _onRecalculate() {
@@ -23,16 +30,27 @@ export const PropertyAssessmentWidget = publicWidget.Widget.extend({
         this._calculateScore();
         const resultsEl = this.el.querySelector('.assessment-results-panel');
         if (resultsEl) {
-            resultsEl.scrollIntoView({ behavior: 'smooth' });
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            resultsEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
         }
     },
 
     _calculateScore() {
-        // Reads form inputs if present and updates visual score indicator
+        const inputs = this.el.querySelectorAll('.assessment-input');
         const scoreDisplay = this.el.querySelector('.wiz-score-value');
-        if (scoreDisplay) {
-            scoreDisplay.textContent = '74';
+        if (!inputs.length || !scoreDisplay) {
+            return; // static sample: keep the markup as authored
         }
+        let total = 0;
+        let earned = 0;
+        inputs.forEach((input) => {
+            const points = parseInt(input.dataset.score || '1', 10) || 0;
+            total += points;
+            if (input.checked) {
+                earned += points;
+            }
+        });
+        scoreDisplay.textContent = total ? String(Math.round((earned / total) * 100)) : '0';
     },
 });
 

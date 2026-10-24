@@ -1,196 +1,271 @@
 # -*- coding: utf-8 -*-
 # Part of WizSmith. See LICENSE file for full copyright and licensing details.
 
-from datetime import datetime, timedelta
 import logging
-from odoo import http, fields
+import re
+from datetime import datetime, timedelta
+
+import pytz
+from markupsafe import Markup, escape
+
+from odoo import fields, http
 from odoo.http import request
 
 _logger = logging.getLogger(__name__)
 
+# Abidjan is on GMT all year (no DST); pytz keeps this correct if that ever changes.
+LOCAL_TZ = pytz.timezone('Africa/Abidjan')
+
+PHONE_RE = re.compile(r'^\+?[0-9][0-9 ().\-]{5,19}$')
+EMAIL_RE = re.compile(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
+
+SLOT_MAPPING = {
+    '09:00 - 10:30': ((9, 0), (10, 30)),
+    '10:30 - 12:00': ((10, 30), (12, 0)),
+    '14:00 - 15:30': ((14, 0), (15, 30)),
+    '15:30 - 17:00': ((15, 30), (17, 0)),
+}
+DEFAULT_SLOT = '10:30 - 12:00'
+
+PROPERTY_LABELS = {
+    'villa': 'Villa / Maison privée',
+    'airbnb': 'Appartement / Location Airbnb',
+    'hotel': 'Hôtel / Résidence hôtelière',
+    'office': "Bureaux / Siège d'entreprise",
+    'commerce': 'Commerce / Restaurant',
+}
+COMMUNE_LABELS = {
+    'cocody': 'Cocody',
+    'marcory': 'Marcory',
+    'plateau': 'Plateau',
+    'bingerville': 'Bingerville',
+    'yopougon': 'Yopougon',
+}
+EQUIPMENT_LABELS = {
+    'lock': 'Serrure WizLock',
+    'camera': 'Caméra WizVision / Module IA',
+    'gateway': 'Passerelle Wifi / Zigbee',
+    'ac': 'Thermostat / relais clim',
+}
+PRIORITIES = {'normal': ('Standard', '1'), 'urgent': ('Urgent 24h', '3')}
+
+
+def _clean(value, max_len):
+    """Strip and truncate a free-text form value."""
+    return (value or '').strip()[:max_len]
+
+
+def _local_to_utc(naive_local):
+    """Naive datetime in Abidjan time -> naive UTC datetime, as Odoo stores it."""
+    return LOCAL_TZ.localize(naive_local).astimezone(pytz.utc).replace(tzinfo=None)
+
+
+def _html_lines(lines):
+    """Build an Html-field value from plain lines, escaping every visitor-supplied string."""
+    return Markup('<br/>').join(escape(line) for line in lines)
+
 
 class WizsmithAppointmentController(http.Controller):
     """
-    Website Controller for WizSmith Appointments and Maintenance Claims.
-    Directly synchronizes customer bookings from the public website into
-    the native Odoo 18 Community Edition 'calendar.event' model.
-    
-    The backend site owner views and manages all appointments inside
-    the standard Odoo 18 Community Calendar App:
-    Backend Menu: Calendar > Meetings (action: calendar.action_calendar_event)
+    Website controller for WizSmith appointments, WizFix claims and WizRenouv
+    warranty look-ups.
+
+    Appointments are written to the native Odoo calendar (``calendar.event``),
+    visible to staff under Calendar > Meetings.
     """
 
-    @http.route('/website/appointment/submit', type='http', auth='public', website=True, methods=['POST'], csrf=True)
-    def submit_appointment(self, **post):
-        """
-        Receives appointment bookings from the public website (/page/appointment)
-        and automatically creates an event in the native Odoo 18 calendar module.
-        """
-        customer_name = (post.get('customer_name') or '').strip()
-        phone = (post.get('phone') or '').strip()
-        email = (post.get('email') or '').strip()
-        appointment_date = (post.get('appointment_date') or '').strip()
-        time_slot = (post.get('time_slot') or '10:30 - 12:00').strip()
-        property_type = (post.get('property_type') or 'villa').strip()
-        commune = (post.get('commune') or 'cocody').strip()
-        notes = (post.get('notes') or '').strip()
-
-        if not customer_name or not phone:
-            return request.redirect('/page/appointment?status=error&msg=missing_fields')
-
-        # 1. Parse start and stop datetimes
-        start_hour, start_min = 10, 30
-        stop_hour, stop_min = 12, 0
-
-        slot_mapping = {
-            '09:00 - 10:30': ((9, 0), (10, 30)),
-            '10:30 - 12:00': ((10, 30), (12, 0)),
-            '14:00 - 15:30': ((14, 0), (15, 30)),
-            '15:30 - 17:00': ((15, 30), (17, 0)),
-        }
-
-        for key, ((sh, sm), (eh, em)) in slot_mapping.items():
-            if key in time_slot:
-                start_hour, start_min = sh, sm
-                stop_hour, stop_min = eh, em
-                break
-
-        try:
-            if appointment_date:
-                dt_base = datetime.strptime(appointment_date, '%Y-%m-%d')
-            else:
-                dt_base = datetime.now() + timedelta(days=2)
-            
-            start_dt = dt_base.replace(hour=start_hour, minute=start_min, second=0)
-            stop_dt = dt_base.replace(hour=stop_hour, minute=stop_min, second=0)
-        except Exception as e:
-            _logger.warning("Error parsing appointment date '%s': %s", appointment_date, e)
-            dt_base = datetime.now() + timedelta(days=2)
-            start_dt = dt_base.replace(hour=10, minute=30, second=0)
-            stop_dt = dt_base.replace(hour=12, minute=0, second=0)
-
-        # 2. Find or create the customer partner (res.partner)
-        partner = request.env['res.partner'].sudo().search([
-            '|', ('phone', '=', phone), ('mobile', '=', phone)
-        ], limit=1)
-
+    # ------------------------------------------------------------------
+    # Helpers
+    # ------------------------------------------------------------------
+    def _find_or_create_partner(self, name, phone, email=None, extra_vals=None):
+        Partner = request.env['res.partner'].sudo()
+        partner = Partner.search(['|', ('phone', '=', phone), ('mobile', '=', phone)], limit=1)
         if not partner and email:
-            partner = request.env['res.partner'].sudo().search([
-                ('email', '=', email)
-            ], limit=1)
-
+            partner = Partner.search([('email', '=', email)], limit=1)
         if not partner:
-            partner = request.env['res.partner'].sudo().create({
-                'name': customer_name,
-                'phone': phone,
-                'email': email or False,
-                'city': 'Abidjan',
-                'street': f"Commune de {commune.capitalize()}",
-                'comment': f"Contact créé depuis le site WizSmith (Demande d'audit {property_type}).",
-            })
+            vals = {'name': name, 'phone': phone, 'email': email or False, 'city': 'Abidjan'}
+            vals.update(extra_vals or {})
+            partner = Partner.create(vals)
+        return partner
 
-        # 3. Format property labels
-        property_labels = {
-            'villa': 'Villa / Maison privée',
-            'airbnb': 'Appartement / Location Airbnb',
-            'hotel': 'Hôtel / Résidence hôtelière',
-            'office': 'Bureaux / Siège d\'entreprise',
-            'commerce': 'Commerce / Restaurant',
-        }
-        prop_title = property_labels.get(property_type, property_type.capitalize())
-        commune_title = commune.capitalize()
+    def _organizer_id(self):
+        """Never make the anonymous website user the organizer of a meeting."""
+        user = request.env.user
+        if user and user.id != request.website.user_id.id:
+            return user.id
+        return False
 
-        # 4. Generate reference code
-        ref_code = f"WZ-RDV-{fields.Date.today().year}-{partner.id or 100}"
+    # ------------------------------------------------------------------
+    # Legacy / marketing URLs referenced by menus and CTAs
+    # ------------------------------------------------------------------
+    @http.route('/packs', type='http', auth='public', website=True, sitemap=False)
+    def packs(self, **kw):
+        return request.redirect('/#packs', code=302)
 
-        # 5. Build meeting description for Odoo backend user
-        description_body = (
-            f"=== AUDIT TECHNIQUE SUR SITE WIZSMITH ===\n"
-            f"Référence Dossier : {ref_code}\n\n"
-            f"Client : {customer_name}\n"
-            f"Téléphone WhatsApp : {phone}\n"
-            f"Email : {email or 'Non renseigné'}\n"
-            f"Type de bien : {prop_title}\n"
-            f"Localisation : Abidjan ({commune_title})\n"
-            f"Créneau souhaité : {time_slot}\n"
-            f"Notes du client : {notes or 'Aucune'}\n\n"
-            f"--- SYNCHRONISATION ODOO 18 COMMUNITY ---\n"
-            f"Cet événement a été synchronisé automatiquement depuis le site web.\n"
-            f"Gérable dans l'application Calendrier (menu Calendrier > Réunions)."
-        )
+    @http.route('/support-ia', type='http', auth='public', website=True, sitemap=False)
+    def support_ia(self, **kw):
+        # The free diagnostic is delivered through the on-site audit booking.
+        return request.redirect('/page/appointment', code=302)
 
-        # 6. Create the native Odoo 18 calendar.event
-        event_vals = {
-            'name': f"Audit WizSmith ({prop_title}) - {customer_name}",
-            'partner_ids': [(4, partner.id)],
-            'start': fields.Datetime.to_string(start_dt),
-            'stop': fields.Datetime.to_string(stop_dt),
-            'duration': 1.5,
-            'location': f"Abidjan, {commune_title}",
-            'description': description_body,
-        }
+    # ------------------------------------------------------------------
+    # Appointment booking
+    # ------------------------------------------------------------------
+    @http.route('/website/appointment/submit', type='http', auth='public', website=True,
+                methods=['POST'], csrf=True)
+    def submit_appointment(self, **post):
+        customer_name = _clean(post.get('customer_name'), 128)
+        phone = _clean(post.get('phone'), 20)
+        email = _clean(post.get('email'), 128)
+        notes = _clean(post.get('notes'), 1000)
 
-        # Check if user_id can be assigned to current user or company manager
-        if request.env.user and request.env.user.id != request.website.user_id.id:
-            event_vals['user_id'] = request.env.user.id
+        # Allow-list select values: anything unknown falls back to a safe default.
+        property_type = post.get('property_type') if post.get('property_type') in PROPERTY_LABELS else 'villa'
+        commune = post.get('commune') if post.get('commune') in COMMUNE_LABELS else 'cocody'
+        time_slot = post.get('time_slot') if post.get('time_slot') in SLOT_MAPPING else DEFAULT_SLOT
+
+        if not customer_name or not PHONE_RE.match(phone):
+            return request.redirect('/page/appointment?status=error&msg=missing_fields')
+        if email and not EMAIL_RE.match(email):
+            email = ''
 
         try:
-            event = request.env['calendar.event'].sudo().create(event_vals)
-            _logger.info("Successfully created Odoo calendar.event id=%s for client=%s", event.id, customer_name)
-        except Exception as e:
-            _logger.error("Failed to create Odoo calendar.event: %s", e)
+            day = datetime.strptime(_clean(post.get('appointment_date'), 10), '%Y-%m-%d').date()
+        except ValueError:
+            return request.redirect('/page/appointment?status=error&msg=invalid_date')
+        today_local = datetime.now(LOCAL_TZ).date()
+        if day <= today_local:
+            return request.redirect('/page/appointment?status=error&msg=invalid_date')
 
-        # 7. Redirect back to website with confirmation state
-        return request.redirect(f'/page/appointment?status=success&ref={ref_code}')
+        (sh, sm), (eh, em) = SLOT_MAPPING[time_slot]
+        base = datetime(day.year, day.month, day.day)
+        start_dt = _local_to_utc(base.replace(hour=sh, minute=sm))
+        stop_dt = _local_to_utc(base.replace(hour=eh, minute=em))
 
-    @http.route('/website/claim/submit', type='http', auth='public', website=True, methods=['POST'], csrf=True)
-    def submit_maintenance_claim(self, **post):
-        """
-        Receives maintenance tickets (WizFix) from the public website (/page/claim)
-        and logs them in Odoo for team follow-up.
-        """
-        customer_name = (post.get('customer_name') or '').strip()
-        phone = (post.get('phone') or '').strip()
-        equipment = (post.get('equipment') or '').strip()
-        priority = (post.get('priority') or 'normal').strip()
-        description = (post.get('description') or '').strip()
+        prop_title = PROPERTY_LABELS[property_type]
+        commune_title = COMMUNE_LABELS[commune]
 
-        if not customer_name or not phone:
-            return request.redirect('/page/claim?status=error')
-
-        # Find or create partner
-        partner = request.env['res.partner'].sudo().search([
-            '|', ('phone', '=', phone), ('mobile', '=', phone)
-        ], limit=1)
-        if not partner:
-            partner = request.env['res.partner'].sudo().create({
-                'name': customer_name,
-                'phone': phone,
-                'city': 'Abidjan',
-            })
-
-        ref_code = f"WZ-FIX-{fields.Date.today().year}-{partner.id or 101}"
-
-        # If maintenance or helpdesk is installed, create ticket, otherwise create priority calendar event
         try:
-            start_dt = datetime.now() + timedelta(hours=2)
-            stop_dt = start_dt + timedelta(hours=1)
-            event_vals = {
-                'name': f"[WizFix SAV {priority.upper()}] {equipment} - {customer_name}",
+            partner = self._find_or_create_partner(
+                customer_name, phone, email,
+                extra_vals={
+                    'street': 'Commune de %s' % commune_title,
+                    'comment': "Contact créé depuis le site WizSmith (demande d'audit %s)." % prop_title,
+                })
+            event = request.env['calendar.event'].sudo().create({
+                'name': 'Audit WizSmith (%s) - %s' % (prop_title, customer_name),
                 'partner_ids': [(4, partner.id)],
-                'start': fields.Datetime.to_string(start_dt),
-                'stop': fields.Datetime.to_string(stop_dt),
-                'location': 'Abidjan (Intervention SAV WizFix)',
-                'description': (
-                    f"RÉFÉRENCE SAV : {ref_code}\n"
-                    f"Priorité : {priority}\n"
-                    f"Équipement : {equipment}\n"
-                    f"Description panne : {description}\n"
-                    f"Contact client : {customer_name} ({phone})"
-                ),
-            }
-            request.env['calendar.event'].sudo().create(event_vals)
-        except Exception as e:
-            _logger.error("Failed to log maintenance event: %s", e)
+                'start': start_dt,
+                'stop': stop_dt,
+                'duration': 1.5,
+                'location': 'Abidjan, %s' % commune_title,
+                'user_id': self._organizer_id(),
+            })
+            # The reference is derived from the event (unique per booking), not from the partner.
+            ref_code = 'WZ-RDV-%s-%05d' % (today_local.year, event.id)
+            event.write({
+                'description': _html_lines([
+                    '=== AUDIT TECHNIQUE SUR SITE WIZSMITH ===',
+                    'Référence dossier : %s' % ref_code,
+                    '',
+                    'Client : %s' % customer_name,
+                    'Téléphone WhatsApp : %s' % phone,
+                    'Email : %s' % (email or 'Non renseigné'),
+                    'Type de bien : %s' % prop_title,
+                    'Localisation : Abidjan (%s)' % commune_title,
+                    'Créneau souhaité : %s' % time_slot,
+                    'Notes du client : %s' % (notes or 'Aucune'),
+                ]),
+            })
+            _logger.info('Created calendar.event id=%s (%s)', event.id, ref_code)
+        except Exception:
+            _logger.exception('Failed to create appointment for website visitor')
+            return request.redirect('/page/appointment?status=error&msg=server')
 
-        return request.redirect(f'/page/claim?status=success&ref={ref_code}')
+        return request.redirect('/page/appointment?status=success&ref=%s' % ref_code)
+
+    # ------------------------------------------------------------------
+    # WizFix maintenance claims
+    # ------------------------------------------------------------------
+    @http.route('/website/claim/submit', type='http', auth='public', website=True,
+                methods=['POST'], csrf=True)
+    def submit_maintenance_claim(self, **post):
+        customer_name = _clean(post.get('customer_name'), 128)
+        phone = _clean(post.get('phone'), 20)
+        description = _clean(post.get('description'), 2000)
+        equipment = post.get('equipment_type') if post.get('equipment_type') in EQUIPMENT_LABELS else 'lock'
+        commune = post.get('commune') if post.get('commune') in COMMUNE_LABELS else 'cocody'
+        priority = post.get('priority') if post.get('priority') in PRIORITIES else 'normal'
+
+        if not customer_name or not PHONE_RE.match(phone) or not description:
+            return request.redirect('/claim?status=error')
+
+        equipment_title = EQUIPMENT_LABELS[equipment]
+        commune_title = COMMUNE_LABELS[commune]
+        priority_title, odoo_priority = PRIORITIES[priority]
+
+        try:
+            partner = self._find_or_create_partner(customer_name, phone)
+            ref_code = None
+            lines_tpl = [
+                'Priorité : %s' % priority_title,
+                'Équipement : %s' % equipment_title,
+                'Localisation : Abidjan (%s)' % commune_title,
+                'Description de la panne : %s' % description,
+                'Contact client : %s (%s)' % (customer_name, phone),
+            ]
+
+            if 'maintenance.request' in request.env:
+                # Optional integration: only used when the Maintenance app is installed.
+                req = request.env['maintenance.request'].sudo().create({
+                    'name': '[WizFix] %s - %s' % (equipment_title, customer_name),
+                    'priority': odoo_priority,
+                    'maintenance_type': 'corrective',
+                    'description': _html_lines(lines_tpl),
+                })
+                ref_code = 'WZ-FIX-%s-%05d' % (datetime.now(LOCAL_TZ).year, req.id)
+            else:
+                start_dt = fields.Datetime.now() + timedelta(hours=2)
+                event = request.env['calendar.event'].sudo().create({
+                    'name': '[WizFix SAV %s] %s - %s' % (priority.upper(), equipment_title, customer_name),
+                    'partner_ids': [(4, partner.id)],
+                    'start': start_dt,
+                    'stop': start_dt + timedelta(hours=1),
+                    'location': 'Abidjan, %s (intervention SAV WizFix)' % commune_title,
+                    'user_id': self._organizer_id(),
+                })
+                ref_code = 'WZ-FIX-%s-%05d' % (datetime.now(LOCAL_TZ).year, event.id)
+                event.write({'description': _html_lines(['Référence SAV : %s' % ref_code] + lines_tpl)})
+        except Exception:
+            _logger.exception('Failed to log WizFix claim')
+            return request.redirect('/claim?status=error')
+
+        return request.redirect('/claim?status=success&ref=%s' % ref_code)
+
+    # ------------------------------------------------------------------
+    # WizRenouv warranty look-up
+    # ------------------------------------------------------------------
+    @http.route('/website/warranty/check', type='http', auth='public', website=True,
+                methods=['GET'], sitemap=False)
+    def check_warranty(self, serial='', **kw):
+        serial = _clean(serial, 64)
+        result = {'found': False}
+
+        if len(serial) < 4:
+            pass
+        elif 'maintenance.equipment' not in request.env:
+            result = {'found': False, 'unavailable': True}
+        else:
+            equipment = request.env['maintenance.equipment'].sudo().search(
+                [('serial_no', '=', serial)], limit=1)
+            if equipment:
+                # Expose only what the visitor needs: never customer or internal data.
+                result = {
+                    'found': True,
+                    'name': equipment.category_id.name or 'Équipement WizSmith',
+                    'warranty_date': (
+                        fields.Date.to_string(equipment.warranty_date)
+                        if equipment.warranty_date else False),
+                }
+
+        return request.render('website_wizsmith_theme.wizsmith_page_warranty',
+                              {'warranty_result': result})
