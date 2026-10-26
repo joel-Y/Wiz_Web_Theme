@@ -164,6 +164,10 @@
                 </div>
             </nav>
         </xpath>
+        <!-- Opt out of Odoo's "+" overflow autohide: our menu is short and collapses on mobile. -->
+        <xpath expr="//header" position="attributes">
+            <attribute name="t-attf-class" add="o_no_autohide_menu" separator=" "/>
+        </xpath>
         <!-- The stock mobile navbar would duplicate ours (ours is responsive) -->
         <xpath expr="//header//t[@t-call='website.template_header_mobile']" position="replace"/>
     </template>
