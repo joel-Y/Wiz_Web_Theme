@@ -485,78 +485,120 @@
         </section>
     </template>
 
-    <!-- Section F: Property Security Assessment Snippet -->
+    <!-- Section F: Interactive Property Security Assessment (port of the React AssessmentSection) -->
     <template id="s_wizsmith_assessment" name="WizSmith Property Assessment">
-        <section class="s_wizsmith_assessment py-5 position-relative" style="background: linear-gradient(180deg, #1A1A2E 0%, #0D0D17 100%); color: white;">
+        <section id="assessment-section" class="s_wizsmith_assessment py-5 position-relative" style="background-color: #1A1A2E; color: white;">
             <div class="container py-lg-4">
-                <div class="row align-items-center gy-5 gx-lg-5">
-                    <div class="col-lg-6">
-                        <span class="badge px-3 py-2 rounded-pill mb-3" style="background: rgba(232, 99, 10, 0.2); color: #E8630A; border: 1px solid #E8630A;">
-                            Intelligence Artificielle WizSmith
-                        </span>
-                        <h2 class="display-6 fw-bold text-white mb-3">Votre propriété analysée par notre IA</h2>
-                        <p class="text-white-50 lead fs-6 mb-4">
-                            Évaluez en moins de 2 minutes le niveau de sécurité et d'automatisation de votre bien. Notre algorithme identifie les failles critiques et génère votre plan d'action personnalisé.
-                        </p>
+                <div class="text-center mx-auto mb-5" style="max-width: 48rem;">
+                    <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-3 small fw-semibold" style="background: rgba(30, 41, 59, 0.8); border: 1px solid #334155; color: #E8630A;">
+                        <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" /><path d="M22 4h-4" /><circle cx="4" cy="20" r="2" /></svg><span>Diagnostic Gratuit &amp; Algorithme WizSmith</span>
+                    </div>
+                    <h2 class="display-6 fw-black text-white mb-3">Votre propriété analysée par notre IA</h2>
+                    <p class="fs-5 mb-0" style="color: #CBD5E1;">Évaluez objectivement la sécurité et le niveau d'automatisation de vos espaces en moins de 2 minutes.</p>
+                </div>
 
-                        <div class="d-flex flex-column gap-3 mb-4">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="p-2 rounded-circle bg-primary bg-opacity-25 text-white">📊</div>
-                                <div>
-                                    <strong class="text-white d-block">Score de sécurité WizSmith</strong>
-                                    <small class="text-white-50">Évaluation objective de 0 à 100 basée sur votre configuration réelle.</small>
+                <div class="row gy-4 gx-lg-4 align-items-start">
+                    <!-- Left: interactive controls -->
+                    <div class="col-lg-7">
+                        <div class="wiz-assess-panel rounded-5 p-4 p-sm-5">
+                            <p class="wiz-assess-label mb-2" id="wiz-assess-type-label">1. Type d'espace immobilier</p>
+                            <div class="row g-2 mb-4" role="group" aria-labelledby="wiz-assess-type-label">
+                                <div class="col-6 col-sm-3"><button type="button" class="wiz-assess-type btn w-100 active" data-type="residential" aria-pressed="true">Villa / Maison</button></div>
+                                <div class="col-6 col-sm-3"><button type="button" class="wiz-assess-type btn w-100" data-type="airbnb" aria-pressed="false">Airbnb / Meublé</button></div>
+                                <div class="col-6 col-sm-3"><button type="button" class="wiz-assess-type btn w-100" data-type="hotel" aria-pressed="false">Hôtel / Résidence</button></div>
+                                <div class="col-6 col-sm-3"><button type="button" class="wiz-assess-type btn w-100" data-type="business" aria-pressed="false">Bureaux / PME</button></div>
+                            </div>
+
+                            <div class="row g-4 mb-4">
+                                <div class="col-sm-6">
+                                    <label class="wiz-assess-label d-block mb-2" for="wiz-assess-surface">Surface approximative (<span class="wiz-surface-val">160</span> m²)</label>
+                                    <input type="range" id="wiz-assess-surface" class="wiz-range wiz-range-orange w-100" min="40" max="1200" step="20" value="160" aria-label="Surface en m²"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="wiz-assess-label d-block mb-2" for="wiz-assess-entries">Nombre d'accès (Portes &amp; Portails : <span class="wiz-entries-val">3</span>)</label>
+                                    <input type="range" id="wiz-assess-entries" class="wiz-range wiz-range-blue w-100" min="1" max="16" step="1" value="3" aria-label="Nombre d'accès"/>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="p-2 rounded-circle bg-warning bg-opacity-25 text-white">⚠️</div>
-                                <div>
-                                    <strong class="text-white d-block">Risques potentiels identifiés</strong>
-                                    <small class="text-white-50">Points d'accès vulnérables, pertes de clés, absence de traçabilité.</small>
-                                </div>
+
+                            <p class="wiz-assess-label mb-3">2. Vos équipements actuels</p>
+                            <div class="d-flex flex-column gap-2">
+                                <label class="wiz-check-row d-flex align-items-center justify-content-between gap-3 p-3 rounded-4">
+                                    <span class="small"><span class="fw-semibold text-white d-block">Serrure connectée sans clé (Digicode / Empreinte)</span><span style="color: #94A3B8;">Vos portes s'ouvrent sans clé métallique physique</span></span>
+                                    <input type="checkbox" class="wiz-assess-check" data-key="smartLocks"/>
+                                </label>
+                                <label class="wiz-check-row d-flex align-items-center justify-content-between gap-3 p-3 rounded-4">
+                                    <span class="small"><span class="fw-semibold text-white d-block">Caméras avec détection IA (Humains / Véhicules)</span><span style="color: #94A3B8;">Vos caméras filtrent les fausses alertes d'animaux ou météo</span></span>
+                                    <input type="checkbox" class="wiz-assess-check" data-key="aiDetection"/>
+                                </label>
+                                <label class="wiz-check-row d-flex align-items-center justify-content-between gap-3 p-3 rounded-4">
+                                    <span class="small"><span class="fw-semibold text-white d-block">Contrôle à distance depuis smartphone</span><span style="color: #94A3B8;">Vous pouvez ouvrir ou surveiller en déplacement 4G/Wifi</span></span>
+                                    <input type="checkbox" class="wiz-assess-check" data-key="remoteControl"/>
+                                </label>
+                                <label class="wiz-check-row d-flex align-items-center justify-content-between gap-3 p-3 rounded-4">
+                                    <span class="small"><span class="fw-semibold text-white d-block">Régulation automatique de la climatisation</span><span style="color: #94A3B8;">Coupure intelligente de l'énergie en cas d'inoccupation</span></span>
+                                    <input type="checkbox" class="wiz-assess-check" data-key="energyAutomation"/>
+                                </label>
                             </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="p-2 rounded-circle bg-success bg-opacity-25 text-white">🛡️</div>
-                                <div>
-                                    <strong class="text-white d-block">Équipements &amp; Automatisations recommandés</strong>
-                                    <small class="text-white-50">Serrures WizLock, modules IA caméras et scénarios d'économies d'énergie.</small>
-                                </div>
+
+                            <div class="text-end mt-3">
+                                <button type="button" class="wiz-assess-reset btn btn-link p-0 small text-decoration-none d-inline-flex align-items-center gap-1" style="color: #94A3B8;">
+                                    <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /><path d="M21 3v5h-5" /><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /><path d="M8 16H3v5" /></svg><span>Réinitialiser les réponses</span>
+                                </button>
                             </div>
                         </div>
-
-                        <a href="/support-ia" class="btn btn-lg px-4 py-3 fw-bold text-white rounded-3"
-                           style="background-color: #E8630A; border-color: #E8630A;">
-                            Analyser ma propriété gratuitement
-                        </a>
                     </div>
 
-                    <!-- Right Column: Interactive Diagnostic Widget -->
-                    <div class="col-lg-6">
-                        <div class="p-4 rounded-4 shadow-2xl" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
-                            <div class="d-flex justify-content-between align-items-center pb-3 mb-4 border-bottom border-secondary border-opacity-25">
-                                <span class="fw-bold text-white">Exemple de rapport IA WizSmith</span>
-                                <span class="badge bg-secondary px-2 py-1">Exemple</span>
+                    <!-- Right: live report (server-rendered with the default answers, updated by JS) -->
+                    <div class="col-lg-5">
+                        <div class="wiz-assess-report rounded-5 p-4 p-sm-5">
+                            <div class="d-flex align-items-center justify-content-between pb-3" style="border-bottom: 1px solid #1E293B;">
+                                <span class="wiz-assess-label">Rapport IA WizSmith</span>
+                                <span class="badge rounded-pill px-3 py-1 fw-semibold" style="background: #1E293B; color: #CBD5E1;">Calcul instantané</span>
                             </div>
 
-                            <div class="text-center py-3">
-                                <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
-                                     style="width: 120px; height: 120px; border: 6px solid #E8630A; background: rgba(232, 99, 10, 0.1);">
-                                    <span class="fs-1 fw-extrabold text-white"><span class="wiz-score-value">74</span><span class="fs-6 text-white-50">/100</span></span>
+                            <div class="text-center my-4">
+                                <div class="wiz-gauge is-critique d-inline-flex align-items-center justify-content-center rounded-circle" aria-live="polite">
+                                    <div>
+                                        <span class="wiz-score-value d-block fw-black font-monospace text-white lh-1">35</span>
+                                        <small class="d-block" style="color: #94A3B8;">/ 100</small>
+                                    </div>
                                 </div>
-                                <h5 class="text-white fw-bold mb-1">Vulnérabilités Modérées</h5>
-                                <p class="text-white-50 small mb-4">Villa / Meublé 150m² · 3 accès</p>
-                            </div>
-
-                            <div class="p-3 rounded-3 mb-3" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06);">
-                                <small class="text-white-50 d-block mb-1">Plan recommandé :</small>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-white">Pack ÉLITE (Airbnb &amp; Résidences)</span>
-                                    <span class="badge bg-primary">À partir de 40 000 FCFA/mois</span>
+                                <div class="mt-3">
+                                    <span class="wiz-risk-label is-critique fw-bold text-uppercase small">Niveau de risque : <span class="wiz-risk-text">critique</span></span>
+                                    <p class="small mt-1 mb-0" style="color: #94A3B8;">Évaluation selon les normes de sécurisation de propriété WizSmith</p>
                                 </div>
                             </div>
 
-                            <small class="text-white-50 d-block text-center" style="font-size: 0.75rem;">
-                                *Cette analyse préliminaire en ligne ne se substitue pas à l'audit physique complet réalisé par un technicien WizSmith.
-                            </small>
+                            <div class="mb-4">
+                                <h3 class="wiz-assess-label d-flex align-items-center gap-2 mb-2"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 16h.01" /><path d="M12 8v4" /><path d="M15.312 2a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586l-4.688-4.688A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2z" /></svg><span>Vulnérabilités identifiées</span></h3>
+                                <ul class="wiz-risk-list list-unstyled small d-flex flex-column gap-2 mb-0">
+                                    <li><span class="wiz-bullet">•</span><span>Clés physiques vulnérables aux doubles non autorisés et pertes.</span></li>
+                                    <li><span class="wiz-bullet">•</span><span>Caméras passives nécessitant un visionnage manuel fastidieux.</span></li>
+                                    <li><span class="wiz-bullet">•</span><span>Manque de visibilité et incapacité d'intervention lors de vos déplacements.</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="wiz-equip-block mb-4">
+                                <h3 class="wiz-assess-label d-flex align-items-center gap-2 mb-2"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20v2" /><path d="M12 2v2" /><path d="M17 20v2" /><path d="M17 2v2" /><path d="M2 12h2" /><path d="M2 17h2" /><path d="M2 7h2" /><path d="M20 12h2" /><path d="M20 17h2" /><path d="M20 7h2" /><path d="M7 20v2" /><path d="M7 2v2" /><rect x="4" y="4" width="16" height="16" rx="2" /><rect x="8" y="8" width="8" height="8" rx="1" /></svg><span>Équipements recommandés</span></h3>
+                                <ul class="wiz-equip-list list-unstyled small d-flex flex-column gap-2 mb-0">
+                                    <li><span><strong class="text-white d-block">Serrure Intelligente WizLock Pro</strong><span class="wiz-equip-why">Supprime les clés physiques et enregistre chaque passage avec horodatage.</span></span><span class="wiz-prio">Haute</span></li>
+                                    <li><span><strong class="text-white d-block">Module IA WizBridge pour caméras existantes</strong><span class="wiz-equip-why">Transforme vos caméras actuelles en système proactif avec détection humaine/véhicule.</span></span><span class="wiz-prio">Haute</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="wiz-plan-box rounded-4 p-3 mb-4">
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 small mb-1">
+                                    <span class="fw-semibold" style="color: #93C5FD;">Formule recommandée</span>
+                                    <span class="text-white font-monospace fw-bold">À partir de : <span class="wiz-plan-price">40 000 FCFA</span>/mois</span>
+                                </div>
+                                <div class="fs-5 fw-black text-white">Pack <span class="wiz-plan-name">ÉLITE</span></div>
+                                <p class="small mt-1 mb-0" style="color: rgba(191, 219, 254, 0.8);">Installation, matériel certifié et garantie maintenance WizRenouv inclus.</p>
+                            </div>
+
+                            <a href="/page/appointment" class="wiz-cta-primary btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2">
+                                <span>Planifier l'installation avec un expert</span><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                            </a>
+                            <p class="text-center mt-2 mb-0" style="font-size: 0.7rem; color: #64748B;">*Analyse préliminaire basée sur vos déclarations, non contractuelle avant audit physique sur site.</p>
                         </div>
                     </div>
                 </div>

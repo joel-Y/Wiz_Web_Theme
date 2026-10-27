@@ -235,3 +235,71 @@ section[id] { scroll-margin-top: 5rem; }
     &.wiz-glow-blue { top: 0; right: 25%; background: rgba(0, 71, 171, 0.2); }
     &.wiz-glow-orange { bottom: 0; left: 25%; background: rgba(232, 99, 10, 0.15); }
 }
+
+// ---------------------------------------------------------------------------
+// Interactive assessment (dark section)
+// ---------------------------------------------------------------------------
+.s_wizsmith_assessment {
+    .wiz-assess-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #CBD5E1; margin: 0; }
+    .wiz-assess-panel { background: rgba(15, 23, 42, 0.8); border: 1px solid #1E293B; box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.5); }
+    .wiz-assess-report { background: linear-gradient(180deg, #0F172A, #020617); border: 1px solid #1E293B; box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.6); }
+
+    // Property-type buttons
+    .wiz-assess-type {
+        padding: 0.75rem 0.5rem; font-size: 0.75rem; font-weight: 700; border-radius: 0.75rem;
+        background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(51, 65, 85, 0.8); color: #CBD5E1;
+        &:hover { background: #1E293B; color: #fff; }
+        &.active { background: #0047AB; border-color: #0047AB; color: #fff; box-shadow: 0 2px 8px rgba(0, 71, 171, 0.4); }
+    }
+
+    // Equipment rows
+    .wiz-check-row {
+        background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(51, 65, 85, 0.7); cursor: pointer;
+        transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        &:hover { background: rgba(30, 41, 59, 0.85); border-color: rgba(96, 165, 250, 0.5); }
+        &:has(input:checked) { border-color: rgba(0, 71, 171, 0.9); background: rgba(0, 71, 171, 0.14); }
+        input[type="checkbox"] { width: 1.25rem; height: 1.25rem; flex-shrink: 0; accent-color: #0047AB; cursor: pointer; }
+    }
+
+    // Range sliders
+    .wiz-range {
+        -webkit-appearance: none; appearance: none; height: 0.5rem; border-radius: 0.5rem; background: #334155; outline: none; cursor: pointer;
+        &::-webkit-slider-thumb { -webkit-appearance: none; width: 1.15rem; height: 1.15rem; border-radius: 50%; background: var(--wiz-thumb); border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5); transition: transform 0.15s ease; }
+        &::-moz-range-thumb { width: 1.05rem; height: 1.05rem; border-radius: 50%; background: var(--wiz-thumb); border: 2px solid #fff; }
+        &:hover::-webkit-slider-thumb, &:active::-webkit-slider-thumb { transform: scale(1.2); }
+        &:focus-visible { box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.45); }
+    }
+    .wiz-range-orange { --wiz-thumb: #E8630A; }
+    .wiz-range-blue { --wiz-thumb: #0047AB; }
+
+    // Gauge colours by risk level
+    .wiz-gauge {
+        width: 8rem; height: 8rem; border: 0.5rem solid #F87171; background: rgba(15, 23, 42, 0.8);
+        transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        &.is-faible { border-color: #34D399; box-shadow: 0 0 28px rgba(52, 211, 153, 0.25); }
+        &.is-modere { border-color: #60A5FA; box-shadow: 0 0 28px rgba(96, 165, 250, 0.25); }
+        &.is-eleve { border-color: #FBBF24; box-shadow: 0 0 28px rgba(251, 191, 36, 0.22); }
+        &.is-critique { border-color: #F87171; box-shadow: 0 0 28px rgba(248, 113, 113, 0.25); }
+        .wiz-score-value { font-size: 2.4rem; }
+    }
+    .wiz-risk-label {
+        letter-spacing: 0.06em; color: #F87171; transition: color 0.3s ease;
+        &.is-faible { color: #34D399; } &.is-modere { color: #60A5FA; } &.is-eleve { color: #FBBF24; } &.is-critique { color: #F87171; }
+    }
+
+    // Report lists
+    .wiz-risk-list li, .wiz-equip-list li {
+        background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(51, 65, 85, 0.5); border-radius: 0.6rem; padding: 0.5rem 0.65rem;
+        color: #CBD5E1; animation: wizFadeIn 0.35s ease both;
+    }
+    .wiz-risk-list li { display: flex; align-items: flex-start; gap: 0.5rem; }
+    .wiz-bullet { color: #FBBF24; font-weight: 700; }
+    .wiz-equip-list li { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
+    .wiz-equip-why { color: #94A3B8; font-size: 0.7rem; }
+    .wiz-prio { flex-shrink: 0; font-size: 0.62rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 0.3rem; color: #E8630A; background: rgba(232, 99, 10, 0.2); }
+    .wiz-plan-box { background: linear-gradient(90deg, rgba(23, 37, 84, 0.8), #0F172A); border: 1px solid rgba(30, 58, 138, 0.6); }
+    .wiz-ico { color: inherit; }
+    .wiz-assess-label .wiz-ico { color: #FBBF24; }
+    h3.wiz-assess-label:nth-of-type(1) .wiz-ico { color: #FBBF24; }
+    .wiz-equip-block .wiz-assess-label .wiz-ico { color: #60A5FA; }
+}

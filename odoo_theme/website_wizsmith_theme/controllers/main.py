@@ -97,8 +97,8 @@ class WizsmithAppointmentController(http.Controller):
 
     @http.route('/support-ia', type='http', auth='public', website=True, sitemap=False)
     def support_ia(self, **kw):
-        # The free diagnostic is delivered through the on-site audit booking.
-        return request.redirect('/page/appointment', code=302)
+        # The free diagnostic is the interactive assessment section on the home page.
+        return request.redirect('/#assessment-section', code=302)
 
     # ------------------------------------------------------------------
     # Appointment booking
