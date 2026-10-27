@@ -35,6 +35,7 @@ Caractéristiques principales :
         'views/snippets.xml',
         'views/pages.xml',
     ],
+    'post_init_hook': 'post_init_hook',
     'assets': {
         'web._assets_primary_variables': [
             ('after', 'website/static/src/scss/primary_variables.scss',

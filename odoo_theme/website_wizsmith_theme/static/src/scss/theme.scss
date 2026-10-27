@@ -303,3 +303,9 @@ section[id] { scroll-margin-top: 5rem; }
     h3.wiz-assess-label:nth-of-type(1) .wiz-ico { color: #FBBF24; }
     .wiz-equip-block .wiz-assess-label .wiz-ico { color: #60A5FA; }
 }
+
+// Header menu: never wrap labels onto two lines; wrap whole items instead if the menu is long.
+@media (min-width: 992px) {
+    .navbar.navbar-light .navbar-nav { flex-wrap: wrap; justify-content: center; }
+    .navbar.navbar-light .navbar-nav .nav-link { white-space: nowrap; padding-left: 0.7rem; padding-right: 0.7rem; }
+}
