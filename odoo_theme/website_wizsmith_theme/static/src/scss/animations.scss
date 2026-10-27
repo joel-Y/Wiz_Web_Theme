@@ -1,0 +1,120 @@
+// WizSmith motion layer: ports the React design's animations/hover effects.
+// Everything here is decorative and switched off for prefers-reduced-motion.
+
+$wiz-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+// ---- Icons (Lucide SVG set, same as the React design) ----------------------
+.wiz-ico {
+    width: 1em; height: 1em; flex-shrink: 0;
+    vertical-align: -0.125em;
+    transition: transform 0.2s $wiz-ease;
+}
+
+// ---- Keyframes -------------------------------------------------------------
+@keyframes wizFadeUp   { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes wizFadeIn   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes wizPulse    { 0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55); } 70% { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); } }
+@keyframes wizFloat    { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes wizDrift    { 0%, 100% { transform: translate3d(0, 0, 0) scale(1); } 50% { transform: translate3d(24px, -18px, 0) scale(1.08); } }
+@keyframes wizKenBurns { from { transform: scale(1.0); } to { transform: scale(1.08); } }
+@keyframes wizSheen    { from { transform: translateX(-120%); } to { transform: translateX(220%); } }
+
+// ---- Entrance ----------------------------------------------------------------
+.wiz-fade-up { animation: wizFadeUp 0.7s $wiz-ease both; }
+.wiz-delay-1 { animation-delay: 0.12s; }
+.wiz-delay-2 { animation-delay: 0.24s; }
+.wiz-delay-3 { animation-delay: 0.36s; }
+
+// Scroll reveal (class toggled by theme.js; content stays visible without JS)
+.wiz-reveal.wiz-reveal-hidden { opacity: 0; transform: translateY(22px); }
+.wiz-reveal { transition: opacity 0.6s ease, transform 0.6s $wiz-ease; }
+
+// ---- Hero: animated background & visuals --------------------------------------
+.s_wizsmith_hero {
+    .wiz-orb {
+        position: absolute; border-radius: 50%; filter: blur(64px); opacity: 0.55;
+        pointer-events: none; z-index: 0; will-change: transform;
+    }
+    .wiz-orb-1 { width: 26rem; height: 26rem; top: -9rem; right: -6rem; background: rgba(0, 71, 171, 0.14); animation: wizDrift 14s ease-in-out infinite; }
+    .wiz-orb-2 { width: 22rem; height: 22rem; bottom: -8rem; left: -6rem; background: rgba(232, 99, 10, 0.12); animation: wizDrift 18s ease-in-out infinite reverse; }
+    .wiz-grid-bg {
+        position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.5;
+        background-image: radial-gradient(rgba(15, 23, 42, 0.07) 1px, transparent 1px);
+        background-size: 22px 22px;
+        -webkit-mask-image: linear-gradient(to bottom, #000, transparent 85%);
+        mask-image: linear-gradient(to bottom, #000, transparent 85%);
+    }
+    .container { z-index: 1; }
+
+    .wiz-hero-card { animation: wizFloat 7s ease-in-out 1s infinite; transition: box-shadow 0.3s ease; }
+    .wiz-hero-card:hover { animation-play-state: paused; box-shadow: 0 28px 50px -14px rgba(15, 23, 42, 0.22); }
+
+    // Photo: slow zoom on every tab switch + extra zoom on hover
+    .wiz-photo { position: relative; }
+    .wiz-photo img { transition: transform 0.6s $wiz-ease; will-change: transform; }
+    .tab-pane.active .wiz-photo img { animation: wizKenBurns 14s ease-out both; }
+    .wiz-photo:hover img { animation: none; transform: scale(1.06); }
+
+    // Tab switch: content slides up a little as it fades in
+    .tab-pane.fade { transform: translateY(8px); transition: opacity 0.3s ease, transform 0.4s $wiz-ease; }
+    .tab-pane.fade.show { transform: none; }
+
+    .wiz-space-tabs .nav-link { transition: background-color 0.25s ease, color 0.2s ease, box-shadow 0.25s ease, transform 0.15s $wiz-ease; }
+    .wiz-space-tabs .nav-link:hover { transform: translateY(-1px); }
+    .wiz-space-tabs .nav-link:active { transform: scale(0.97); }
+
+    .wiz-feature { transition: transform 0.25s $wiz-ease, border-color 0.2s ease, box-shadow 0.25s ease; }
+    .wiz-feature:hover { transform: translateX(4px); box-shadow: 0 6px 16px -8px rgba(15, 23, 42, 0.18); }
+    .wiz-feature:hover .wiz-feature-icon { background-color: #EFF6FF !important; }
+}
+
+// Live "pulse" dots
+.wiz-dot.bg-success { animation: wizPulse 2s ease-out infinite; }
+
+// ---- Buttons ----------------------------------------------------------------
+.wiz-cta-primary {
+    position: relative; overflow: hidden;
+    transition: transform 0.2s $wiz-ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    &:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -6px rgba(232, 99, 10, 0.45); }
+    &:active { transform: translateY(1px) scale(0.985); }
+    &:hover .wiz-ico { transform: translateX(4px); }
+    // light sweep on hover
+    &::after {
+        content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 40%;
+        background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transform: translateX(-120%); pointer-events: none;
+    }
+    &:hover::after { animation: wizSheen 0.8s ease; }
+}
+.btn { transition: transform 0.2s $wiz-ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+.btn:not(.wiz-cta-primary):hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(1px) scale(0.985); }
+a:hover > .wiz-ico, a:hover .wiz-ico.ms-1 { transform: translateX(3px); }
+.s_wizsmith_hero a.small.fw-bold:hover .wiz-ico { transform: translateX(4px); }
+
+// ---- Cards: lift on hover (problems, why, pricing, solutions, testimonials) ------
+.s_wizsmith_problems .card, .s_wizsmith_why .rounded-4.border, .s_wizsmith_pricing .card,
+.s_wizsmith_testimonials .rounded-4, .wiz-solution-card {
+    transition: transform 0.3s $wiz-ease, box-shadow 0.3s ease, border-color 0.25s ease;
+    &:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -12px rgba(15, 23, 42, 0.16); border-color: rgba(0, 71, 171, 0.25) !important; }
+}
+.wiz-icon-tile { transition: transform 0.3s $wiz-ease, background-color 0.25s ease; }
+.card:hover .wiz-icon-tile, .rounded-4:hover > div > .wiz-icon-tile { transform: scale(1.08) rotate(-3deg); }
+
+// ---- Header ------------------------------------------------------------------
+.navbar { transition: box-shadow 0.3s ease, background-color 0.3s ease, padding 0.3s ease; }
+.navbar.wiz-scrolled { box-shadow: 0 6px 20px -10px rgba(15, 23, 42, 0.25) !important; background-color: rgba(255, 255, 255, 0.92) !important; backdrop-filter: blur(10px); }
+.navbar .navbar-brand .wiz-logo-mark { transition: transform 0.3s $wiz-ease; }
+.navbar .navbar-brand:hover .wiz-logo-mark { transform: rotate(-6deg) scale(1.06); }
+.navbar.navbar-light .navbar-nav .nav-link { transition: color 0.15s ease, background-color 0.2s ease, transform 0.2s $wiz-ease; }
+.navbar.navbar-light .navbar-nav .nav-link:hover { transform: translateY(-1px); }
+
+// ---- Reduced motion ----------------------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+    .wiz-fade-up, .wiz-orb, .wiz-hero-card, .wiz-dot.bg-success,
+    .tab-pane.active .wiz-photo img, .wiz-cta-primary:hover::after { animation: none !important; }
+    .wiz-reveal.wiz-reveal-hidden { opacity: 1 !important; transform: none !important; }
+    .wiz-reveal, .tab-pane.fade, .wiz-ico { transition: none !important; }
+    .s_wizsmith_problems .card:hover, .s_wizsmith_pricing .card:hover, .wiz-solution-card:hover,
+    .wiz-cta-primary:hover, .btn:hover, .wiz-feature:hover { transform: none !important; }
+}

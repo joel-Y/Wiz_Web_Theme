@@ -3,10 +3,13 @@
     <!-- WizSmith Hero Snippet -->
     <template id="s_wizsmith_hero" name="WizSmith Hero Section">
         <section class="s_wizsmith_hero py-5 position-relative overflow-hidden">
+            <div class="wiz-grid-bg" aria-hidden="true"></div>
+            <div class="wiz-orb wiz-orb-1" aria-hidden="true"></div>
+            <div class="wiz-orb wiz-orb-2" aria-hidden="true"></div>
             <div class="container position-relative py-lg-4">
                 <div class="row align-items-center gy-5 gx-lg-5">
                     <!-- Left column: message, CTAs, trust -->
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 wiz-fade-up">
                         <div class="d-inline-flex align-items-center gap-2 mb-3 px-3 py-1 rounded-pill bg-white border shadow-xs">
                             <span class="wiz-dot" style="background-color: #E8630A;"></span>
                             <span class="small fw-semibold text-secondary">Sécurité · Automatisation · Intelligence</span>
@@ -22,16 +25,16 @@
                         </p>
                         <div class="d-flex flex-column flex-sm-row gap-3 pt-2">
                             <a href="/support-ia" class="wiz-cta-primary btn btn-lg px-4 py-3 fw-bold text-white rounded-4 d-inline-flex align-items-center justify-content-center gap-2">
-                                <span>Découvrir mon score de sécurité gratuit</span> <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                <span>Découvrir mon score de sécurité gratuit</span> <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                             </a>
                             <a href="#packs" class="btn btn-lg bg-white px-4 py-3 fw-semibold rounded-4 text-center border-2" style="border: 2px solid #E2E8F0; color: #1A1A2E;">
                                 Explorer nos solutions
                             </a>
                         </div>
                         <div class="d-flex flex-wrap gap-x-4 gap-y-2 column-gap-4 row-gap-2 mt-4 pt-4 border-top small text-secondary fw-medium">
-                            <span><i class="fa fa-shield text-success" aria-hidden="true"></i> Compatible caméras existantes</span>
-                            <span><i class="fa fa-shield text-success" aria-hidden="true"></i> Installation professionnelle certifiée</span>
-                            <span><i class="fa fa-shield text-success" aria-hidden="true"></i> Support local Abidjan 7j/7</span>
+                            <span><svg class="wiz-ico text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg> Compatible caméras existantes</span>
+                            <span><svg class="wiz-ico text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg> Installation professionnelle certifiée</span>
+                            <span><svg class="wiz-ico text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg> Support local Abidjan 7j/7</span>
                         </div>
                         <div class="d-flex align-items-center gap-3 p-3 mt-4 bg-white rounded-4 border shadow-xs">
                             <img src="/website_wizsmith_theme/static/src/img/hero_smart_property_1792700326771.jpg" alt="Villa moderne connectée à Abidjan" loading="lazy" class="rounded-3 border flex-shrink-0" style="width: 56px; height: 56px; object-fit: cover;"/>
@@ -43,7 +46,7 @@
                     </div>
 
                     <!-- Right column: tabbed showcase card -->
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 wiz-fade-up wiz-delay-1">
                         <div class="wiz-hero-card card bg-white border rounded-5 p-4 p-sm-5 shadow-lg">
                             <div class="d-flex align-items-center justify-content-between pb-3 mb-3 border-bottom">
                                 <span class="text-uppercase fw-bold text-secondary" style="font-size: 0.72rem; letter-spacing: 0.08em;">Applications Spécifiques</span>
@@ -54,28 +57,28 @@
                                         <button type="button" class="nav-link w-100 rounded-3 py-2 px-2 small fw-bold d-flex align-items-center justify-content-center gap-1 active"
                                                 id="wiz-tab-airbnb" data-bs-toggle="pill" data-bs-target="#wiz-space-airbnb" role="tab"
                                                 aria-controls="wiz-space-airbnb" aria-selected="true">
-                                            <i class="fa fa-key" aria-hidden="true"></i> <span>Airbnb</span>
+                                            <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" /><path d="m21 2-9.6 9.6" /><circle cx="7.5" cy="15.5" r="5.5" /></svg> <span>Airbnb</span>
                                         </button>
                                     </li>
                                     <li class="nav-item flex-fill" role="presentation">
                                         <button type="button" class="nav-link w-100 rounded-3 py-2 px-2 small fw-bold d-flex align-items-center justify-content-center gap-1"
                                                 id="wiz-tab-residential" data-bs-toggle="pill" data-bs-target="#wiz-space-residential" role="tab"
                                                 aria-controls="wiz-space-residential" aria-selected="false">
-                                            <i class="fa fa-home" aria-hidden="true"></i> <span>Maison</span>
+                                            <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg> <span>Maison</span>
                                         </button>
                                     </li>
                                     <li class="nav-item flex-fill" role="presentation">
                                         <button type="button" class="nav-link w-100 rounded-3 py-2 px-2 small fw-bold d-flex align-items-center justify-content-center gap-1"
                                                 id="wiz-tab-hotel" data-bs-toggle="pill" data-bs-target="#wiz-space-hotel" role="tab"
                                                 aria-controls="wiz-space-hotel" aria-selected="false">
-                                            <i class="fa fa-bed" aria-hidden="true"></i> <span>Hôtel</span>
+                                            <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 22v-6.57" /><path d="M12 11h.01" /><path d="M12 7h.01" /><path d="M14 15.43V22" /><path d="M15 16a5 5 0 0 0-6 0" /><path d="M16 11h.01" /><path d="M16 7h.01" /><path d="M8 11h.01" /><path d="M8 7h.01" /><rect x="4" y="2" width="16" height="20" rx="2" /></svg> <span>Hôtel</span>
                                         </button>
                                     </li>
                                     <li class="nav-item flex-fill" role="presentation">
                                         <button type="button" class="nav-link w-100 rounded-3 py-2 px-2 small fw-bold d-flex align-items-center justify-content-center gap-1"
                                                 id="wiz-tab-business" data-bs-toggle="pill" data-bs-target="#wiz-space-business" role="tab"
                                                 aria-controls="wiz-space-business" aria-selected="false">
-                                            <i class="fa fa-building-o" aria-hidden="true"></i> <span>Entreprise</span>
+                                            <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 12h4" /><path d="M10 8h4" /><path d="M14 21v-3a2 2 0 0 0-4 0v3" /><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" /><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" /></svg> <span>Entreprise</span>
                                         </button>
                                     </li>
                             </ul>
@@ -100,25 +103,25 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border small text-secondary mb-3">
-                                        <i class="fa fa-magic" style="color: #0047AB;" aria-hidden="true"></i><span>Check-in 100% autonome sans déplacement</span>
+                                        <svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" /><path d="M22 4h-4" /><circle cx="4" cy="20" r="2" /></svg><span>Check-in 100% autonome sans déplacement</span>
                                     </div>
                                     <div class="d-flex flex-column gap-2">
                                             <div class="wiz-feature d-flex align-items-center gap-3 p-3 rounded-3 bg-white border">
-                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><i class="fa fa-key" style="color: #0047AB;" aria-hidden="true"></i></span>
+                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" /><path d="m21 2-9.6 9.6" /><circle cx="7.5" cy="15.5" r="5.5" /></svg></span>
                                                 <span class="small fw-medium text-secondary">Codes PIN temporaires envoyés automatiquement par voyageur</span>
                                             </div>
                                             <div class="wiz-feature d-flex align-items-center gap-3 p-3 rounded-3 bg-white border">
-                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><i class="fa fa-bolt" style="color: #E8630A;" aria-hidden="true"></i></span>
+                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><svg class="wiz-ico" style="color: #E8630A;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg></span>
                                                 <span class="small fw-medium text-secondary">Coupure auto de la climatisation dès le check-out (-35% CIE)</span>
                                             </div>
                                             <div class="wiz-feature d-flex align-items-center gap-3 p-3 rounded-3 bg-white border">
-                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><i class="fa fa-eye" style="color: #059669;" aria-hidden="true"></i></span>
+                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><svg class="wiz-ico" style="color: #059669;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx="12" cy="12" r="3" /></svg></span>
                                                 <span class="small fw-medium text-secondary">Alertes intrusions et mouvements anormaux en période vacante</span>
                                             </div>
                                     </div>
                                     <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 pt-3 mt-3 border-top">
-                                        <small class="text-secondary"><i class="fa fa-map-marker" aria-hidden="true"></i> Recommandé pour les hôtes à Cocody, Marcory, Plateau</small>
-                                        <a href="/page/appointment" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                        <small class="text-secondary"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg> Recommandé pour les hôtes à Cocody, Marcory, Plateau</small>
+                                        <a href="/page/appointment" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="wiz-space-residential" role="tabpanel" aria-labelledby="wiz-tab-residential" tabindex="0">
@@ -141,25 +144,25 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border small text-secondary mb-3">
-                                        <i class="fa fa-magic" style="color: #0047AB;" aria-hidden="true"></i><span>Empreintes, codes sécurisés et contrôle smartphone</span>
+                                        <svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" /><path d="M22 4h-4" /><circle cx="4" cy="20" r="2" /></svg><span>Empreintes, codes sécurisés et contrôle smartphone</span>
                                     </div>
                                     <div class="d-flex flex-column gap-2">
                                             <div class="wiz-feature d-flex align-items-center gap-3 p-3 rounded-3 bg-white border">
-                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><i class="fa fa-key" style="color: #0047AB;" aria-hidden="true"></i></span>
+                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" /><path d="m21 2-9.6 9.6" /><circle cx="7.5" cy="15.5" r="5.5" /></svg></span>
                                                 <span class="small fw-medium text-secondary">Serrures WizLock Pro inviolables à reconnaissance biométrique</span>
                                             </div>
                                             <div class="wiz-feature d-flex align-items-center gap-3 p-3 rounded-3 bg-white border">
-                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><i class="fa fa-eye" style="color: #059669;" aria-hidden="true"></i></span>
+                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><svg class="wiz-ico" style="color: #059669;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx="12" cy="12" r="3" /></svg></span>
                                                 <span class="small fw-medium text-secondary">Détection IA des silhouettes humaines sur caméras existantes</span>
                                             </div>
                                             <div class="wiz-feature d-flex align-items-center gap-3 p-3 rounded-3 bg-white border">
-                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><i class="fa fa-bolt" style="color: #E8630A;" aria-hidden="true"></i></span>
+                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><svg class="wiz-ico" style="color: #E8630A;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg></span>
                                                 <span class="small fw-medium text-secondary">Scénarios de verrouillage nocturne et éclairage connecté</span>
                                             </div>
                                     </div>
                                     <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 pt-3 mt-3 border-top">
-                                        <small class="text-secondary"><i class="fa fa-map-marker" aria-hidden="true"></i> Protection périmétrique familiale complète</small>
-                                        <a href="/page/appointment" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                        <small class="text-secondary"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg> Protection périmétrique familiale complète</small>
+                                        <a href="/page/appointment" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="wiz-space-hotel" role="tabpanel" aria-labelledby="wiz-tab-hotel" tabindex="0">
@@ -182,25 +185,25 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border small text-secondary mb-3">
-                                        <i class="fa fa-magic" style="color: #0047AB;" aria-hidden="true"></i><span>Supervision centralisée chambre par chambre</span>
+                                        <svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" /><path d="M22 4h-4" /><circle cx="4" cy="20" r="2" /></svg><span>Supervision centralisée chambre par chambre</span>
                                     </div>
                                     <div class="d-flex flex-column gap-2">
                                             <div class="wiz-feature d-flex align-items-center gap-3 p-3 rounded-3 bg-white border">
-                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><i class="fa fa-bed" style="color: #0047AB;" aria-hidden="true"></i></span>
+                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 22v-6.57" /><path d="M12 11h.01" /><path d="M12 7h.01" /><path d="M14 15.43V22" /><path d="M15 16a5 5 0 0 0-6 0" /><path d="M16 11h.01" /><path d="M16 7h.01" /><path d="M8 11h.01" /><path d="M8 7h.01" /><rect x="4" y="2" width="16" height="20" rx="2" /></svg></span>
                                                 <span class="small fw-medium text-secondary">Accès sans contact aux chambres sans attente à la réception</span>
                                             </div>
                                             <div class="wiz-feature d-flex align-items-center gap-3 p-3 rounded-3 bg-white border">
-                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><i class="fa fa-bolt" style="color: #E8630A;" aria-hidden="true"></i></span>
+                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><svg class="wiz-ico" style="color: #E8630A;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg></span>
                                                 <span class="small fw-medium text-secondary">Régulation thermique intelligente selon l'occupation réelle</span>
                                             </div>
                                             <div class="wiz-feature d-flex align-items-center gap-3 p-3 rounded-3 bg-white border">
-                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><i class="fa fa-shield" style="color: #059669;" aria-hidden="true"></i></span>
+                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><svg class="wiz-ico" style="color: #059669;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg></span>
                                                 <span class="small fw-medium text-secondary">Traçabilité du passage du personnel de ménage et maintenance</span>
                                             </div>
                                     </div>
                                     <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 pt-3 mt-3 border-top">
-                                        <small class="text-secondary"><i class="fa fa-map-marker" aria-hidden="true"></i> Expérience client VIP &amp; rentabilité d'exploitation</small>
-                                        <a href="/page/appointment" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                        <small class="text-secondary"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg> Expérience client VIP &amp; rentabilité d'exploitation</small>
+                                        <a href="/page/appointment" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="wiz-space-business" role="tabpanel" aria-labelledby="wiz-tab-business" tabindex="0">
@@ -223,25 +226,25 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border small text-secondary mb-3">
-                                        <i class="fa fa-magic" style="color: #0047AB;" aria-hidden="true"></i><span>Journal infalsifiable des entrées et sorties collaborateurs</span>
+                                        <svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" /><path d="M22 4h-4" /><circle cx="4" cy="20" r="2" /></svg><span>Journal infalsifiable des entrées et sorties collaborateurs</span>
                                     </div>
                                     <div class="d-flex flex-column gap-2">
                                             <div class="wiz-feature d-flex align-items-center gap-3 p-3 rounded-3 bg-white border">
-                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><i class="fa fa-building-o" style="color: #0047AB;" aria-hidden="true"></i></span>
+                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 12h4" /><path d="M10 8h4" /><path d="M14 21v-3a2 2 0 0 0-4 0v3" /><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" /><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" /></svg></span>
                                                 <span class="small fw-medium text-secondary">Contrôle d'accès par badges RFID et codes horaires stricts</span>
                                             </div>
                                             <div class="wiz-feature d-flex align-items-center gap-3 p-3 rounded-3 bg-white border">
-                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><i class="fa fa-eye" style="color: #059669;" aria-hidden="true"></i></span>
+                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><svg class="wiz-ico" style="color: #059669;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx="12" cy="12" r="3" /></svg></span>
                                                 <span class="small fw-medium text-secondary">Vigilance nocturne avec transmission photo instantanée</span>
                                             </div>
                                             <div class="wiz-feature d-flex align-items-center gap-3 p-3 rounded-3 bg-white border">
-                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><i class="fa fa-shield" style="color: #0047AB;" aria-hidden="true"></i></span>
+                                                <span class="wiz-feature-icon d-inline-flex align-items-center justify-content-center rounded-3 bg-light flex-shrink-0"><svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg></span>
                                                 <span class="small fw-medium text-secondary">Rapports hebdomadaires de présence et protection des stocks</span>
                                             </div>
                                     </div>
                                     <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 pt-3 mt-3 border-top">
-                                        <small class="text-secondary"><i class="fa fa-map-marker" aria-hidden="true"></i> Sérénité pour dirigeants et gestionnaires de sites</small>
-                                        <a href="/page/appointment" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                        <small class="text-secondary"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg> Sérénité pour dirigeants et gestionnaires de sites</small>
+                                        <a href="/page/appointment" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                                     </div>
                                 </div>
                             </div>
@@ -267,7 +270,7 @@
                     <!-- 1. Lost keys -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 p-4 border rounded-4 shadow-xs hover-shadow transition">
-                            <div class="wiz-icon-tile mb-3"><i class="fa fa-key" style="color: #E8630A;" aria-hidden="true"></i></div>
+                            <div class="wiz-icon-tile mb-3"><svg class="wiz-ico" style="color: #E8630A;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" /><path d="m21 2-9.6 9.6" /><circle cx="7.5" cy="15.5" r="5.5" /></svg></div>
                             <h5 class="fw-bold text-dark mb-2">Clés perdues &amp; accès non contrôlés</h5>
                             <p class="text-secondary small mb-0">Des doubles de clés circulent sans contrôle. À chaque départ de locataire ou d'employé, vous êtes contraint de remplacer le barillet dans l'urgence.</p>
                         </div>
@@ -275,7 +278,7 @@
                     <!-- 2. Security incidents -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 p-4 border rounded-4 shadow-xs hover-shadow transition">
-                            <div class="wiz-icon-tile mb-3"><i class="fa fa-exclamation-triangle" style="color: #EF4444;" aria-hidden="true"></i></div>
+                            <div class="wiz-icon-tile mb-3"><svg class="wiz-ico" style="color: #EF4444;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg></div>
                             <h5 class="fw-bold text-dark mb-2">Incidents de sécurité constatés trop tard</h5>
                             <p class="text-secondary small mb-0">Vos caméras actuelles enregistrent passivement. Vous ne découvrez une effraction ou un vol qu'après coup, sans avoir reçu d'alerte proactive instantanée.</p>
                         </div>
@@ -283,7 +286,7 @@
                     <!-- 3. Airbnb check-ins -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 p-4 border rounded-4 shadow-xs hover-shadow transition">
-                            <div class="wiz-icon-tile mb-3"><i class="fa fa-clock-o" style="color: #F59E0B;" aria-hidden="true"></i></div>
+                            <div class="wiz-icon-tile mb-3"><svg class="wiz-ico" style="color: #F59E0B;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 6v6l4 2" /><circle cx="12" cy="12" r="10" /></svg></div>
                             <h5 class="fw-bold text-dark mb-2">Check-ins Airbnb contraignants</h5>
                             <p class="text-secondary small mb-0">Attentes nocturnes pour les vols retardés à Abidjan, déplacements coûteux pour une simple remise de clés et stress constant lié aux avis négatifs.</p>
                         </div>
@@ -291,7 +294,7 @@
                     <!-- 4. Staff supervision -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 p-4 border rounded-4 shadow-xs hover-shadow transition">
-                            <div class="wiz-icon-tile mb-3"><i class="fa fa-users" style="color: #0047AB;" aria-hidden="true"></i></div>
+                            <div class="wiz-icon-tile mb-3"><svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /></svg></div>
                             <h5 class="fw-bold text-dark mb-2">Supervision du personnel complexe</h5>
                             <p class="text-secondary small mb-0">Aucun moyen objectif de certifier les heures réelles de ménage, de gardiennage ou de passage des prestataires techniques sur vos propriétés.</p>
                         </div>
@@ -299,7 +302,7 @@
                     <!-- 5. Energy waste -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 p-4 border rounded-4 shadow-xs hover-shadow transition">
-                            <div class="wiz-icon-tile mb-3"><i class="fa fa-plug" style="color: #D97706;" aria-hidden="true"></i></div>
+                            <div class="wiz-icon-tile mb-3"><svg class="wiz-ico" style="color: #D97706;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 22v-5" /><path d="M9 8V2" /><path d="M15 8V2" /><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z" /></svg></div>
                             <h5 class="fw-bold text-dark mb-2">Gaspillage d'énergie massif</h5>
                             <p class="text-secondary small mb-0">Climatiseurs laissés allumés à 18°C dans des pièces inoccupées toute la journée. Vos factures CIE explosent inutilement chaque mois.</p>
                         </div>
@@ -307,7 +310,7 @@
                     <!-- 6. Lack of visibility -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 p-4 border rounded-4 shadow-xs hover-shadow transition">
-                            <div class="wiz-icon-tile mb-3"><i class="fa fa-eye-slash" style="color: #334155;" aria-hidden="true"></i></div>
+                            <div class="wiz-icon-tile mb-3"><svg class="wiz-ico" style="color: #334155;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /><path d="m2 2 20 20" /></svg></div>
                             <h5 class="fw-bold text-dark mb-2">Manque total de visibilité en déplacement</h5>
                             <p class="text-secondary small mb-0">Dès que vous voyagez hors de la ville ou à l'étranger, vous perdez le contact visuel et opérationnel avec vos biens les plus précieux.</p>
                         </div>
@@ -318,7 +321,7 @@
                     <h3 class="h2 fw-extrabold text-white mb-3">WizSmith automatise tout ça !</h3>
                     <p class="mx-auto mb-4" style="max-width: 40rem; color: #E2E8F0;">Passez à la gestion autonome : serrures connectées, alertes IA sur votre smartphone et économies d'énergie automatiques.</p>
                     <a href="/support-ia" class="btn bg-white fw-bold px-4 py-3 rounded-4 d-inline-flex align-items-center gap-2" style="color: #1A1A2E;">
-                        Faire mon diagnostic gratuit <i class="fa fa-arrow-right" style="color: #E8630A;" aria-hidden="true"></i>
+                        Faire mon diagnostic gratuit <svg class="wiz-ico" style="color: #E8630A;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                     </a>
                 </div>
             </div>
@@ -338,42 +341,42 @@
                 <div class="row g-4">
                     <div class="col-md-6 col-lg-4">
                         <div class="p-4 bg-white rounded-4 border h-100 shadow-xs">
-                            <div class="d-flex align-items-center justify-content-between mb-3"><span class="fw-black font-monospace" style="color: #0047AB; letter-spacing: 0.1em;">01</span><span class="wiz-icon-tile wiz-icon-tile-blue"><i class="fa fa-shield" style="color: #0047AB;" aria-hidden="true"></i></span></div>
+                            <div class="d-flex align-items-center justify-content-between mb-3"><span class="fw-black font-monospace" style="color: #0047AB; letter-spacing: 0.1em;">01</span><span class="wiz-icon-tile wiz-icon-tile-blue"><svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg></span></div>
                             <h5 class="fw-bold text-dark mb-2">Sécurité réellement intelligente</h5>
                             <p class="text-secondary small mb-0">L'IA analyse les flux vidéo de vos caméras pour distinguer un humain d'un chat ou d'une rafale de vent. Finies les 50 fausses alertes par nuit.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <div class="p-4 bg-white rounded-4 border h-100 shadow-xs">
-                            <div class="d-flex align-items-center justify-content-between mb-3"><span class="fw-black font-monospace" style="color: #0047AB; letter-spacing: 0.1em;">02</span><span class="wiz-icon-tile wiz-icon-tile-blue"><i class="fa fa-th-large" style="color: #0047AB;" aria-hidden="true"></i></span></div>
+                            <div class="d-flex align-items-center justify-content-between mb-3"><span class="fw-black font-monospace" style="color: #0047AB; letter-spacing: 0.1em;">02</span><span class="wiz-icon-tile wiz-icon-tile-blue"><svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="7" height="7" x="3" y="3" rx="1" /><rect width="7" height="7" x="14" y="3" rx="1" /><rect width="7" height="7" x="14" y="14" rx="1" /><rect width="7" height="7" x="3" y="14" rx="1" /></svg></span></div>
                             <h5 class="fw-bold text-dark mb-2">Plateforme centralisée</h5>
                             <p class="text-secondary small mb-0">Plus besoin d'ouvrir quatre applications différentes. Vos serrures, vos caméras et vos climatisations sont pilotées depuis une interface unique.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <div class="p-4 bg-white rounded-4 border h-100 shadow-xs">
-                            <div class="d-flex align-items-center justify-content-between mb-3"><span class="fw-black font-monospace" style="color: #0047AB; letter-spacing: 0.1em;">03</span><span class="wiz-icon-tile wiz-icon-tile-blue"><i class="fa fa-compass" style="color: #0047AB;" aria-hidden="true"></i></span></div>
+                            <div class="d-flex align-items-center justify-content-between mb-3"><span class="fw-black font-monospace" style="color: #0047AB; letter-spacing: 0.1em;">03</span><span class="wiz-icon-tile wiz-icon-tile-blue"><svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /><circle cx="12" cy="12" r="10" /></svg></span></div>
                             <h5 class="fw-bold text-dark mb-2">Pensé pour les usages réels</h5>
                             <p class="text-secondary small mb-0">Conçu sur le terrain en Côte d'Ivoire pour résister aux instabilités réseau et aux coupures de courant grâce à des batteries et mémoires locales.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <div class="p-4 bg-white rounded-4 border h-100 shadow-xs">
-                            <div class="d-flex align-items-center justify-content-between mb-3"><span class="fw-black font-monospace" style="color: #0047AB; letter-spacing: 0.1em;">04</span><span class="wiz-icon-tile wiz-icon-tile-blue"><i class="fa fa-microchip" style="color: #0047AB;" aria-hidden="true"></i></span></div>
+                            <div class="d-flex align-items-center justify-content-between mb-3"><span class="fw-black font-monospace" style="color: #0047AB; letter-spacing: 0.1em;">04</span><span class="wiz-icon-tile wiz-icon-tile-blue"><svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20v2" /><path d="M12 2v2" /><path d="M17 20v2" /><path d="M17 2v2" /><path d="M2 12h2" /><path d="M2 17h2" /><path d="M2 7h2" /><path d="M20 12h2" /><path d="M20 17h2" /><path d="M20 7h2" /><path d="M7 20v2" /><path d="M7 2v2" /><rect x="4" y="4" width="16" height="16" rx="2" /><rect x="8" y="8" width="8" height="8" rx="1" /></svg></span></div>
                             <h5 class="fw-bold text-dark mb-2">Automatisation complète</h5>
                             <p class="text-secondary small mb-0">Verrouillage automatique après 22h, extinction de l'éclairage en cas d'inoccupation et génération instantanée de codes pour les livreurs.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <div class="p-4 bg-white rounded-4 border h-100 shadow-xs">
-                            <div class="d-flex align-items-center justify-content-between mb-3"><span class="fw-black font-monospace" style="color: #0047AB; letter-spacing: 0.1em;">05</span><span class="wiz-icon-tile wiz-icon-tile-blue"><i class="fa fa-money" style="color: #0047AB;" aria-hidden="true"></i></span></div>
+                            <div class="d-flex align-items-center justify-content-between mb-3"><span class="fw-black font-monospace" style="color: #0047AB; letter-spacing: 0.1em;">05</span><span class="wiz-icon-tile wiz-icon-tile-blue"><svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="12" x="2" y="6" rx="2" /><circle cx="12" cy="12" r="2" /><path d="M6 12h.01M18 12h.01" /></svg></span></div>
                             <h5 class="fw-bold text-dark mb-2">Réduction des pertes et des coûts</h5>
                             <p class="text-secondary small mb-0">Économisez jusqu'à 35% sur votre facture d'électricité et éliminez définitivement les frais récurrents de reproduction ou remplacement de serrures.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <div class="p-4 bg-white rounded-4 border h-100 shadow-xs">
-                            <div class="d-flex align-items-center justify-content-between mb-3"><span class="fw-black font-monospace" style="color: #0047AB; letter-spacing: 0.1em;">06</span><span class="wiz-icon-tile wiz-icon-tile-blue"><i class="fa fa-mobile" style="color: #0047AB;" aria-hidden="true"></i></span></div>
+                            <div class="d-flex align-items-center justify-content-between mb-3"><span class="fw-black font-monospace" style="color: #0047AB; letter-spacing: 0.1em;">06</span><span class="wiz-icon-tile wiz-icon-tile-blue"><svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /><path d="M12 18h.01" /></svg></span></div>
                             <h5 class="fw-bold text-dark mb-2">Toujours connecté, toujours en contrôle</h5>
                             <p class="text-secondary small mb-0">Où que vous soyez dans le monde, vérifiez qui est entré, verrouillez à distance et recevez des notifications instantanées avec preuve photo.</p>
                         </div>
@@ -410,7 +413,7 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-light border-top p-3">
-                                <a href="/residences-airbnb" class="btn btn-sm btn-light border w-100 fw-bold rounded-3 d-flex align-items-center justify-content-center gap-2">Explorer Résidences <i class="fa fa-arrow-right" style="color: #0047AB;" aria-hidden="true"></i></a>
+                                <a href="/residences-airbnb" class="btn btn-sm btn-light border w-100 fw-bold rounded-3 d-flex align-items-center justify-content-center gap-2">Explorer Résidences <svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                             </div>
                         </div>
                     </div>
@@ -431,7 +434,7 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-light border-top p-3">
-                                <a href="/residences-airbnb" class="btn btn-sm btn-light border w-100 fw-bold rounded-3 d-flex align-items-center justify-content-center gap-2">Découvrir Airbnb <i class="fa fa-arrow-right" style="color: #0047AB;" aria-hidden="true"></i></a>
+                                <a href="/residences-airbnb" class="btn btn-sm btn-light border w-100 fw-bold rounded-3 d-flex align-items-center justify-content-center gap-2">Découvrir Airbnb <svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                             </div>
                         </div>
                     </div>
@@ -452,7 +455,7 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-light border-top p-3">
-                                <a href="/hotels-intelligents" class="btn btn-sm btn-light border w-100 fw-bold rounded-3 d-flex align-items-center justify-content-center gap-2">Voir Hôtels Intelligents <i class="fa fa-arrow-right" style="color: #0047AB;" aria-hidden="true"></i></a>
+                                <a href="/hotels-intelligents" class="btn btn-sm btn-light border w-100 fw-bold rounded-3 d-flex align-items-center justify-content-center gap-2">Voir Hôtels Intelligents <svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                             </div>
                         </div>
                     </div>
@@ -473,7 +476,7 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-light border-top p-3">
-                                <a href="#packs" class="btn btn-sm btn-light border w-100 fw-bold rounded-3 d-flex align-items-center justify-content-center gap-2">Découvrir Pack Business <i class="fa fa-arrow-right" style="color: #0047AB;" aria-hidden="true"></i></a>
+                                <a href="#packs" class="btn btn-sm btn-light border w-100 fw-bold rounded-3 d-flex align-items-center justify-content-center gap-2">Découvrir Pack Business <svg class="wiz-ico" style="color: #0047AB;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                             </div>
                         </div>
                     </div>
@@ -603,8 +606,8 @@
                                     <li class="d-flex align-items-start gap-2 text-muted"><span class="wiz-tick wiz-tick-off d-inline-flex align-items-center justify-content-center rounded-circle flex-shrink-0">✕</span><span class="text-decoration-line-through">Intégration Apple HomeKit</span></li>
                             </ul>
                             <div class="border-top pt-3">
-                                <a href="/page/appointment" class="btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2" style="background-color: #1A1A2E; border-color: #1A1A2E;">Choisir Business <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                                <p class="text-center text-secondary mt-3 mb-0" style="font-size: 0.72rem;"><i class="fa fa-shield text-success" aria-hidden="true"></i> Garantie matérielle &amp; maintenance incluses</p>
+                                <a href="/page/appointment" class="btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2" style="background-color: #1A1A2E; border-color: #1A1A2E;">Choisir Business <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+                                <p class="text-center text-secondary mt-3 mb-0" style="font-size: 0.72rem;"><svg class="wiz-ico text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg> Garantie matérielle &amp; maintenance incluses</p>
                             </div>
                         </div>
                     </div>
@@ -635,8 +638,8 @@
                                     <li class="d-flex align-items-start gap-2 text-muted"><span class="wiz-tick wiz-tick-off d-inline-flex align-items-center justify-content-center rounded-circle flex-shrink-0">✕</span><span class="text-decoration-line-through">Audit comportemental IA personnalisé</span></li>
                             </ul>
                             <div class="border-top pt-3">
-                                <a href="/page/appointment" class="btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2" style="background-color: #0047AB; border-color: #0047AB;">Choisir Élite <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                                <p class="text-center text-secondary mt-3 mb-0" style="font-size: 0.72rem;"><i class="fa fa-shield text-success" aria-hidden="true"></i> Garantie matérielle &amp; maintenance incluses</p>
+                                <a href="/page/appointment" class="btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2" style="background-color: #0047AB; border-color: #0047AB;">Choisir Élite <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+                                <p class="text-center text-secondary mt-3 mb-0" style="font-size: 0.72rem;"><svg class="wiz-ico text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg> Garantie matérielle &amp; maintenance incluses</p>
                             </div>
                         </div>
                     </div>
@@ -664,8 +667,8 @@
                                     <li class="d-flex align-items-start gap-2"><span class="wiz-tick d-inline-flex align-items-center justify-content-center rounded-circle flex-shrink-0">✓</span><span>Assistance 24h/24 et 7j/7</span></li>
                             </ul>
                             <div class="border-top pt-3">
-                                <a href="/page/appointment" class="btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2" style="background-color: #1A1A2E; border-color: #1A1A2E;">Choisir Prestige <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                                <p class="text-center text-secondary mt-3 mb-0" style="font-size: 0.72rem;"><i class="fa fa-shield text-success" aria-hidden="true"></i> Garantie matérielle &amp; maintenance incluses</p>
+                                <a href="/page/appointment" class="btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2" style="background-color: #1A1A2E; border-color: #1A1A2E;">Choisir Prestige <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+                                <p class="text-center text-secondary mt-3 mb-0" style="font-size: 0.72rem;"><svg class="wiz-ico text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg> Garantie matérielle &amp; maintenance incluses</p>
                             </div>
                         </div>
                     </div>
@@ -685,12 +688,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><th scope="row" class="fw-semibold text-dark">Serrure connectée sans clé (WizLock)</th><td class="text-center">Badge / Code</td><td class="text-center fw-bold text-success"><i class="fa fa-check" aria-hidden="true"></i> Clé &amp; PIN</td><td class="text-center fw-bold text-success"><i class="fa fa-check" aria-hidden="true"></i> Biométrie</td></tr>
-                                <tr><th scope="row" class="fw-semibold text-dark">Codes invités temporaires programmés</th><td class="text-center text-muted">—</td><td class="text-center fw-bold text-success"><i class="fa fa-check" aria-hidden="true"></i> Illimités</td><td class="text-center fw-bold text-success"><i class="fa fa-check" aria-hidden="true"></i> Illimités</td></tr>
-                                <tr><th scope="row" class="fw-semibold text-dark">Compatibilité caméras existantes</th><td class="text-center fw-bold text-success"><i class="fa fa-check" aria-hidden="true"></i> Raccordement IA</td><td class="text-center fw-bold text-success"><i class="fa fa-check" aria-hidden="true"></i> Raccordement IA</td><td class="text-center fw-bold text-success"><i class="fa fa-check" aria-hidden="true"></i> Caméras HD</td></tr>
-                                <tr><th scope="row" class="fw-semibold text-dark">Régulation d'énergie intelligente</th><td class="text-center text-muted">—</td><td class="text-center fw-bold text-success"><i class="fa fa-check" aria-hidden="true"></i> Coupure auto</td><td class="text-center fw-bold text-success"><i class="fa fa-check" aria-hidden="true"></i> Scénarios complets</td></tr>
-                                <tr><th scope="row" class="fw-semibold text-dark">Écosystèmes domotiques (Apple/Google)</th><td class="text-center text-muted">—</td><td class="text-center text-muted">—</td><td class="text-center fw-bold text-success"><i class="fa fa-check" aria-hidden="true"></i> HomeKit &amp; Google</td></tr>
-                                <tr><th scope="row" class="fw-semibold text-dark">Maintenance continue (WizFix &amp; WizRenouv)</th><td class="text-center">Garantie standard</td><td class="text-center">Garantie prioritaire</td><td class="text-center fw-bold text-success"><i class="fa fa-check" aria-hidden="true"></i> Remplacement 24h</td></tr>
+                                <tr><th scope="row" class="fw-semibold text-dark">Serrure connectée sans clé (WizLock)</th><td class="text-center">Badge / Code</td><td class="text-center fw-bold text-success"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg> Clé &amp; PIN</td><td class="text-center fw-bold text-success"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg> Biométrie</td></tr>
+                                <tr><th scope="row" class="fw-semibold text-dark">Codes invités temporaires programmés</th><td class="text-center text-muted">—</td><td class="text-center fw-bold text-success"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg> Illimités</td><td class="text-center fw-bold text-success"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg> Illimités</td></tr>
+                                <tr><th scope="row" class="fw-semibold text-dark">Compatibilité caméras existantes</th><td class="text-center fw-bold text-success"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg> Raccordement IA</td><td class="text-center fw-bold text-success"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg> Raccordement IA</td><td class="text-center fw-bold text-success"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg> Caméras HD</td></tr>
+                                <tr><th scope="row" class="fw-semibold text-dark">Régulation d'énergie intelligente</th><td class="text-center text-muted">—</td><td class="text-center fw-bold text-success"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg> Coupure auto</td><td class="text-center fw-bold text-success"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg> Scénarios complets</td></tr>
+                                <tr><th scope="row" class="fw-semibold text-dark">Écosystèmes domotiques (Apple/Google)</th><td class="text-center text-muted">—</td><td class="text-center text-muted">—</td><td class="text-center fw-bold text-success"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg> HomeKit &amp; Google</td></tr>
+                                <tr><th scope="row" class="fw-semibold text-dark">Maintenance continue (WizFix &amp; WizRenouv)</th><td class="text-center">Garantie standard</td><td class="text-center">Garantie prioritaire</td><td class="text-center fw-bold text-success"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg> Remplacement 24h</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -713,7 +716,7 @@
                         <div class="wiz-testimonial card h-100 p-4 rounded-5 border bg-white">
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <span class="text-warning" aria-label="5 étoiles sur 5">★★★★★</span>
-                                <i class="fa fa-quote-right wiz-quote" aria-hidden="true"></i>
+                                <svg class="wiz-ico wiz-quote" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /></svg>
                             </div>
                             <p class="small fst-italic text-secondary mb-4">"Pour mes locations courte durée, WizSmith a éliminé le calvaire des arrivées tardives. Chaque voyageur reçoit son code PIN par SMS et entre en toute autonomie. Mon score Airbnb est passé à 4.95 étoiles."</p>
                             <div class="mt-auto d-flex align-items-center gap-3 pt-3 border-top">
@@ -729,7 +732,7 @@
                         <div class="wiz-testimonial card h-100 p-4 rounded-5 border bg-white">
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <span class="text-warning" aria-label="5 étoiles sur 5">★★★★★</span>
-                                <i class="fa fa-quote-right wiz-quote" aria-hidden="true"></i>
+                                <svg class="wiz-ico wiz-quote" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /></svg>
                             </div>
                             <p class="small fst-italic text-secondary mb-4">"Le raccordement de l'IA WizSmith à notre système de caméras existant a transformé notre sécurité. Nous ne recevons plus que les alertes critiques avec photo sur nos téléphones. C'est fiable et réactif."</p>
                             <div class="mt-auto d-flex align-items-center gap-3 pt-3 border-top">
@@ -745,7 +748,7 @@
                         <div class="wiz-testimonial card h-100 p-4 rounded-5 border bg-white">
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <span class="text-warning" aria-label="5 étoiles sur 5">★★★★★</span>
-                                <i class="fa fa-quote-right wiz-quote" aria-hidden="true"></i>
+                                <svg class="wiz-ico wiz-quote" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /></svg>
                             </div>
                             <p class="small fst-italic text-secondary mb-4">"La régulation automatique de la climatisation nous a fait économiser plus de 32% sur notre facture CIE dès le premier mois. L'investissement dans le Pack Prestige a été rentabilisé en un temps record."</p>
                             <div class="mt-auto d-flex align-items-center gap-3 pt-3 border-top">
@@ -770,7 +773,7 @@
             <div class="container position-relative py-lg-5 text-center">
                 <div class="mx-auto" style="max-width: 46rem;">
                     <span class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill small fw-semibold mb-4" style="background: rgba(30,41,59,0.8); border: 1px solid #334155; color: #E8630A;">
-                        <i class="fa fa-magic" aria-hidden="true"></i> Sécurisez et Automatisez dès Aujourd'hui
+                        <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" /><path d="M22 4h-4" /><circle cx="4" cy="20" r="2" /></svg> Sécurisez et Automatisez dès Aujourd'hui
                     </span>
                     <h2 class="display-5 fw-black text-white mb-4">Prêt à confier votre propriété à une technologie qui travaille pour vous ?</h2>
                     <p class="lead fs-6 mb-5" style="color: #CBD5E1;">
@@ -778,10 +781,10 @@
                     </p>
                     <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
                         <a href="/support-ia" class="wiz-cta-primary btn btn-lg px-5 py-3 fw-bold text-white rounded-4 d-inline-flex align-items-center justify-content-center gap-2">
-                            Faire mon diagnostic gratuit <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            Faire mon diagnostic gratuit <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                         </a>
                         <a href="/page/appointment" class="btn btn-lg px-4 py-3 fw-semibold text-white rounded-4 d-inline-flex align-items-center justify-content-center gap-2" style="background: rgba(30,41,59,0.8); border: 1px solid #334155;">
-                            <i class="fa fa-calendar" style="color: #94A3B8;" aria-hidden="true"></i> Planifier un rendez-vous
+                            <svg class="wiz-ico" style="color: #94A3B8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /></svg> Planifier un rendez-vous
                         </a>
                     </div>
                 </div>

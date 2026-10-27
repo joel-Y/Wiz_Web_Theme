@@ -129,7 +129,7 @@
                 <div class="container">
                     <!-- Brand Logo -->
                     <a class="navbar-brand d-flex align-items-center gap-2" href="/" aria-label="WizSmith Accueil">
-                        <span class="wiz-logo-mark d-inline-flex align-items-center justify-content-center rounded-3 text-white flex-shrink-0"><i class="fa fa-shield" aria-hidden="true"></i></span>
+                        <span class="wiz-logo-mark d-inline-flex align-items-center justify-content-center rounded-3 text-white flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /></svg></span>
                         <span class="d-flex flex-column lh-1">
                             <span class="wiz-logo-text fw-black fs-3">Wiz<span style="color: #E8630A;">Smith</span></span>
                             <span class="wiz-logo-sub text-uppercase fw-bold">Property Tech</span>
@@ -182,7 +182,7 @@
                         <!-- Col 1: Brand & Mission -->
                         <div class="col-lg-4 col-md-6">
                             <div class="mb-3">
-                                <span class="d-inline-flex align-items-center gap-2"><span class="wiz-logo-mark d-inline-flex align-items-center justify-content-center rounded-3 text-white flex-shrink-0"><i class="fa fa-shield" aria-hidden="true"></i></span><span class="fw-black fs-3 text-white">Wiz<span style="color: #E8630A;">Smith</span></span></span>
+                                <span class="d-inline-flex align-items-center gap-2"><span class="wiz-logo-mark d-inline-flex align-items-center justify-content-center rounded-3 text-white flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /></svg></span><span class="fw-black fs-3 text-white">Wiz<span style="color: #E8630A;">Smith</span></span></span>
                             </div>
                             <p class="text-white-50 pe-lg-4 small mb-4" style="line-height: 1.7;">
                                 WizSmith transforme et protège vos propriétés immobilières en Côte d’Ivoire et en Afrique de l'Ouest. Caméras intelligentes, serrures connectées, contrôle d'accès sans clé et IA proactive au service de votre tranquillité.

@@ -1,46 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="1">
-        <!-- Main WizSmith Header Menu Records -->
-        <!-- The stock "Home" menu already points to "/": rename it instead of adding a duplicate entry -->
+        <!-- The stock "Home" menu already points to "/": rename it instead of adding a duplicate entry.
+             The other menu entries (Comment ça fonctionne, Solutions, ...) are intentionally NOT created here:
+             existing sites already have them, and creating them again shows every item twice in the header.
+             The header renders whatever is configured under Website > Configuration > Menus. -->
         <record id="website.menu_home" model="website.menu">
             <field name="name">Accueil</field>
             <field name="sequence" type="int">10</field>
-        </record>
-
-        <record id="menu_wizsmith_how_it_works" model="website.menu">
-            <field name="name">Comment ça fonctionne</field>
-            <field name="url">/comment-ca-fonctionne</field>
-            <field name="parent_id" ref="website.main_menu"/>
-            <field name="sequence" type="int">20</field>
-        </record>
-
-        <record id="menu_wizsmith_solutions" model="website.menu">
-            <field name="name">Solutions</field>
-            <field name="url">/packs</field>
-            <field name="parent_id" ref="website.main_menu"/>
-            <field name="sequence" type="int">30</field>
-        </record>
-
-        <record id="menu_wizsmith_residences_airbnb" model="website.menu">
-            <field name="name">Résidences &amp; Airbnb</field>
-            <field name="url">/residences-airbnb</field>
-            <field name="parent_id" ref="website.main_menu"/>
-            <field name="sequence" type="int">40</field>
-        </record>
-
-        <record id="menu_wizsmith_hotels" model="website.menu">
-            <field name="name">Hôtels intelligents</field>
-            <field name="url">/hotels-intelligents</field>
-            <field name="parent_id" ref="website.main_menu"/>
-            <field name="sequence" type="int">50</field>
-        </record>
-
-        <record id="menu_wizsmith_appointment" model="website.menu">
-            <field name="name">Rendez-vous</field>
-            <field name="url">/page/appointment</field>
-            <field name="parent_id" ref="website.main_menu"/>
-            <field name="sequence" type="int">60</field>
         </record>
     </data>
 </odoo>
