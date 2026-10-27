@@ -20,7 +20,7 @@ Caractéristiques principales :
 * Pages dédiées : Accueil, Comment ça fonctionne, Packs & Solutions, Résidences & Airbnb, Hôtels intelligents, Rendez-vous
 * Intégration backend des rendez-vous avec le Calendrier Odoo (compatible avec le module Probuse Website Appointment Customer Management and Integration with Calendar)
     """,
-    'category': 'Theme/Corporate',
+    'category': 'Website/Website',  # NOT 'Theme/...': Odoo drops assets of theme modules that are not the website's selected theme
     'version': '1.0.0',
     'author': 'WizSmith Engineering',
     'website': 'https://wizsmith.com',
