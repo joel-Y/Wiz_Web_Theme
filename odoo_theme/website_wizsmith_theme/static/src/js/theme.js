@@ -11,7 +11,35 @@ export const WizSmithThemeWidget = publicWidget.Widget.extend({
         this._setupSmoothScroll();
         this._setupBillingToggle();
         this._setupScrollEffects();
+        this._setupRoiSimulator();
         return Promise.resolve();
+    },
+
+    _setupRoiSimulator() {
+        // Résidences & Airbnb page: hours saved = 6 h per property, energy saving = 22 000 CFA per property.
+        const range = this.el.querySelector('#wiz-roi-count');
+        if (!range) {
+            return;
+        }
+        const q = (sel) => this.el.querySelector(sel);
+        const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const fmt = new Intl.NumberFormat('fr-FR');
+        const update = (animate) => {
+            const count = Math.min(12, Math.max(1, parseInt(range.value, 10) || 3));
+            q('.wiz-roi-count-text').textContent = `${count} bien${count > 1 ? 's' : ''}`;
+            q('.wiz-roi-hours').textContent = String(count * 6);
+            q('.wiz-roi-cfa').textContent = fmt.format(count * 22000);
+            if (animate && !reduce) {
+                ['.wiz-roi-count-text', '.wiz-roi-hours', '.wiz-roi-cfa'].forEach((sel) => {
+                    const el = q(sel);
+                    el.classList.remove('wiz-pop');
+                    void el.offsetWidth; // restart the CSS animation
+                    el.classList.add('wiz-pop');
+                });
+            }
+        };
+        range.addEventListener('input', () => update(true));
+        update(false);
     },
 
     _setupScrollEffects() {

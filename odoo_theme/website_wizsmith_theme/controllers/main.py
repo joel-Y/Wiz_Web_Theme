@@ -40,6 +40,7 @@ COMMUNE_LABELS = {
     'plateau': 'Plateau',
     'bingerville': 'Bingerville',
     'yopougon': 'Yopougon',
+    'autre': 'Autre commune / Hors Abidjan',
 }
 def _clean(value, max_len):
     """Strip and truncate a free-text form value."""
@@ -174,4 +175,14 @@ class WizsmithAppointmentController(http.Controller):
             _logger.exception('Failed to create appointment for website visitor')
             return request.redirect('/page/appointment?status=error&msg=server')
 
+        # Keep the confirmation details server-side (session) so no personal data travels in the URL.
+        request.session['wiz_rdv'] = {
+            'ref': ref_code,
+            'name': customer_name,
+            'phone': phone,
+            'date': day.strftime('%d/%m/%Y'),
+            'slot': time_slot,
+            'commune': commune_title,
+            'property': prop_title,
+        }
         return request.redirect('/page/appointment?status=success&ref=%s' % ref_code)

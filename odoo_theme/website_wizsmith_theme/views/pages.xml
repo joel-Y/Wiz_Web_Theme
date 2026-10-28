@@ -97,71 +97,107 @@
         </t>
     </template>
 
-    <!-- Page: Résidences & Airbnb (/residences-airbnb) -->
+    <!-- Page: Résidences & Airbnb (/residences-airbnb) - port of ResidencesAirbnbPage.tsx -->
     <template id="wizsmith_page_residences_airbnb" name="Résidences &amp; Airbnb">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
-                <section class="py-5 bg-white border-bottom">
-                    <div class="container py-4">
-                        <div class="row align-items-center gy-5 gx-lg-5">
-                            <div class="col-lg-6">
-                                <span class="badge px-3 py-1 rounded-pill mb-3" style="background: rgba(0,71,171,0.1); color: #0047AB;">
-                                    Location Courte Durée &amp; Résidences Privées
-                                </span>
-                                <h1 class="display-5 fw-extrabold text-dark mb-3" style="color: #1A1A2E;">
-                                    Gérez votre propriété depuis n'importe où.
-                                </h1>
-                                <p class="lead text-secondary mb-4 fs-6">
-                                    Finie la contrainte des remises de clés et les factures d'électricité surprises. WizSmith automatise vos accès voyageurs et surveille votre bien 24h/24.
-                                </p>
-                                <div class="d-flex flex-column gap-3 mb-4">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <span class="fs-4">🔑</span>
-                                        <div>
-                                            <strong class="d-block text-dark">Check-in autonome sans contact</strong>
-                                            <small class="text-secondary">Chaque voyageur reçoit un code PIN valide uniquement pendant la durée exacte de son séjour.</small>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-3">
-                                        <span class="fs-4">💡</span>
-                                        <div>
-                                            <strong class="d-block text-dark">Économies d'électricité automatiques</strong>
-                                            <small class="text-secondary">Extinction automatique des climatiseurs et lumières après le départ des occupants.</small>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-3">
-                                        <span class="fs-4">🛡️</span>
-                                        <div>
-                                            <strong class="d-block text-dark">Surveillance proactive des intrusions</strong>
-                                            <small class="text-secondary">Alerte immédiate en cas de mouvement inhabituel en période de vacance locative.</small>
-                                        </div>
-                                    </div>
+                <section class="wiz-page bg-white py-5">
+                    <div class="container py-lg-4">
+                        <!-- Hero + ROI simulator -->
+                        <div class="row align-items-center gy-5 gx-lg-5 mb-5 pb-lg-4">
+                            <div class="col-lg-7 wiz-fade-up">
+                                <span class="badge rounded-pill px-3 py-2 mb-3 fw-bold" style="background: #EFF6FF; color: #0047AB;">Hôtes Airbnb &amp; Propriétaires de Résidences</span>
+                                <h1 class="wiz-page-title fw-black mb-3">Gérez votre propriété depuis n'importe où. <br/><span style="color: #0047AB;">Sans remise de clés.</span></h1>
+                                <p class="fs-5 text-secondary mb-4" style="line-height: 1.7;">Ne perdez plus vos soirées à attendre les voyageurs retardés. WizSmith automatise les arrivées, coupe la climatisation lors des vacances locatives et sécurise votre bien 24h/24.</p>
+                                <div class="d-flex flex-column flex-sm-row gap-3 pt-2">
+                                    <a href="/#packs" class="wiz-btn-blue btn btn-lg px-4 py-3 fw-bold rounded-4 d-inline-flex align-items-center justify-content-center gap-2"><span>Découvrir le Pack Élite (à partir de 40 000 CFA/mois)</span><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+                                    <a href="/support-ia" class="wiz-btn-soft btn btn-lg px-4 py-3 fw-semibold rounded-4 text-center">Calculer mon score de sécurité</a>
                                 </div>
-                                <a href="/packs" class="btn btn-primary px-4 py-3 fw-bold text-white rounded-3" style="background-color: #0047AB;">
-                                    Découvrir le Pack Élite
-                                </a>
                             </div>
 
-                            <div class="col-lg-6">
-                                <div class="p-4 rounded-4 shadow-xl border bg-light">
-                                    <h5 class="fw-bold text-dark mb-3">Simulation de revenus &amp; gains Airbnb</h5>
-                                    <div class="p-3 bg-white rounded-3 border mb-3">
-                                        <div class="d-flex justify-content-between mb-1">
-                                            <span class="text-secondary small">Temps gagné par mois :</span>
-                                            <span class="fw-bold text-dark">18 heures</span>
+                            <div class="col-lg-5 wiz-fade-up wiz-delay-1">
+                                <div class="wiz-roi rounded-5 p-4 p-sm-4">
+                                    <h3 class="fs-5 fw-bold mb-1" style="color: #1A1A2E;">Simulateur d'économies &amp; gain de temps</h3>
+                                    <p class="small text-secondary mb-4">Ajustez le curseur selon le nombre de meublés ou résidences que vous gérez :</p>
+                                    <div class="mb-4">
+                                        <div class="d-flex justify-content-between align-items-center small fw-bold mb-2" style="color: #334155;">
+                                            <label for="wiz-roi-count" class="mb-0">Nombre de biens :</label>
+                                            <span class="fs-6 font-monospace" style="color: #0047AB;"><span class="wiz-roi-count-text">3 biens</span></span>
                                         </div>
-                                        <div class="d-flex justify-content-between mb-1">
-                                            <span class="text-secondary small">Économie électricité estimée :</span>
-                                            <span class="fw-bold text-success">-30% à -40%</span>
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <span class="text-secondary small">Satisfaction voyageurs :</span>
-                                            <span class="fw-bold text-primary">4.9 / 5 étoiles</span>
-                                        </div>
+                                        <input type="range" id="wiz-roi-count" class="wiz-range-light w-100" min="1" max="12" step="1" value="3" aria-label="Nombre de logements gérés"/>
                                     </div>
-                                    <p class="text-muted small mb-0">Recommandé pour tous les hôtes opérant à Abidjan (Cocody, Zone 4, Marcory, Plateau).</p>
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-6"><div class="wiz-roi-stat rounded-4 p-3 h-100">
+                                            <span class="d-block text-secondary mb-1" style="font-size: 0.7rem;">Temps gagné / mois</span>
+                                            <span class="fs-3 fw-black font-monospace" style="color: #0047AB;">~<span class="wiz-roi-hours">18</span> h</span>
+                                            <span class="d-block mt-1" style="font-size: 0.62rem; color: #94A3B8;">Zéro trajet pour les clés</span>
+                                        </div></div>
+                                        <div class="col-6"><div class="wiz-roi-stat rounded-4 p-3 h-100">
+                                            <span class="d-block text-secondary mb-1" style="font-size: 0.7rem;">Économie d'énergie</span>
+                                            <span class="fs-3 fw-black font-monospace" style="color: #059669;">~<span class="wiz-roi-cfa">66 000</span> CFA</span>
+                                            <span class="d-block mt-1" style="font-size: 0.62rem; color: #94A3B8;">Coupure clim inoccupée</span>
+                                        </div></div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-3 p-3 rounded-4 small" style="background: rgba(239, 246, 255, 0.7); border: 1px solid #DBEAFE; color: #1E3A8A;">
+                                        <span class="flex-shrink-0 fs-5" style="color: #F59E0B;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg></span>
+                                        <span>Plus de 95% des hôtes équipés obtiennent le statut Superhôte grâce au check-in autonome sans friction.</span>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Photo showcase -->
+                        <div class="row g-4 mb-5 pb-lg-3">
+                            <div class="col-md-6">
+                                <div class="wiz-showcase rounded-5 overflow-hidden position-relative">
+                                    <img src="/website_wizsmith_theme/static/src/img/solution_airbnb_west_african_1792714518119.jpg" alt="Check-in voyageur autonome sans contact sur Airbnb à Abidjan" loading="lazy" class="w-100 h-100"/>
+                                    <div class="wiz-photo-shade position-absolute top-0 start-0 w-100 h-100"></div>
+                                    <div class="position-absolute bottom-0 start-0 end-0 p-4 text-white">
+                                        <span class="badge rounded-pill px-3 py-2 text-uppercase" style="background: #E8630A; font-size: 0.62rem; letter-spacing: 0.06em;">Arrivées 24/7 Autonomes</span>
+                                        <h4 class="fs-5 fw-bold mt-2 mb-1 text-white">Zéro attente, zéro remise de clés physiques</h4>
+                                        <p class="small mb-0" style="color: rgba(255,255,255,0.8);">Le voyageur compose son code PIN temporaire et entre en toute autonomie.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="wiz-showcase rounded-5 overflow-hidden position-relative">
+                                    <img src="/website_wizsmith_theme/static/src/img/solution_luxury_villa_1792700326830.jpg" alt="Résidence privée et villa de luxe sécurisée à Abidjan" loading="lazy" class="w-100 h-100"/>
+                                    <div class="wiz-photo-shade position-absolute top-0 start-0 w-100 h-100"></div>
+                                    <div class="position-absolute bottom-0 start-0 end-0 p-4 text-white">
+                                        <span class="badge rounded-pill px-3 py-2 text-uppercase" style="background: #0047AB; font-size: 0.62rem; letter-spacing: 0.06em;">Villas &amp; Résidences</span>
+                                        <h4 class="fs-5 fw-bold mt-2 mb-1 text-white">Protection biométrique &amp; contrôle familial</h4>
+                                        <p class="small mb-0" style="color: rgba(255,255,255,0.8);">Accès par empreinte digitale, journal des visites et alertes immédiates.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feature grid -->
+                        <div class="row g-4">
+                            <div class="col-md-4"><div class="wiz-feature-card rounded-5 p-4 h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="wiz-page-icon rounded-4 mb-4" style="color: #0047AB;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /><circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></svg></div>
+                                    <h3 class="fs-5 fw-bold mb-2" style="color: #1A1A2E;">Codes PIN temporaires &amp; automatisés</h3>
+                                    <p class="small text-secondary mb-3" style="line-height: 1.7;">Chaque voyageur reçoit un code unique par SMS ou email. Ce code s'active à 15h le jour d'arrivée et expire automatiquement à 11h le jour du départ.</p>
+                                </div>
+                                <span class="small fw-semibold" style="color: #0047AB;">✓ Zéro double de clés possible</span>
+                            </div></div>
+                            <div class="col-md-4"><div class="wiz-feature-card rounded-5 p-4 h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="wiz-page-icon rounded-4 mb-4" style="color: #059669;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg></div>
+                                    <h3 class="fs-5 fw-bold mb-2" style="color: #1A1A2E;">Gestion intelligente de la climatisation</h3>
+                                    <p class="small text-secondary mb-3" style="line-height: 1.7;">Nos capteurs coupent automatiquement les climatiseurs laissés en marche après le départ des occupants ou lorsque les fenêtres restent ouvertes.</p>
+                                </div>
+                                <span class="small fw-semibold" style="color: #059669;">✓ Jusqu'à 35% d'économies CIE</span>
+                            </div></div>
+                            <div class="col-md-4"><div class="wiz-feature-card rounded-5 p-4 h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="wiz-page-icon rounded-4 mb-4" style="color: #EF4444;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg></div>
+                                    <h3 class="fs-5 fw-bold mb-2" style="color: #1A1A2E;">Détection d'intrusion en période vacante</h3>
+                                    <p class="small text-secondary mb-3" style="line-height: 1.7;">Quand l'appartement est inoccupé, les caméras IA s'arment automatiquement. Tout mouvement anormal déclenche une alerte smartphone avec capture photo.</p>
+                                </div>
+                                <span class="small fw-semibold" style="color: #DC2626;">✓ Vigilance 24h/24 sans fausse alerte</span>
+                            </div></div>
                         </div>
                     </div>
                 </section>
@@ -169,56 +205,74 @@
         </t>
     </template>
 
-    <!-- Page: Hôtels intelligents (/hotels-intelligents) -->
+    <!-- Page: Hôtels intelligents (/hotels-intelligents) - port of SmartHotelsPage.tsx -->
     <template id="wizsmith_page_smart_hotels" name="Hôtels intelligents">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
-                <section class="py-5 bg-light border-bottom">
-                    <div class="container py-4 text-center">
-                        <span class="badge px-3 py-1 rounded-pill mb-2" style="background: rgba(232, 99, 10, 0.1); color: #E8630A;">
-                            Hospitality &amp; Résidences Hôtelières
-                        </span>
-                        <h1 class="display-5 fw-extrabold text-dark mb-3" style="color: #1A1A2E;">
-                            L'hôtel du futur commence aujourd'hui.
-                        </h1>
-                        <p class="lead text-secondary max-w-xl mx-auto fs-6">
-                            Centralisez la gestion de vos chambres, optimisez vos coûts d'exploitation et offrez une expérience sans friction à vos clients.
-                        </p>
-                    </div>
-                </section>
-
-                <section class="py-5 bg-white">
+                <section class="wiz-page py-5" style="background-color: #F8FAFC;">
                     <div class="container py-lg-4">
-                        <div class="row g-4 mb-5">
-                            <div class="col-md-4">
-                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
-                                    <span class="fs-1 mb-2">🛎️</span>
-                                    <h5 class="fw-bold text-dark mb-2">Expérience client fluide</h5>
-                                    <p class="text-secondary small">Accès aux chambres par smartphone ou digicode confidentiel sans file d'attente à la réception.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
-                                    <span class="fs-1 mb-2">📊</span>
-                                    <h5 class="fw-bold text-dark mb-2">Supervision des chambres</h5>
-                                    <p class="text-secondary small">Statut en temps réel de chaque chambre (occupée, vacante, en cours de nettoyage) avec traçabilité du personnel.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
-                                    <span class="fs-1 mb-2">⚡</span>
-                                    <h5 class="fw-bold text-dark mb-2">Réduction des charges</h5>
-                                    <p class="text-secondary small">Coupure intelligente de la climatisation dès le check-out ou détection de fenêtres ouvertes.</p>
+                        <div class="text-center mx-auto mb-5 pb-lg-3 wiz-fade-up" style="max-width: 48rem;">
+                            <span class="small fw-bold text-uppercase" style="color: #E8630A; letter-spacing: 0.08em;">Hôtellerie &amp; Résidences de Prestige</span>
+                            <h1 class="wiz-page-title fw-black mt-2 mb-3">L'hôtel du futur commence aujourd'hui.</h1>
+                            <p class="fs-5 text-secondary mb-0">Offrez une expérience d'accueil VIP et autonome à vos résidents tout en réduisant de 30% les coûts énergétiques de votre établissement.</p>
+                        </div>
+
+                        <!-- Visual hotel showcase -->
+                        <div class="wiz-hotel-banner rounded-5 overflow-hidden position-relative mb-5">
+                            <img src="/website_wizsmith_theme/static/src/img/solution_boutique_hotel_1792700327955.jpg" alt="Hôtel boutique de prestige avec accès de chambre connecté" loading="lazy" class="w-100 h-100"/>
+                            <div class="wiz-photo-shade-r position-absolute top-0 start-0 w-100 h-100"></div>
+                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center p-4 p-sm-5">
+                                <div class="text-white" style="max-width: 28rem;">
+                                    <span class="badge rounded-pill px-3 py-2 text-uppercase mb-3" style="background: rgba(16, 185, 129, 0.9); font-size: 0.68rem; letter-spacing: 0.06em;">Live Hospitality OS</span>
+                                    <h2 class="fw-black text-white lh-sm mb-3 wiz-banner-title">Chambres connectées, clients conquis, coûts maîtrisés.</h2>
+                                    <p class="small d-none d-sm-block mb-3" style="color: #E2E8F0; line-height: 1.7;">Contrôlez l'état de chaque porte, la température et le passage des équipes en direct depuis votre tableau de bord.</p>
+                                    <div class="d-flex flex-wrap gap-2 small font-monospace">
+                                        <span class="wiz-chip-glass px-3 py-2 rounded-3">🟢 Suite 312 · Prête</span>
+                                        <span class="wiz-chip-glass px-3 py-2 rounded-3">⚡ Climatisation: -32%</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="text-center p-4 rounded-4 bg-light border">
-                            <h4 class="fw-bold mb-2">Planifier une démonstration pour votre établissement</h4>
-                            <p class="text-secondary small mb-3">Nos ingénieurs vous présentent la plateforme en direct sur vos équipements.</p>
-                            <a href="/page/appointment" class="btn btn-primary px-4 py-2 fw-semibold" style="background-color: #0047AB;">
-                                Prendre rendez-vous
-                            </a>
+                        <!-- 3 pillars -->
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4"><div class="wiz-pillar rounded-5 p-4 p-lg-5 h-100">
+                                <div class="wiz-page-icon rounded-4 mb-4" style="background: #EFF6FF; color: #0047AB; border: 0;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" /><path d="m21 2-9.6 9.6" /><circle cx="7.5" cy="15.5" r="5.5" /></svg></div>
+                                <h3 class="fs-4 fw-bold mb-3" style="color: #1A1A2E;">Expérience Client Fluide &amp; Sans Clé</h3>
+                                <p class="small text-secondary mb-3" style="line-height: 1.7;">Vos clients accèdent à leur chambre par digicode sécurisé, carte RFID ou smartphone, sans faire la queue au desk d'accueil après un vol éprouvant.</p>
+                                <ul class="list-unstyled small d-flex flex-column gap-2 mb-0" style="color: #334155;">
+                                    <li class="d-flex align-items-center gap-2"><span class="wiz-ok"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span> Clé mobile cryptée</li>
+                                    <li class="d-flex align-items-center gap-2"><span class="wiz-ok"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span> Fin des pertes de cartes magnétiques</li>
+                                </ul>
+                            </div></div>
+                            <div class="col-md-4"><div class="wiz-pillar rounded-5 p-4 p-lg-5 h-100">
+                                <div class="wiz-page-icon rounded-4 mb-4" style="background: #FFFBEB; color: #E8630A; border: 0;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /></svg></div>
+                                <h3 class="fs-4 fw-bold mb-3" style="color: #1A1A2E;">Traçabilité &amp; Gestion des Équipes</h3>
+                                <p class="small text-secondary mb-3" style="line-height: 1.7;">Suivez en direct le passage du personnel d'étage et de ménage dans chaque chambre avec horodatage strict et statut d'occupation en temps réel.</p>
+                                <ul class="list-unstyled small d-flex flex-column gap-2 mb-0" style="color: #334155;">
+                                    <li class="d-flex align-items-center gap-2"><span class="wiz-ok"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span> Badges nominatifs sécurisés</li>
+                                    <li class="d-flex align-items-center gap-2"><span class="wiz-ok"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span> Statut "Chambre prête" instantané</li>
+                                </ul>
+                            </div></div>
+                            <div class="col-md-4"><div class="wiz-pillar rounded-5 p-4 p-lg-5 h-100">
+                                <div class="wiz-page-icon rounded-4 mb-4" style="background: #ECFDF5; color: #059669; border: 0;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg></div>
+                                <h3 class="fs-4 fw-bold mb-3" style="color: #1A1A2E;">Supervision Énergétique Chambre par Chambre</h3>
+                                <p class="small text-secondary mb-3" style="line-height: 1.7;">Dès qu'une chambre est libérée ou que le client quitte les lieux, les climatiseurs passent en mode éco ou s'éteignent automatiquement.</p>
+                                <ul class="list-unstyled small d-flex flex-column gap-2 mb-0" style="color: #334155;">
+                                    <li class="d-flex align-items-center gap-2"><span class="wiz-ok"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span> -30% sur la facture énergétique globale</li>
+                                    <li class="d-flex align-items-center gap-2"><span class="wiz-ok"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span> Rallumage prédictif avant l'arrivée</li>
+                                </ul>
+                            </div></div>
+                        </div>
+
+                        <!-- CTA banner -->
+                        <div class="rounded-5 p-4 p-sm-5 text-center text-white" style="background-color: #1A1A2E; box-shadow: 0 20px 40px -16px rgba(15, 23, 42, 0.5);">
+                            <h2 class="fs-2 fw-bold text-white mb-3">Une seule plateforme pour tout votre hôtel</h2>
+                            <p class="mx-auto small mb-4" style="color: #CBD5E1; max-width: 42rem;">Découvrez nos tarifs pour complexes hôteliers et résidences (à partir de 50 000 FCFA/mois en Pack Prestige ou formule multi-chambres sur mesure).</p>
+                            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                                <a href="/page/appointment" class="wiz-btn-blue btn px-4 py-3 fw-bold rounded-4">Planifier une démonstration technique</a>
+                                <a href="/#packs" class="btn px-4 py-3 fw-semibold rounded-4 text-white" style="background: #1E293B; border: 1px solid #334155;">Voir le Pack Prestige</a>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -226,31 +280,24 @@
         </t>
     </template>
 
-    <!-- Page: Prise de Rendez-Vous & Diagnostic Terrain (/page/appointment) -->
-    <!-- Compatible avec le module Probuse Website Customer Appointment Management & Integration with Calendar -->
+    <!-- Page: Rendez-vous / audit (/page/appointment) - port of AppointmentPage.tsx.
+         The form posts to /website/appointment/submit (calendar.event), the confirmation reads the visitor's own
+         booking from the session so no personal data ever travels in the URL. -->
     <template id="wizsmith_page_appointment" name="Rendez-Vous Expert WizSmith">
         <t t-call="website.layout">
+            <t t-set="wiz_rdv" t-value="request.session.get('wiz_rdv') if request.params.get('status') == 'success' else None"/>
+            <t t-set="wiz_tomorrow" t-value="(datetime.date.today() + datetime.timedelta(days=1)).isoformat()"/>
             <div id="wrap" class="oe_structure oe_empty">
-                <!-- Header Banner -->
-                <section class="py-5 bg-light border-bottom text-center">
-                    <div class="container py-4">
-                        <span class="badge px-3 py-1 rounded-pill mb-2" style="background: rgba(0,71,171,0.1); color: #0047AB;">
-                            Audit &amp; Rendez-Vous Expert
-                        </span>
-                        <h1 class="display-5 fw-extrabold text-dark mb-3" style="color: #1A1A2E;">
-                            Planifier votre diagnostic sur site à Abidjan
-                        </h1>
-                        <p class="lead text-secondary max-w-xl mx-auto fs-6">
-                            Un ingénieur certifié WizSmith évalue vos accès, vos caméras et vos économies potentielles. Gratuit et sans engagement.
-                        </p>
-                    </div>
-                </section>
+                <section class="wiz-page py-5" style="background-color: #F8FAFC;">
+                    <div class="container py-lg-3" style="max-width: 72rem;">
+                        <div class="text-center mx-auto mb-5 wiz-fade-up" style="max-width: 48rem;">
+                            <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-3 small fw-bold text-uppercase" style="background: #EFF6FF; border: 1px solid #DBEAFE; color: #0047AB; letter-spacing: 0.05em;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" /><path d="M22 4h-4" /><circle cx="4" cy="20" r="2" /></svg><span>Audit &amp; Diagnostic Sur Site à Abidjan</span></div>
+                            <h1 class="wiz-page-title fw-black mb-3">Planifiez votre visite technique offerte</h1>
+                            <p class="fs-5 text-secondary mb-0">Un ingénieur certifié WizSmith évalue sur place vos accès, votre réseau et vos opportunités d’automatisation domotique. 100% gratuit et sans engagement.</p>
+                        </div>
 
-                <!-- Appointment Booking Section & Backend Calendar Hook -->
-                <section class="py-5 bg-white">
-                    <div class="container py-lg-4">
                         <t t-if="request.params.get('status') == 'error'">
-                            <div class="alert alert-danger rounded-4 p-4 mb-4 text-center border-0 shadow-sm" role="alert">
+                            <div class="alert alert-danger rounded-4 p-3 mb-4 text-center border-0 shadow-sm mx-auto" role="alert" style="max-width: 48rem;">
                                 <p class="mb-0 fw-semibold">
                                     <t t-if="request.params.get('msg') == 'missing_fields'">Merci de renseigner au minimum votre nom et un numéro de téléphone valide.</t>
                                     <t t-elif="request.params.get('msg') == 'invalid_date'">Merci de choisir une date d'audit à venir.</t>
@@ -258,112 +305,148 @@
                                 </p>
                             </div>
                         </t>
+
+                        <!-- Confirmation view -->
                         <t t-if="request.params.get('status') == 'success'">
-                            <div class="alert alert-success rounded-4 p-4 mb-4 text-center border-0 shadow-sm">
-                                <h4 class="fw-bold text-success mb-2">🎉 Rendez-vous d'audit enregistré avec succès !</h4>
-                                <p class="mb-2 text-dark">
-                                    Numéro de dossier : <strong class="badge bg-success font-monospace fs-6" t-esc="request.params.get('ref') or 'WZ-RDV-2026'"/>
+                            <div class="wiz-confirm mx-auto rounded-5 p-4 p-sm-5 text-center wiz-fade-up" style="max-width: 42rem;">
+                                <div class="wiz-confirm-icon rounded-circle d-inline-flex align-items-center justify-content-center mb-4"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></div>
+                                <div><span class="d-inline-block px-3 py-1 rounded-pill mb-2 small fw-bold text-uppercase" style="background: #ECFDF5; color: #047857; letter-spacing: 0.05em;">Demande enregistrée avec succès</span></div>
+                                <h2 class="fs-2 fw-black mb-3" style="color: #1A1A2E;">Votre rendez-vous d'audit est réservé !</h2>
+                                <p class="small text-secondary mx-auto mb-4" style="max-width: 32rem; line-height: 1.7;">
+                                    <t t-if="wiz_rdv">Merci <strong class="text-dark" t-esc="wiz_rdv.get('name')"/>. Votre créneau a été transmis à notre équipe technique. Un conseiller WizSmith prendra contact avec vous sur WhatsApp au <strong class="text-dark" t-esc="wiz_rdv.get('phone')"/> pour préparer l’accès à votre bien le <strong class="text-dark" t-esc="wiz_rdv.get('date')"/> entre <strong class="text-dark" t-esc="wiz_rdv.get('slot')"/>.</t>
+                                    <t t-else="">Merci. Votre créneau a été transmis à notre équipe technique. Un conseiller WizSmith prendra contact avec vous sur WhatsApp pour préparer l’accès à votre bien.</t>
                                 </p>
-                                <p class="small text-secondary mb-0">
-                                    Merci pour votre confiance. Un expert WizSmith vous contactera sur WhatsApp pour confirmer la visite sur site à Abidjan.
-                                </p>
+                                <div class="wiz-confirm-box rounded-4 p-3 mx-auto mb-4 text-start small" style="max-width: 28rem;">
+                                    <div class="d-flex justify-content-between align-items-center pb-2" style="border-bottom: 1px solid #E2E8F0;">
+                                        <span class="text-secondary">Numéro de dossier :</span>
+                                        <span class="font-monospace fw-bold" style="color: #0047AB;" t-esc="request.params.get('ref') or 'WZ-RDV'"/>
+                                    </div>
+                                    <t t-if="wiz_rdv">
+                                        <div class="d-flex justify-content-between align-items-center pt-2"><span class="text-secondary">Localisation :</span><span class="fw-medium text-dark" t-esc="wiz_rdv.get('commune')"/></div>
+                                        <div class="d-flex justify-content-between align-items-center pt-2"><span class="text-secondary">Type de bien :</span><span class="fw-medium text-dark" t-esc="wiz_rdv.get('property')"/></div>
+                                    </t>
+                                    <div class="d-flex justify-content-between align-items-center pt-2 mt-2" style="border-top: 1px solid #E2E8F0;">
+                                        <span class="text-secondary">Statut :</span>
+                                        <span class="d-inline-flex align-items-center gap-2 fw-semibold" style="color: #047857;"><span class="wiz-dot bg-success"></span>Pris en charge par l'équipe WizSmith</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+                                    <a href="/page/appointment" class="btn px-4 py-3 fw-bold rounded-4" style="background: #F1F5F9; color: #334155;">Prendre un autre rendez-vous</a>
+                                    <a href="/" class="wiz-btn-blue btn px-4 py-3 fw-bold rounded-4">Retourner à l'accueil</a>
+                                </div>
                             </div>
                         </t>
 
-                        <div class="row gy-5 gx-lg-5 align-items-start justify-content-center">
-                            <!-- Booking Form Column -->
-                            <div class="col-lg-7">
-                                <div class="card p-4 p-lg-5 rounded-4 border shadow-sm">
-                                    <h4 class="fw-bold mb-4 text-dark">Réservation en Ligne</h4>
-                                    <form action="/website/appointment/submit" method="post" class="d-flex flex-column gap-3">
-                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                                        
-                                        <div class="row g-3">
-                                            <div class="col-md-6">
-                                                <label class="form-label small fw-bold">Type de propriété</label>
-                                                <select name="property_type" class="form-select form-select-sm">
-                                                    <option value="villa">Villa / Maison privée</option>
-                                                    <option value="airbnb">Appartement / Location Airbnb</option>
-                                                    <option value="hotel">Hôtel / Résidence hôtelière</option>
-                                                    <option value="office">Bureaux / Siège d'entreprise</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label small fw-bold">Commune à Abidjan</label>
-                                                <select name="commune" class="form-select form-select-sm">
-                                                    <option value="cocody">Cocody (Riviera, Angré, Deux Plateaux)</option>
-                                                    <option value="marcory">Marcory (Zone 4, Biétry)</option>
-                                                    <option value="plateau">Plateau</option>
-                                                    <option value="bingerville">Bingerville</option>
-                                                    <option value="yopougon">Yopougon</option>
-                                                </select>
+                        <!-- Booking layout -->
+                        <t t-if="request.params.get('status') != 'success'">
+                            <div class="row gy-4 gx-lg-4 align-items-start">
+                                <div class="col-lg-7">
+                                    <div class="wiz-form-card rounded-5 p-4 p-sm-5">
+                                        <div class="d-flex align-items-center gap-3 pb-4 mb-4" style="border-bottom: 1px solid #F1F5F9;">
+                                            <div class="wiz-form-icon rounded-3 flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /></svg></div>
+                                            <div>
+                                                <h2 class="fs-5 fw-bold mb-0" style="color: #1A1A2E;">Formulaire de réservation de diagnostic</h2>
+                                                <p class="small text-secondary mb-0">Complétez vos coordonnées pour bloquer un créneau avec un technicien</p>
                                             </div>
                                         </div>
 
-                                        <div class="row g-3">
-                                            <div class="col-md-6">
-                                                <label class="form-label small fw-bold">Date souhaitée</label>
-                                                <input type="date" name="appointment_date" class="form-control form-control-sm" required="required" t-att-min="(datetime.date.today() + datetime.timedelta(days=1)).isoformat()"/>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label small fw-bold">Créneau horaire</label>
-                                                <select name="time_slot" class="form-select form-select-sm">
-                                                    <option value="09:00 - 10:30">09:00 - 10:30 (Matin)</option>
-                                                    <option value="10:30 - 12:00">10:30 - 12:00 (Matin)</option>
-                                                    <option value="14:00 - 15:30">14:00 - 15:30 (Après-midi)</option>
-                                                    <option value="15:30 - 17:00">15:30 - 17:00 (Fin de journée)</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                        <form action="/website/appointment/submit" method="post" class="d-flex flex-column gap-4">
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
-                                        <div class="row g-3">
-                                            <div class="col-md-6">
-                                                <label class="form-label small fw-bold">Nom et Prénom</label>
-                                                <input type="text" name="customer_name" class="form-control form-control-sm" placeholder="ex: Jean-Marc K." required="required"/>
+                                            <div>
+                                                <p class="wiz-form-label mb-2">1. Votre Bien &amp; Localisation</p>
+                                                <div class="row g-3">
+                                                    <div class="col-sm-6">
+                                                        <label class="small text-secondary d-block mb-1" for="wiz-f-property">Type de propriété *</label>
+                                                        <select id="wiz-f-property" name="property_type" class="wiz-input form-select">
+                                                            <option value="villa">Villa / Maison privée</option>
+                                                            <option value="airbnb">Appartement / Location Airbnb</option>
+                                                            <option value="hotel">Hôtel / Résidence hôtelière</option>
+                                                            <option value="office">Bureaux / Siège d'entreprise</option>
+                                                            <option value="commerce">Commerce / Restaurant</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label class="small text-secondary d-block mb-1" for="wiz-f-commune">Commune à Abidjan *</label>
+                                                        <select id="wiz-f-commune" name="commune" class="wiz-input form-select">
+                                                            <option value="cocody">Cocody (Riviera, Angré, Deux Plateaux)</option>
+                                                            <option value="marcory">Marcory (Zone 4, Biétry)</option>
+                                                            <option value="plateau">Plateau</option>
+                                                            <option value="bingerville">Bingerville</option>
+                                                            <option value="yopougon">Yopougon</option>
+                                                            <option value="autre">Autre commune / Hors Abidjan</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label small fw-bold">Téléphone WhatsApp</label>
-                                                <input type="tel" name="phone" class="form-control form-control-sm" placeholder="+225 07 00 00 00 00" required="required"/>
+
+                                            <div>
+                                                <p class="wiz-form-label mb-2">2. Date &amp; Créneau Souhaité</p>
+                                                <div class="row g-3">
+                                                    <div class="col-sm-6">
+                                                        <label class="small text-secondary d-block mb-1" for="wiz-f-date">Date d'audit *</label>
+                                                        <input id="wiz-f-date" type="date" name="appointment_date" class="wiz-input form-control" required="required" t-att-min="wiz_tomorrow" t-att-value="wiz_tomorrow"/>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label class="small text-secondary d-block mb-1" for="wiz-f-slot">Créneau horaire *</label>
+                                                        <select id="wiz-f-slot" name="time_slot" class="wiz-input form-select">
+                                                            <option value="09:00 - 10:30">09:00 - 10:30 (Matin)</option>
+                                                            <option value="10:30 - 12:00" selected="selected">10:30 - 12:00 (Matin)</option>
+                                                            <option value="14:00 - 15:30">14:00 - 15:30 (Après-midi)</option>
+                                                            <option value="15:30 - 17:00">15:30 - 17:00 (Fin de journée)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div>
-                                            <label class="form-label small fw-bold">Précisions (Optionnel)</label>
-                                            <textarea name="notes" rows="2" class="form-control form-control-sm" placeholder="Ex: Nombre d'accès, caméras existantes..."></textarea>
-                                        </div>
+                                            <div>
+                                                <p class="wiz-form-label mb-2">3. Vos Coordonnées</p>
+                                                <div class="row g-3">
+                                                    <div class="col-sm-6">
+                                                        <label class="small text-secondary d-block mb-1" for="wiz-f-name">Nom et Prénom *</label>
+                                                        <input id="wiz-f-name" type="text" name="customer_name" class="wiz-input form-control" placeholder="ex: Jean-Marc K." required="required" maxlength="128" autocomplete="name"/>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label class="small text-secondary d-block mb-1" for="wiz-f-phone">Téléphone WhatsApp *</label>
+                                                        <input id="wiz-f-phone" type="tel" name="phone" class="wiz-input form-control" placeholder="ex: +225 07 00 00 00 00" required="required" maxlength="20" autocomplete="tel"/>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                        <div class="mt-3">
-                                            <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-3" style="background-color: #0047AB; border-color: #0047AB;">
-                                                Confirmer mon rendez-vous
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                                            <div>
+                                                <label class="wiz-form-label d-block mb-2" for="wiz-f-notes">4. Précisions sur votre projet (Optionnel)</label>
+                                                <textarea id="wiz-f-notes" name="notes" rows="2" maxlength="1000" class="wiz-input form-control" placeholder="Ex: Villa 5 pièces, serrures connectées souhaitées sur porte principale et portillon..."></textarea>
+                                            </div>
 
-                            <!-- Customer Reassurance & Value Column -->
-                            <div class="col-lg-5">
-                                <div class="card p-4 rounded-4 border bg-light shadow-sm">
-                                    <div class="d-flex align-items-center gap-2 mb-3">
-                                        <span class="fs-4">✨</span>
-                                        <h5 class="fw-bold mb-0 text-dark">Pourquoi planifier votre audit ?</h5>
-                                    </div>
-                                    <p class="small text-secondary mb-3">
-                                        Nos ingénieurs certifiés se déplacent gratuitement à Abidjan pour concevoir votre installation domotique et sécurité sur-mesure.
-                                    </p>
-                                    <ul class="list-unstyled small d-flex flex-column gap-2 mb-3 text-secondary">
-                                        <li>✓ <strong>100% Gratuit &amp; Sans engagement :</strong> étude de faisabilité complète sur site</li>
-                                        <li>✓ <strong>Démonstration en direct :</strong> test des serrures connectées et caméras IA sur mallette</li>
-                                        <li>✓ <strong>Chiffrage sous 24h :</strong> remise d'un plan d'implantation et devis détaillé</li>
-                                        <li>✓ <strong>Garantie WizRenouv :</strong> éligibilité au renouvellement annuel du matériel</li>
-                                    </ul>
-                                    <div class="p-3 rounded-3 bg-white border small">
-                                        <strong class="text-dark d-block mb-1">Astreinte &amp; Assistance Abidjan :</strong>
-                                        <span class="text-muted">WhatsApp direct : <strong>+225 07 48 92 11 04</strong> (Lun - Sam, 08h-19h)</span>
+                                            <div class="pt-3 d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3" style="border-top: 1px solid #F1F5F9;">
+                                                <div class="d-flex align-items-center gap-2 small text-secondary"><span class="wiz-ok flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /></svg></span><span>Vos données restent strictement confidentielles.</span></div>
+                                                <button type="submit" class="wiz-btn-blue btn px-4 py-3 fw-bold rounded-4 d-inline-flex align-items-center justify-content-center gap-2 w-100 w-sm-auto"><span>Confirmer mon rendez-vous</span><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
+
+                                <div class="col-lg-5 d-flex flex-column gap-4">
+                                    <div class="wiz-side-card rounded-5 p-4 p-sm-4">
+                                        <h3 class="fs-6 fw-bold d-flex align-items-center gap-2 mb-3" style="color: #1A1A2E;"><span style="color: #E8630A;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" /><path d="M22 4h-4" /><circle cx="4" cy="20" r="2" /></svg></span><span>Que comprend votre diagnostic offert ?</span></h3>
+                                        <ul class="list-unstyled small text-secondary d-flex flex-column gap-3 mb-0" style="line-height: 1.6;">
+                                            <li class="d-flex align-items-start gap-3"><span class="wiz-tick-sm">✓</span><span><strong class="text-dark">Relevé technique complet :</strong> analyse de vos portes, portails, alimentation électrique et réseau Wi-Fi/GSM.</span></li>
+                                            <li class="d-flex align-items-start gap-3"><span class="wiz-tick-sm">✓</span><span><strong class="text-dark">Démonstration d'équipements :</strong> présentation des serrures biométriques et caméras IA sur mallette de test.</span></li>
+                                            <li class="d-flex align-items-start gap-3"><span class="wiz-tick-sm">✓</span><span><strong class="text-dark">Chiffrage sous 24h :</strong> remise d'une proposition détaillée avec plan d'implantation et garantie matériel WizRenouv.</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="wiz-contact-card rounded-5 p-4 text-white">
+                                        <h4 class="fs-6 fw-bold text-white mb-2">Besoin d'un renseignement immédiat ?</h4>
+                                        <p class="small mb-3" style="color: #E2E8F0; line-height: 1.6;">Notre équipe commerciale et technique est joignable à Abidjan pour répondre à vos questions avant la visite.</p>
+                                        <div class="d-flex flex-column gap-2 small" style="color: #E2E8F0;">
+                                            <div class="d-flex align-items-center gap-2"><span style="color: #E8630A;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg></span><span>WhatsApp : <strong>+225 07 48 92 11 04</strong></span></div>
+                                            <div class="d-flex align-items-center gap-2"><span style="color: #E8630A;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg></span><span>Bureau : Riviera Palmeraie, Cocody, Abidjan</span></div>
+                                            <div class="d-flex align-items-center gap-2"><span style="color: #E8630A;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 6v6l4 2" /><circle cx="12" cy="12" r="10" /></svg></span><span>Horaires : Lun – Sam (08h00 – 19h00)</span></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </t>
                     </div>
                 </section>
             </div>

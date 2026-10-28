@@ -1,0 +1,90 @@
+// WizSmith inner pages (Résidences & Airbnb, Hôtels intelligents, Rendez-vous)
+$wiz-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+.wiz-page {
+    .wiz-page-title { font-size: clamp(2rem, 4.5vw, 3.1rem); line-height: 1.12; letter-spacing: -0.02em; color: #1A1A2E; }
+
+    // Buttons
+    .wiz-btn-blue {
+        background-color: #0047AB; border-color: #0047AB; color: #fff;
+        box-shadow: 0 4px 10px rgba(0, 71, 171, 0.25);
+        transition: transform 0.2s $wiz-ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        &:hover, &:focus-visible { background-color: #003A8C; border-color: #003A8C; color: #fff; transform: translateY(-2px); box-shadow: 0 10px 20px -6px rgba(0, 71, 171, 0.45); }
+        &:hover .wiz-ico { transform: translateX(4px); }
+    }
+    .wiz-btn-soft { background: #F1F5F9; border-color: #F1F5F9; color: #334155; &:hover { background: #E2E8F0; border-color: #E2E8F0; color: #0F172A; } }
+
+    // ROI simulator
+    .wiz-roi { background: #F8FAFC; border: 1px solid #E2E8F0; box-shadow: 0 20px 40px -16px rgba(15, 23, 42, 0.18); }
+    .wiz-roi-stat { background: #fff; border: 1px solid #E2E8F0; transition: transform 0.25s $wiz-ease, box-shadow 0.25s ease; &:hover { transform: translateY(-2px); box-shadow: 0 8px 18px -10px rgba(15, 23, 42, 0.25); } }
+    .wiz-roi-count-text, .wiz-roi-hours, .wiz-roi-cfa { display: inline-block; transition: transform 0.2s ease; }
+    .wiz-pop { animation: wizPop 0.28s ease; }
+
+    // Light range slider
+    .wiz-range-light {
+        -webkit-appearance: none; appearance: none; height: 0.6rem; border-radius: 0.5rem; background: #E2E8F0; outline: none; cursor: pointer;
+        &::-webkit-slider-thumb { -webkit-appearance: none; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: #0047AB; border: 3px solid #fff; box-shadow: 0 1px 5px rgba(15, 23, 42, 0.35); transition: transform 0.15s ease; }
+        &::-moz-range-thumb { width: 1.1rem; height: 1.1rem; border-radius: 50%; background: #0047AB; border: 3px solid #fff; }
+        &:hover::-webkit-slider-thumb, &:active::-webkit-slider-thumb { transform: scale(1.2); }
+        &:focus-visible { box-shadow: 0 0 0 3px rgba(0, 71, 171, 0.3); }
+    }
+
+    // Photo showcase cards
+    .wiz-showcase {
+        aspect-ratio: 16 / 10; background: #0F172A; border: 1px solid rgba(226, 232, 240, 0.9);
+        box-shadow: 0 10px 24px -10px rgba(15, 23, 42, 0.3);
+        img { object-fit: cover; transition: transform 0.5s ease; }
+        &:hover img { transform: scale(1.05); }
+    }
+    .wiz-hotel-banner {
+        width: 100%; aspect-ratio: 2.4 / 1; min-height: 20rem; background: #0F172A; border: 1px solid #E2E8F0;
+        box-shadow: 0 20px 40px -16px rgba(15, 23, 42, 0.4);
+        img { object-fit: cover; transition: transform 0.7s ease; }
+        &:hover img { transform: scale(1.04); }
+        .wiz-banner-title { font-size: clamp(1.35rem, 2.6vw, 1.9rem); }
+    }
+    .wiz-photo-shade-r { background: linear-gradient(to right, rgba(2, 6, 23, 0.82), rgba(2, 6, 23, 0.4) 55%, transparent); }
+    .wiz-chip-glass { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+
+    // Feature / pillar cards
+    .wiz-feature-card, .wiz-pillar {
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        transition: transform 0.3s $wiz-ease, box-shadow 0.3s ease, border-color 0.25s ease;
+        &:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -12px rgba(15, 23, 42, 0.16); border-color: rgba(0, 71, 171, 0.25); }
+    }
+    .wiz-feature-card { background: #F8FAFC; }
+    .wiz-pillar { background: #fff; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05); }
+    .wiz-page-icon {
+        width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+        background: #fff; border: 1px solid #E2E8F0; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+        transition: transform 0.3s $wiz-ease;
+    }
+    .wiz-feature-card:hover .wiz-page-icon, .wiz-pillar:hover .wiz-page-icon { transform: scale(1.1) rotate(-4deg); }
+    .wiz-ok { color: #10B981; display: inline-flex; font-size: 1.05em; }
+
+    // Appointment
+    .wiz-form-card { background: #fff; border: 1px solid #E2E8F0; box-shadow: 0 20px 40px -16px rgba(15, 23, 42, 0.18); }
+    .wiz-form-icon { width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; background: #EFF6FF; color: #0047AB; font-size: 1.25rem; }
+    .wiz-form-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #334155; }
+    .wiz-input {
+        border: 1px solid #E2E8F0; border-radius: 0.75rem; padding: 0.65rem 0.9rem; font-size: 0.9rem; color: #1E293B; background-color: #fff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        &:hover { border-color: #CBD5E1; }
+        &:focus { outline: none; border-color: #0047AB; box-shadow: 0 0 0 3px rgba(0, 71, 171, 0.18); }
+        &::placeholder { color: #94A3B8; }
+    }
+    .wiz-side-card { background: #fff; border: 1px solid #E2E8F0; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05); }
+    .wiz-tick-sm { width: 1.25rem; height: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: #ECFDF5; color: #059669; font-weight: 700; font-size: 0.7rem; }
+    .wiz-contact-card { background: linear-gradient(135deg, #1A1A2E, #0047AB); box-shadow: 0 8px 20px -10px rgba(15, 23, 42, 0.5); }
+    .wiz-confirm { background: #fff; border: 1px solid #E2E8F0; box-shadow: 0 20px 40px -16px rgba(15, 23, 42, 0.2); }
+    .wiz-confirm-icon { width: 5rem; height: 5rem; font-size: 3rem; background: #D1FAE5; color: #059669; box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06); animation: wizPop 0.5s $wiz-ease; }
+    .wiz-confirm-box { background: #F8FAFC; border: 1px solid #E2E8F0; }
+}
+@keyframes wizPop { 0% { transform: scale(0.85); opacity: 0.6; } 60% { transform: scale(1.08); } 100% { transform: scale(1); opacity: 1; } }
+
+@media (min-width: 576px) { .wiz-page .w-sm-auto { width: auto !important; } }
+
+@media (prefers-reduced-motion: reduce) {
+    .wiz-page .wiz-pop, .wiz-page .wiz-confirm-icon { animation: none !important; }
+    .wiz-page .wiz-feature-card:hover, .wiz-page .wiz-pillar:hover, .wiz-page .wiz-roi-stat:hover, .wiz-page .wiz-btn-blue:hover { transform: none !important; }
+}
