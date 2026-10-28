@@ -31,65 +31,68 @@
         </t>
     </template>
 
-    <!-- Page: Comment ça fonctionne (/comment-ca-fonctionne) -->
+    <!-- Page: Comment ça fonctionne (/comment-ca-fonctionne) - port of HowItWorksPage.tsx -->
     <template id="wizsmith_page_how_it_works" name="Comment ça fonctionne">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
-                <!-- Header Banner -->
-                <section class="py-5 bg-light border-bottom text-center">
-                    <div class="container py-4">
-                        <span class="badge px-3 py-1 rounded-pill mb-2" style="background: rgba(0,71,171,0.1); color: #0047AB;">
-                            Processus Simple &amp; Garanti
-                        </span>
-                        <h1 class="display-5 fw-extrabold text-dark mb-3" style="color: #1A1A2E;">Comment fonctionne WizSmith ?</h1>
-                        <p class="lead text-secondary max-w-xl mx-auto fs-6">
-                            De l'audit initial à votre tranquillité quotidienne : découvrez nos 4 étapes d'automatisation intelligente.
-                        </p>
-                    </div>
-                </section>
-
-                <!-- Workflow Steps -->
-                <section class="py-5 bg-white">
+                <section class="wiz-page py-5" style="background-color: #F8FAFC;">
                     <div class="container py-lg-4">
-                        <div class="row g-4">
-                            <!-- Step 1 -->
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
-                                    <span class="badge bg-primary rounded-circle mb-3 p-3 align-self-start fs-5" style="background-color: #0047AB !important;">1</span>
-                                    <h5 class="fw-bold text-dark mb-2">Audit &amp; Diagnostic</h5>
-                                    <p class="text-secondary small">Évaluation en ligne via notre IA ou visite technique sur site à Abidjan pour répertorier vos accès, caméras et habitudes.</p>
-                                </div>
-                            </div>
-                            <!-- Step 2 -->
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
-                                    <span class="badge bg-primary rounded-circle mb-3 p-3 align-self-start fs-5" style="background-color: #0047AB !important;">2</span>
-                                    <h5 class="fw-bold text-dark mb-2">Installation Certifiée</h5>
-                                    <p class="text-secondary small">Pose de serrures intelligentes WizLock, raccordement de vos caméras existantes à notre module IA, configuration réseau.</p>
-                                </div>
-                            </div>
-                            <!-- Step 3 -->
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
-                                    <span class="badge bg-primary rounded-circle mb-3 p-3 align-self-start fs-5" style="background-color: #0047AB !important;">3</span>
-                                    <h5 class="fw-bold text-dark mb-2">Automatisation sur-mesure</h5>
-                                    <p class="text-secondary small">Synchronisation avec vos comptes Airbnb/Booking, paramétrage des alertes IA nocturnes et scénarios éco d'énergie.</p>
-                                </div>
-                            </div>
-                            <!-- Step 4 -->
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card h-100 p-4 border rounded-4 shadow-xs">
-                                    <span class="badge bg-primary rounded-circle mb-3 p-3 align-self-start fs-5" style="background-color: #0047AB !important;">4</span>
-                                    <h5 class="fw-bold text-dark mb-2">Tranquillité 24/7</h5>
-                                    <p class="text-secondary small">Contrôlez tout depuis votre smartphone. Maintenance continue WizFix et support technique réactif disponible 7j/7.</p>
-                                </div>
-                            </div>
+                        <div class="text-center mx-auto mb-5 pb-lg-3 wiz-fade-up" style="max-width: 48rem;">
+                            <span class="small fw-bold text-uppercase" style="color: #0047AB; letter-spacing: 0.08em;">Déploiement Clé en Main</span>
+                            <h1 class="wiz-page-title fw-black mt-2 mb-3">Comment fonctionne WizSmith ?</h1>
+                            <p class="fs-5 text-secondary mb-0">De votre premier diagnostic gratuit à l'automatisation complète de votre bien : 4 étapes transparentes et garanties.</p>
                         </div>
 
-                        <div class="text-center mt-5">
-                            <a href="/support-ia" class="btn btn-primary px-4 py-3 fw-bold text-white rounded-3" style="background-color: #E8630A; border-color: #E8630A;">
-                                Démarrer avec un diagnostic gratuit
-                            </a>
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-6 col-lg-3"><div class="wiz-pillar rounded-5 p-4 h-100">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <span class="fs-3 fw-black font-monospace" style="color: #0047AB;">01</span>
+                                    <div class="wiz-step-icon rounded-4" style="color: #0047AB;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><path d="m9 14 2 2 4-4" /></svg></div>
+                                </div>
+                                <h3 class="fs-5 fw-bold mb-1" style="color: #1A1A2E;">Audit &amp; Diagnostic Technique</h3>
+                                <span class="d-block small fw-semibold mb-3" style="color: #E8630A;">En ligne ou sur site à Abidjan</span>
+                                <p class="small text-secondary mb-4" style="line-height: 1.7;">Nous évaluons vos points d'accès, vos caméras existantes et vos besoins spécifiques (famille, voyageurs Airbnb, équipes de bureau). Un plan d'implantation sur mesure est établi sans engagement.</p>
+                                <div class="d-flex flex-column gap-2 pt-3" style="border-top: 1px solid #F1F5F9;"><div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.72rem; color: #334155;"><span class="wiz-ok flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span><span>Inventaire des ouvrants et serrures</span></div><div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.72rem; color: #334155;"><span class="wiz-ok flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span><span>Cartographie des zones aveugles</span></div><div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.72rem; color: #334155;"><span class="wiz-ok flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span><span>Devis transparent en FCFA</span></div></div>
+                            </div></div>
+                            <div class="col-md-6 col-lg-3"><div class="wiz-pillar rounded-5 p-4 h-100">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <span class="fs-3 fw-black font-monospace" style="color: #0047AB;">02</span>
+                                    <div class="wiz-step-icon rounded-4" style="color: #E8630A;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" /></svg></div>
+                                </div>
+                                <h3 class="fs-5 fw-bold mb-1" style="color: #1A1A2E;">Installation Professionnelle Certifiée</h3>
+                                <span class="d-block small fw-semibold mb-3" style="color: #E8630A;">En moins d'une demi-journée</span>
+                                <p class="small text-secondary mb-4" style="line-height: 1.7;">Nos techniciens certifiés installent les serrures WizLock Pro et raccordent le boîtier IA WizBridge à vos caméras existantes sans perçage destructif. Tout le matériel est testé avec batteries de secours.</p>
+                                <div class="d-flex flex-column gap-2 pt-3" style="border-top: 1px solid #F1F5F9;"><div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.72rem; color: #334155;"><span class="wiz-ok flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span><span>Pose de serrures haute sécurité</span></div><div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.72rem; color: #334155;"><span class="wiz-ok flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span><span>Raccordement IA des caméras</span></div><div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.72rem; color: #334155;"><span class="wiz-ok flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span><span>Configuration de la passerelle locale</span></div></div>
+                            </div></div>
+                            <div class="col-md-6 col-lg-3"><div class="wiz-pillar rounded-5 p-4 h-100">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <span class="fs-3 fw-black font-monospace" style="color: #0047AB;">03</span>
+                                    <div class="wiz-step-icon rounded-4" style="color: #0047AB;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20v2" /><path d="M12 2v2" /><path d="M17 20v2" /><path d="M17 2v2" /><path d="M2 12h2" /><path d="M2 17h2" /><path d="M2 7h2" /><path d="M20 12h2" /><path d="M20 17h2" /><path d="M20 7h2" /><path d="M7 20v2" /><path d="M7 2v2" /><rect x="4" y="4" width="16" height="16" rx="2" /><rect x="8" y="8" width="8" height="8" rx="1" /></svg></div>
+                                </div>
+                                <h3 class="fs-5 fw-bold mb-1" style="color: #1A1A2E;">Paramétrage &amp; Automatisations</h3>
+                                <span class="d-block small fw-semibold mb-3" style="color: #E8630A;">Adapté à votre mode de vie</span>
+                                <p class="small text-secondary mb-4" style="line-height: 1.7;">Synchronisation avec votre calendrier Airbnb/Booking, paramétrage des alertes anti-intrusion et programmation de l'extinction automatique des climatiseurs en cas d'inoccupation.</p>
+                                <div class="d-flex flex-column gap-2 pt-3" style="border-top: 1px solid #F1F5F9;"><div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.72rem; color: #334155;"><span class="wiz-ok flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span><span>Codes PIN invités automatiques</span></div><div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.72rem; color: #334155;"><span class="wiz-ok flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span><span>Détection IA silhouettes humaines</span></div><div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.72rem; color: #334155;"><span class="wiz-ok flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span><span>Scénarios éco d'électricité (-35%)</span></div></div>
+                            </div></div>
+                            <div class="col-md-6 col-lg-3"><div class="wiz-pillar rounded-5 p-4 h-100">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <span class="fs-3 fw-black font-monospace" style="color: #0047AB;">04</span>
+                                    <div class="wiz-step-icon rounded-4" style="color: #059669;"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg></div>
+                                </div>
+                                <h3 class="fs-5 fw-bold mb-1" style="color: #1A1A2E;">Tranquillité Totale 24h/24 &amp; Support</h3>
+                                <span class="d-block small fw-semibold mb-3" style="color: #E8630A;">Assistance locale continue</span>
+                                <p class="small text-secondary mb-4" style="line-height: 1.7;">Vous pilotez l'ensemble de votre propriété depuis votre smartphone. Nos services WizFix et WizRenouv garantissent l'entretien préventif et le remplacement immédiat du matériel.</p>
+                                <div class="d-flex flex-column gap-2 pt-3" style="border-top: 1px solid #F1F5F9;"><div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.72rem; color: #334155;"><span class="wiz-ok flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span><span>Accès distant chiffré illimité</span></div><div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.72rem; color: #334155;"><span class="wiz-ok flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span><span>Support téléphonique 7j/7</span></div><div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.72rem; color: #334155;"><span class="wiz-ok flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></span><span>Remplacement express en 24h</span></div></div>
+                            </div></div>
+                        </div>
+
+                        <div class="rounded-5 p-4 p-sm-5 text-center text-white" style="background-color: #1A1A2E; box-shadow: 0 20px 40px -16px rgba(15, 23, 42, 0.5);">
+                            <h2 class="fs-2 fw-bold text-white mb-3">Vous avez déjà des caméras installées ?</h2>
+                            <p class="mx-auto small mb-4" style="color: #CBD5E1; max-width: 42rem;">Inutile de racheter du matériel neuf. Le module WizBridge se branche directement sur votre enregistreur ou routeur existant pour ajouter la détection IA et les alertes smartphone.</p>
+                            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                                <a href="/support-ia" class="wiz-cta-primary btn px-4 py-3 fw-bold text-white rounded-4">Évaluer la compatibilité de mes caméras</a>
+                                <a href="/page/appointment" class="btn px-4 py-3 fw-semibold rounded-4 text-white" style="background: #1E293B; border: 1px solid #334155;">Réserver un audit sur site à Abidjan</a>
+                            </div>
                         </div>
                     </div>
                 </section>
