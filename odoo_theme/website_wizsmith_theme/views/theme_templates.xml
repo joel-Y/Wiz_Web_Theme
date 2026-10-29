@@ -125,8 +125,8 @@
          <nav> exists in its arch. We extend website.layout with a higher priority and target the t-call instead. -->
     <template id="wizsmith_header" inherit_id="website.layout" name="WizSmith Premium Header" priority="99">
         <xpath expr="//header//t[@t-call='website.navbar']" position="replace">
-            <nav class="navbar navbar-expand-xxl navbar-light wiz-navbar py-2 py-lg-3 sticky-top">
-                <div class="container wiz-nav-pill">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-2 py-lg-3 sticky-top shadow-xs">
+                <div class="container">
                     <!-- Brand Logo -->
                     <a class="navbar-brand d-flex align-items-center gap-2" href="/" aria-label="WizSmith Accueil">
                         <span class="wiz-logo-mark d-inline-flex align-items-center justify-content-center rounded-3 text-white flex-shrink-0"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /></svg></span>
