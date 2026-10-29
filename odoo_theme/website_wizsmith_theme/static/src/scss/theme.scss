@@ -144,12 +144,6 @@ section[id] { scroll-margin-top: 5rem; }
     font-weight: 600;
     &.active { background-color: rgba(0, 71, 171, 0.07); }
     &:hover { background-color: #F8FAFC; }
-    &[href="/rendez-vous"]::before {
-        content: "\f073"; // fa-calendar
-        font-family: FontAwesome;
-        margin-right: 0.4rem;
-        color: #64748B;
-    }
 }
 
 // Hero
@@ -305,7 +299,63 @@ section[id] { scroll-margin-top: 5rem; }
 }
 
 // Header menu: never wrap labels onto two lines; wrap whole items instead if the menu is long.
-@media (min-width: 992px) {
-    .navbar.navbar-light .navbar-nav { flex-wrap: wrap; justify-content: center; }
+@media (min-width: 1400px) {
+    .navbar.navbar-light .navbar-nav { flex-wrap: nowrap; justify-content: center; }
     .navbar.navbar-light .navbar-nav .nav-link { white-space: nowrap; padding-left: 0.7rem; padding-right: 0.7rem; }
+}
+
+// ---- Header: floating white pill (same look as the previous site) --------------------
+.navbar.wiz-navbar,
+.navbar.wiz-navbar.wiz-scrolled {
+    background-color: transparent !important;
+    backdrop-filter: none;
+    box-shadow: none !important;
+    border: 0;
+}
+.wiz-navbar .wiz-nav-pill {
+    background: #FFFFFF;
+    border-radius: 2rem;
+    padding: 0.5rem 0.75rem 0.5rem 1rem;
+    box-shadow: 0 6px 24px -10px rgba(15, 23, 42, 0.18), 0 1px 3px rgba(15, 23, 42, 0.06);
+    transition: box-shadow 0.3s ease;
+}
+.wiz-navbar.wiz-scrolled .wiz-nav-pill {
+    box-shadow: 0 12px 32px -12px rgba(15, 23, 42, 0.28), 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+@media (min-width: 1400px) {
+    .wiz-navbar .wiz-nav-pill { border-radius: 999px; padding: 0.45rem 0.6rem 0.45rem 1.1rem; }
+    .navbar.navbar-light.wiz-navbar .navbar-nav .nav-link { font-size: 0.86rem; }
+    .wiz-navbar .navbar-collapse .btn { white-space: nowrap; }
+}
+.navbar.navbar-light.wiz-navbar .navbar-nav .nav-link {
+    border-radius: 999px;
+    padding-top: 0.55rem;
+    padding-bottom: 0.55rem;
+    color: #475569;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    &:hover, &:focus-visible {
+        background-color: rgba(255, 152, 0, 0.14);
+        color: #1A1A2E;
+    }
+    &.active,
+    &.active:hover {
+        background-color: #FF9800;
+        color: #1A1A2E;
+    }
+}
+.wiz-navbar .nav-item.active > .nav-link { background-color: #FF9800; color: #1A1A2E; }
+@media (max-width: 1399.98px) {
+    .wiz-navbar .navbar-collapse { padding-top: 0.75rem; }
+    .navbar.navbar-light.wiz-navbar .navbar-nav .nav-link { padding-left: 1rem; padding-right: 1rem; }
+}
+// The pill already provides the card: no second box around the collapsed mobile menu
+.wiz-navbar .navbar-collapse { background: transparent; box-shadow: none; border-radius: 0; margin-top: 0; padding: 0.75rem 0 0.5rem; }
+@media (min-width: 1400px) { .wiz-navbar .navbar-collapse { padding: 0; } }
+// Wide screens: let the pill use the width so all eight entries + the CTA fit on one row
+@media (min-width: 1400px) {
+    .wiz-navbar .wiz-nav-pill { max-width: min(1480px, calc(100% - 2rem)); }
+    .navbar.navbar-light.wiz-navbar .navbar-nav .nav-link { padding-left: 0.6rem; padding-right: 0.6rem; font-size: 0.84rem; }
+    .wiz-navbar .navbar-nav { gap: 0 !important; }
+    .wiz-navbar .wiz-logo-text { font-size: 1.5rem !important; }
+    .wiz-navbar .navbar-collapse .btn { padding-left: 1.1rem !important; padding-right: 1.1rem !important; font-size: 0.82rem; }
 }
