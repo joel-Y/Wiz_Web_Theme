@@ -92,10 +92,6 @@ class WizsmithAppointmentController(http.Controller):
     # ------------------------------------------------------------------
     # Legacy / marketing URLs referenced by menus and CTAs
     # ------------------------------------------------------------------
-    @http.route('/packs', type='http', auth='public', website=True, sitemap=False)
-    def packs(self, **kw):
-        return request.redirect('/#packs', code=302)
-
     @http.route('/support-ia', type='http', auth='public', website=True, sitemap=False)
     def support_ia(self, **kw):
         # The free diagnostic is the interactive assessment section on the home page.

@@ -15,7 +15,7 @@ WIZSMITH_MENU = [
     ('Accueil', '/', {'/', ''}, {'accueil', 'home'}),
     ('Comment ça fonctionne', '/comment-ca-fonctionne',
      {'/comment-ca-fonctionne'}, {'comment ça fonctionne'}),
-    ('Solutions & Packs', '/#packs', {'/packs', '/#packs', '/solutions'},
+    ('Solutions & Packs', '/packs', {'/packs', '/#packs', '/solutions'},
      {'solutions', 'solutions & packs'}),
     ('Résidences & Airbnb', '/residences-airbnb', {'/residences-airbnb'},
      {'résidences & airbnb', 'residences & airbnb'}),
