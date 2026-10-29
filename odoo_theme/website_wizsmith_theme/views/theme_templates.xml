@@ -210,7 +210,7 @@
                             <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
                                 <li><a href="/support-ia" class="text-white-50 text-decoration-none hover-white">Diagnostic IA Gratuit</a></li>
                                 <li><a href="/comment-ca-fonctionne" class="text-white-50 text-decoration-none hover-white">Comment ça marche</a></li>
-                                <li><a href="/page/appointment" class="text-white-50 text-decoration-none hover-white">Prendre rendez-vous</a></li>
+                                <li><a href="/rendez-vous" class="text-white-50 text-decoration-none hover-white">Prendre rendez-vous</a></li>
                                 <li><a href="/claim" class="text-white-50 text-decoration-none hover-white">WizFix (Maintenance)</a></li>
                                 <li><a href="/warranty" class="text-white-50 text-decoration-none hover-white">WizRenouv (Garanties)</a></li>
                             </ul>
@@ -226,7 +226,7 @@
                             </ul>
                             <div class="p-3 rounded-3" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);">
                                 <small class="text-white fw-semibold d-block mb-1">Besoin d'un audit sur mesure ?</small>
-                                <a href="/page/appointment" class="btn btn-sm btn-outline-light w-100 mt-1" style="font-size: 0.8rem;">
+                                <a href="/rendez-vous" class="btn btn-sm btn-outline-light w-100 mt-1" style="font-size: 0.8rem;">
                                     Consulter nos experts
                                 </a>
                             </div>

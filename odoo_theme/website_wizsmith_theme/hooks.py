@@ -21,7 +21,7 @@ WIZSMITH_MENU = [
      {'résidences & airbnb', 'residences & airbnb'}),
     ('Hôtels intelligents', '/hotels-intelligents', {'/hotels-intelligents'},
      {'hôtels intelligents', 'hotels intelligents'}),
-    ('Rendez-vous', '/page/appointment', {'/page/appointment', '/appointment', '/rendez-vous'},
+    ('Rendez-vous', '/rendez-vous', {'/rendez-vous', '/page/appointment', '/appointment'},
      {'rendez-vous'}),
 ]
 FIRST_FOREIGN_SEQUENCE = 100

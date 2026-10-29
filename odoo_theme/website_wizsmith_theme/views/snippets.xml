@@ -121,7 +121,7 @@
                                     </div>
                                     <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 pt-3 mt-3 border-top">
                                         <small class="text-secondary"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg> Recommandé pour les hôtes à Cocody, Marcory, Plateau</small>
-                                        <a href="/page/appointment" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+                                        <a href="/rendez-vous" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="wiz-space-residential" role="tabpanel" aria-labelledby="wiz-tab-residential" tabindex="0">
@@ -162,7 +162,7 @@
                                     </div>
                                     <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 pt-3 mt-3 border-top">
                                         <small class="text-secondary"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg> Protection périmétrique familiale complète</small>
-                                        <a href="/page/appointment" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+                                        <a href="/rendez-vous" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="wiz-space-hotel" role="tabpanel" aria-labelledby="wiz-tab-hotel" tabindex="0">
@@ -203,7 +203,7 @@
                                     </div>
                                     <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 pt-3 mt-3 border-top">
                                         <small class="text-secondary"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg> Expérience client VIP &amp; rentabilité d'exploitation</small>
-                                        <a href="/page/appointment" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+                                        <a href="/rendez-vous" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="wiz-space-business" role="tabpanel" aria-labelledby="wiz-tab-business" tabindex="0">
@@ -244,7 +244,7 @@
                                     </div>
                                     <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 pt-3 mt-3 border-top">
                                         <small class="text-secondary"><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg> Sérénité pour dirigeants et gestionnaires de sites</small>
-                                        <a href="/page/appointment" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+                                        <a href="/rendez-vous" class="small fw-bold text-decoration-none" style="color: #0047AB;">Calculer pour mon bien <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                                     </div>
                                 </div>
                             </div>
@@ -595,7 +595,7 @@
                                 <p class="small mt-1 mb-0" style="color: rgba(191, 219, 254, 0.8);">Installation, matériel certifié et garantie maintenance WizRenouv inclus.</p>
                             </div>
 
-                            <a href="/page/appointment" class="wiz-cta-primary btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2">
+                            <a href="/rendez-vous" class="wiz-cta-primary btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2">
                                 <span>Planifier l'installation avec un expert</span><svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                             </a>
                             <p class="text-center mt-2 mb-0" style="font-size: 0.7rem; color: #64748B;">*Analyse préliminaire basée sur vos déclarations, non contractuelle avant audit physique sur site.</p>
@@ -648,7 +648,7 @@
                                     <li class="d-flex align-items-start gap-2 text-muted"><span class="wiz-tick wiz-tick-off d-inline-flex align-items-center justify-content-center rounded-circle flex-shrink-0">✕</span><span class="text-decoration-line-through">Intégration Apple HomeKit</span></li>
                             </ul>
                             <div class="border-top pt-3">
-                                <a href="/page/appointment" class="btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2" style="background-color: #1A1A2E; border-color: #1A1A2E;">Choisir Business <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+                                <a href="/rendez-vous" class="btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2" style="background-color: #1A1A2E; border-color: #1A1A2E;">Choisir Business <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                                 <p class="text-center text-secondary mt-3 mb-0" style="font-size: 0.72rem;"><svg class="wiz-ico text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg> Garantie matérielle &amp; maintenance incluses</p>
                             </div>
                         </div>
@@ -680,7 +680,7 @@
                                     <li class="d-flex align-items-start gap-2 text-muted"><span class="wiz-tick wiz-tick-off d-inline-flex align-items-center justify-content-center rounded-circle flex-shrink-0">✕</span><span class="text-decoration-line-through">Audit comportemental IA personnalisé</span></li>
                             </ul>
                             <div class="border-top pt-3">
-                                <a href="/page/appointment" class="btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2" style="background-color: #0047AB; border-color: #0047AB;">Choisir Élite <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+                                <a href="/rendez-vous" class="btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2" style="background-color: #0047AB; border-color: #0047AB;">Choisir Élite <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                                 <p class="text-center text-secondary mt-3 mb-0" style="font-size: 0.72rem;"><svg class="wiz-ico text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg> Garantie matérielle &amp; maintenance incluses</p>
                             </div>
                         </div>
@@ -709,7 +709,7 @@
                                     <li class="d-flex align-items-start gap-2"><span class="wiz-tick d-inline-flex align-items-center justify-content-center rounded-circle flex-shrink-0">✓</span><span>Assistance 24h/24 et 7j/7</span></li>
                             </ul>
                             <div class="border-top pt-3">
-                                <a href="/page/appointment" class="btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2" style="background-color: #1A1A2E; border-color: #1A1A2E;">Choisir Prestige <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+                                <a href="/rendez-vous" class="btn w-100 py-3 fw-bold text-white rounded-4 d-flex align-items-center justify-content-center gap-2" style="background-color: #1A1A2E; border-color: #1A1A2E;">Choisir Prestige <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
                                 <p class="text-center text-secondary mt-3 mb-0" style="font-size: 0.72rem;"><svg class="wiz-ico text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg> Garantie matérielle &amp; maintenance incluses</p>
                             </div>
                         </div>
@@ -825,7 +825,7 @@
                         <a href="/support-ia" class="wiz-cta-primary btn btn-lg px-5 py-3 fw-bold text-white rounded-4 d-inline-flex align-items-center justify-content-center gap-2">
                             Faire mon diagnostic gratuit <svg class="wiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                         </a>
-                        <a href="/page/appointment" class="btn btn-lg px-4 py-3 fw-semibold text-white rounded-4 d-inline-flex align-items-center justify-content-center gap-2" style="background: rgba(30,41,59,0.8); border: 1px solid #334155;">
+                        <a href="/rendez-vous" class="btn btn-lg px-4 py-3 fw-semibold text-white rounded-4 d-inline-flex align-items-center justify-content-center gap-2" style="background: rgba(30,41,59,0.8); border: 1px solid #334155;">
                             <svg class="wiz-ico" style="color: #94A3B8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /></svg> Planifier un rendez-vous
                         </a>
                     </div>

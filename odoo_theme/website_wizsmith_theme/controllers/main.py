@@ -118,17 +118,17 @@ class WizsmithAppointmentController(http.Controller):
         time_slot = post.get('time_slot') if post.get('time_slot') in SLOT_MAPPING else DEFAULT_SLOT
 
         if not customer_name or not PHONE_RE.match(phone):
-            return request.redirect('/page/appointment?status=error&msg=missing_fields')
+            return request.redirect('/rendez-vous?status=error&msg=missing_fields')
         if email and not EMAIL_RE.match(email):
             email = ''
 
         try:
             day = datetime.strptime(_clean(post.get('appointment_date'), 10), '%Y-%m-%d').date()
         except ValueError:
-            return request.redirect('/page/appointment?status=error&msg=invalid_date')
+            return request.redirect('/rendez-vous?status=error&msg=invalid_date')
         today_local = datetime.now(LOCAL_TZ).date()
         if day <= today_local:
-            return request.redirect('/page/appointment?status=error&msg=invalid_date')
+            return request.redirect('/rendez-vous?status=error&msg=invalid_date')
 
         (sh, sm), (eh, em) = SLOT_MAPPING[time_slot]
         base = datetime(day.year, day.month, day.day)
@@ -173,7 +173,7 @@ class WizsmithAppointmentController(http.Controller):
             _logger.info('Created calendar.event id=%s (%s)', event.id, ref_code)
         except Exception:
             _logger.exception('Failed to create appointment for website visitor')
-            return request.redirect('/page/appointment?status=error&msg=server')
+            return request.redirect('/rendez-vous?status=error&msg=server')
 
         # Keep the confirmation details server-side (session) so no personal data travels in the URL.
         request.session['wiz_rdv'] = {
@@ -185,4 +185,4 @@ class WizsmithAppointmentController(http.Controller):
             'commune': commune_title,
             'property': prop_title,
         }
-        return request.redirect('/page/appointment?status=success&ref=%s' % ref_code)
+        return request.redirect('/rendez-vous?status=success&ref=%s' % ref_code)

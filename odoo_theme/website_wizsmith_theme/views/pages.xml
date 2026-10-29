@@ -91,7 +91,7 @@
                             <p class="mx-auto small mb-4" style="color: #CBD5E1; max-width: 42rem;">Inutile de racheter du matériel neuf. Le module WizBridge se branche directement sur votre enregistreur ou routeur existant pour ajouter la détection IA et les alertes smartphone.</p>
                             <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
                                 <a href="/support-ia" class="wiz-cta-primary btn px-4 py-3 fw-bold text-white rounded-4">Évaluer la compatibilité de mes caméras</a>
-                                <a href="/page/appointment" class="btn px-4 py-3 fw-semibold rounded-4 text-white" style="background: #1E293B; border: 1px solid #334155;">Réserver un audit sur site à Abidjan</a>
+                                <a href="/rendez-vous" class="btn px-4 py-3 fw-semibold rounded-4 text-white" style="background: #1E293B; border: 1px solid #334155;">Réserver un audit sur site à Abidjan</a>
                             </div>
                         </div>
                     </div>
@@ -273,7 +273,7 @@
                             <h2 class="fs-2 fw-bold text-white mb-3">Une seule plateforme pour tout votre hôtel</h2>
                             <p class="mx-auto small mb-4" style="color: #CBD5E1; max-width: 42rem;">Découvrez nos tarifs pour complexes hôteliers et résidences (à partir de 50 000 FCFA/mois en Pack Prestige ou formule multi-chambres sur mesure).</p>
                             <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                                <a href="/page/appointment" class="wiz-btn-blue btn px-4 py-3 fw-bold rounded-4">Planifier une démonstration technique</a>
+                                <a href="/rendez-vous" class="wiz-btn-blue btn px-4 py-3 fw-bold rounded-4">Planifier une démonstration technique</a>
                                 <a href="/#packs" class="btn px-4 py-3 fw-semibold rounded-4 text-white" style="background: #1E293B; border: 1px solid #334155;">Voir le Pack Prestige</a>
                             </div>
                         </div>
@@ -283,7 +283,7 @@
         </t>
     </template>
 
-    <!-- Page: Rendez-vous / audit (/page/appointment) - port of AppointmentPage.tsx.
+    <!-- Page: Rendez-vous / audit (/rendez-vous) - port of AppointmentPage.tsx.
          The form posts to /website/appointment/submit (calendar.event), the confirmation reads the visitor's own
          booking from the session so no personal data ever travels in the URL. -->
     <template id="wizsmith_page_appointment" name="Rendez-Vous Expert WizSmith">
@@ -334,7 +334,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
-                                    <a href="/page/appointment" class="btn px-4 py-3 fw-bold rounded-4" style="background: #F1F5F9; color: #334155;">Prendre un autre rendez-vous</a>
+                                    <a href="/rendez-vous" class="btn px-4 py-3 fw-bold rounded-4" style="background: #F1F5F9; color: #334155;">Prendre un autre rendez-vous</a>
                                     <a href="/" class="wiz-btn-blue btn px-4 py-3 fw-bold rounded-4">Retourner à l'accueil</a>
                                 </div>
                             </div>
@@ -477,7 +477,7 @@
         <field name="website_indexed" eval="True"/>
     </record>
     <record id="wizsmith_page_appointment_page" model="website.page">
-        <field name="url">/page/appointment</field>
+        <field name="url">/rendez-vous</field>
         <field name="view_id" ref="wizsmith_page_appointment"/>
         <field name="is_published" eval="True"/>
         <field name="website_indexed" eval="True"/>

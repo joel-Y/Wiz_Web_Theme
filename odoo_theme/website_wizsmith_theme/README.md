@@ -17,7 +17,7 @@ Module pour la plateforme technologique **WizSmith** (Sécurité, Automatisation
   * Assistant IA Shuri (`https://shuri-chat.vercel.app/`)
   * Système de gestion des consentements cookies RGPD
   * Liens d'assistance et maintenance : WizFix (`/claim`) & WizRenouv (`/warranty`)
-  * Prise de rendez-vous consultation : `/page/appointment`
+  * Prise de rendez-vous consultation : `/rendez-vous`
   * Diagnostic IA Gratuit : `/support-ia`
 * **Tarification préservée** :
   * Pack **BUSINESS** : À partir de 25 000 FCFA/mois (Bureaux, commerces, PME)
@@ -101,7 +101,7 @@ Pour mettre à jour le thème après modification des templates, du SCSS ou des 
 
 - [x] Syntaxe Python et XML validée selon les standards Odoo 18 Community
 - [x] Séparation stricte Front-Office / Back-Office : aucun panneau ou bouton gestionnaire visible aux visiteurs
-- [x] Formulaire `/page/appointment` 100% orienté conversion client avec réassurance locale Abidjan
+- [x] Formulaire `/rendez-vous` 100% orienté conversion client avec réassurance locale Abidjan
 - [x] Synchronisation automatique du formulaire web vers l'application Calendrier native d'Odoo 18 (`calendar.event`)
 - [x] Responsive testé de 320px à 1440px sans débordement horizontal
 - [x] L'assistant Shuri ne masque pas les boutons d'action sur mobile
@@ -117,7 +117,7 @@ Pour mettre à jour le thème après modification des templates, du SCSS ou des 
 Ce thème intègre une synchronisation directe avec le module standard **Calendrier** (`calendar`) d'Odoo 18 Community Edition, et est également 100% compatible avec l'addon *Website Appointment Customer Management and Integration with Calendar* de Probuse Consulting Service Pvt. Ltd.
 
 ### Isolation Stricte Front / Back
-* **Sur le Site Web Public (`/page/appointment`)** : Les visiteurs ne voient **aucun** bouton d'administration, aucun statut interne, ni aucune console gestionnaire. Ils profitent d'un parcours fluide de réservation avec numéro de dossier et confirmation WhatsApp.
+* **Sur le Site Web Public (`/rendez-vous`)** : Les visiteurs ne voient **aucun** bouton d'administration, aucun statut interne, ni aucune console gestionnaire. Ils profitent d'un parcours fluide de réservation avec numéro de dossier et confirmation WhatsApp.
 * **Dans Votre Backend Odoo Privé (`/web`)** : En tant que gestionnaire WizSmith, vous retrouvez tous les rendez-vous pris sur le site directement dans votre menu **Calendrier > Réunions** (`calendar.action_calendar_event`).
 
 ### Mappage Automatique dans `calendar.event` :
