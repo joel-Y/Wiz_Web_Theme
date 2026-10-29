@@ -61,7 +61,7 @@ def sync_main_menu(env):
             candidates = children - used
             match = find_match(candidates, urls, names)
             if match:
-                match.write({'name': name, 'sequence': sequence})
+                match.write({'name': name, 'url': url, 'sequence': sequence})
                 used |= match
                 # Drop exact duplicates of the same entry (same URL under the same parent).
                 dupes = (candidates - match).filtered(
