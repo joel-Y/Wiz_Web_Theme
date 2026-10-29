@@ -655,7 +655,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="card h-100 rounded-5 p-4 p-xl-5 bg-white position-relative border-2 shadow-lg wiz-price-featured" style="border-color: #0047AB !important;">
-                            <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill text-white text-uppercase px-3 py-2" style="background-color: #0047AB; letter-spacing: 0.06em;">Le plus populaire</span>
+                            <span class="wiz-popular-badge">Le plus populaire</span>
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <span class="fw-bold text-secondary text-uppercase small" style="letter-spacing: 0.08em;">ÉLITE</span>
                                 

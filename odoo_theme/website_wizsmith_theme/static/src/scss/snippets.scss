@@ -22,3 +22,26 @@
         border-radius: 1.25rem;
     }
 }
+
+// "Le plus populaire" pill sitting on the top edge of the featured pricing card
+.s_wizsmith_pricing {
+    .card, .row { overflow: visible; }
+    .wiz-price-featured { z-index: 1; }
+    .wiz-popular-badge {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        white-space: nowrap;
+        padding: 0.45rem 1.1rem;
+        border-radius: 999px;
+        background-color: #0047AB;
+        color: #FFFFFF !important;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        box-shadow: 0 4px 10px -4px rgba(0, 71, 171, 0.5);
+    }
+}
