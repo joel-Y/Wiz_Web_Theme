@@ -724,9 +724,9 @@
                             <thead>
                                 <tr class="border-bottom text-uppercase text-secondary" style="letter-spacing: 0.06em;">
                                     <th scope="col">Fonctionnalité</th>
-                                    <th scope="col" class="text-center">Business<small class="d-block text-capitalize fw-medium">À partir de 25 000 CFA/m</small></th>
-                                    <th scope="col" class="text-center" style="color: #0047AB;">Élite<small class="d-block text-capitalize fw-medium">À partir de 40 000 CFA/m</small></th>
-                                    <th scope="col" class="text-center" style="color: #E8630A;">Prestige<small class="d-block text-capitalize fw-medium">À partir de 50 000 CFA/m</small></th>
+                                    <th scope="col" class="text-center">Business<small class="d-block fw-medium" style="text-transform: none; letter-spacing: 0;">À partir de 25 000 CFA/m</small></th>
+                                    <th scope="col" class="text-center" style="color: #0047AB;">Élite<small class="d-block fw-medium" style="text-transform: none; letter-spacing: 0;">À partir de 40 000 CFA/m</small></th>
+                                    <th scope="col" class="text-center" style="color: #E8630A;">Prestige<small class="d-block fw-medium" style="text-transform: none; letter-spacing: 0;">À partir de 50 000 CFA/m</small></th>
                                 </tr>
                             </thead>
                             <tbody>
