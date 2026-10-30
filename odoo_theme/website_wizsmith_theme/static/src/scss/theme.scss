@@ -144,12 +144,6 @@ section[id] { scroll-margin-top: 5rem; }
     font-weight: 600;
     &.active { background-color: rgba(0, 71, 171, 0.07); }
     &:hover { background-color: #F8FAFC; }
-    &[href="/rendez-vous"]::before {
-        content: "\f073"; // fa-calendar
-        font-family: FontAwesome;
-        margin-right: 0.4rem;
-        color: #64748B;
-    }
 }
 
 // Hero
@@ -305,8 +299,8 @@ section[id] { scroll-margin-top: 5rem; }
 }
 
 // Header menu: never wrap labels onto two lines; wrap whole items instead if the menu is long.
-@media (min-width: 992px) {
-    .navbar.navbar-light .navbar-nav { flex-wrap: wrap; justify-content: center; }
+@media (min-width: 1400px) {
+    .navbar.navbar-light .navbar-nav { flex-wrap: nowrap; justify-content: center; }
     .navbar.navbar-light .navbar-nav .nav-link { white-space: nowrap; padding-left: 0.7rem; padding-right: 0.7rem; }
 }
 
@@ -347,4 +341,85 @@ section[id] { scroll-margin-top: 5rem; }
     }
     .wiz-compare tbody td:nth-of-type(2)::before { color: #0047AB; }
     .wiz-compare tbody td:nth-of-type(3)::before { color: #E8630A; }
+}
+
+// ---- Header: royal-blue frosted-glass pill --------------------------------------------
+// Kept simple on purpose (Odoo's own SCSS compiler is stricter than Dart Sass): no min()/max() with mixed units.
+.navbar.wiz-navbar,
+.navbar.wiz-navbar.wiz-scrolled {
+    background-color: transparent !important;
+    backdrop-filter: none;
+    box-shadow: none !important;
+    border: 0;
+}
+.wiz-navbar .wiz-nav-pill {
+    position: relative;
+    // Opaque enough (0.82+) that white text always keeps >= 4.5:1 contrast, whatever scrolls underneath
+    background: linear-gradient(135deg, rgba(0, 71, 171, 0.86) 0%, rgba(0, 48, 135, 0.82) 100%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(14px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 2rem;
+    padding: 0.5rem 0.75rem 0.5rem 1rem;
+    box-shadow: 0 10px 30px -10px rgba(0, 40, 120, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transition: box-shadow 0.3s ease;
+}
+.wiz-navbar.wiz-scrolled .wiz-nav-pill {
+    box-shadow: 0 16px 36px -12px rgba(0, 40, 120, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+// Browsers without backdrop-filter, or users who asked for less transparency: plain solid royal blue
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .wiz-navbar .wiz-nav-pill { background: #0A3F96; }
+}
+@media (prefers-reduced-transparency: reduce) {
+    .wiz-navbar .wiz-nav-pill { background: #0A3F96; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+// Brand on blue: "Wiz" turns white, "Smith" stays orange, the shield sits on a light glass tile
+.wiz-navbar .wiz-logo-text { color: #FFFFFF; }
+.wiz-navbar .wiz-logo-sub { color: rgba(255, 255, 255, 0.72); }
+.wiz-navbar .wiz-logo-mark { background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.35); box-shadow: none; }
+
+.navbar.navbar-light.wiz-navbar .navbar-nav .nav-link {
+    border-radius: 999px;
+    padding-top: 0.55rem;
+    padding-bottom: 0.55rem;
+    color: rgba(255, 255, 255, 0.92);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    &:hover, &:focus-visible {
+        background-color: rgba(255, 255, 255, 0.16);
+        color: #FFFFFF;
+    }
+    &.active,
+    &.active:hover {
+        background-color: #FFFFFF;
+        color: #0047AB;
+    }
+}
+.wiz-navbar .nav-item.active > .nav-link { background-color: #FFFFFF; color: #0047AB; }
+
+// Mobile toggler: white lines on the blue glass
+.wiz-navbar .navbar-toggler { border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 0.75rem; }
+.wiz-navbar .navbar-toggler:focus { box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.3); }
+.wiz-navbar .navbar-toggler-icon { filter: invert(1); }
+
+// The pill is the card: no second box around the collapsed mobile menu
+.wiz-navbar .navbar-collapse { background: transparent; box-shadow: none; border-radius: 0; margin-top: 0; padding: 0.75rem 0 0.5rem; }
+@media (max-width: 1399.98px) {
+    .navbar.navbar-light.wiz-navbar .navbar-nav .nav-link { padding-left: 1rem; padding-right: 1rem; }
+}
+
+// Wide screens: all eight entries + the CTA on one row
+@media (min-width: 1400px) {
+    .wiz-navbar .navbar-collapse { padding: 0; }
+    .wiz-navbar .wiz-nav-pill {
+        border-radius: 999px;
+        padding: 0.45rem 0.6rem 0.45rem 1.1rem;
+        width: calc(100% - 2rem);
+        max-width: 1480px;
+    }
+    .navbar.navbar-light.wiz-navbar .navbar-nav .nav-link { padding-left: 0.6rem; padding-right: 0.6rem; font-size: 0.84rem; }
+    .wiz-navbar .navbar-nav { gap: 0 !important; }
+    .wiz-navbar .wiz-logo-text { font-size: 1.5rem !important; }
+    .wiz-navbar .navbar-collapse .btn { white-space: nowrap; padding-left: 1.1rem !important; padding-right: 1.1rem !important; font-size: 0.82rem; }
 }
