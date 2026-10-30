@@ -309,3 +309,42 @@ section[id] { scroll-margin-top: 5rem; }
     .navbar.navbar-light .navbar-nav { flex-wrap: wrap; justify-content: center; }
     .navbar.navbar-light .navbar-nav .nav-link { white-space: nowrap; padding-left: 0.7rem; padding-right: 0.7rem; }
 }
+
+// Comparison table on phones: one small card per feature, plans listed underneath (no sideways scrolling)
+@media (max-width: 767.98px) {
+    .wiz-compare, .wiz-compare tbody, .wiz-compare tr, .wiz-compare th, .wiz-compare td { display: block; width: 100%; }
+    .wiz-compare thead { display: none; }
+    .wiz-compare tbody tr {
+        background: #FFFFFF;
+        border: 1px solid #E2E8F0;
+        border-radius: 1rem;
+        padding: 0.9rem 1rem;
+        margin-bottom: 0.75rem;
+    }
+    .wiz-compare tbody tr:last-child { border-bottom: 1px solid #E2E8F0; }
+    .wiz-compare tbody th { padding: 0 0 0.5rem; font-size: 0.9rem; color: #1A1A2E; background: transparent; }
+    .wiz-compare tbody td {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.4rem;
+        padding: 0.35rem 0;
+        font-size: 0.82rem;
+        text-align: right !important;
+        background: transparent;
+        border-top: 1px solid #F1F5F9;
+    }
+    .wiz-compare tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #64748B;
+        text-align: left;
+        flex-shrink: 0;
+        margin-right: auto;
+    }
+    .wiz-compare tbody td:nth-of-type(2)::before { color: #0047AB; }
+    .wiz-compare tbody td:nth-of-type(3)::before { color: #E8630A; }
+}
