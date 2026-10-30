@@ -224,6 +224,26 @@ section[id] { scroll-margin-top: 5rem; }
 }
 .wiz-compare tbody tr { border-bottom: 1px solid rgba(226, 232, 240, 0.8); &:last-child { border-bottom: 0; } }
 
+// Comparison table on phones: fit the screen (wrap text, tighter cells) instead of clipping
+@media (max-width: 767.98px) {
+    .wiz-compare {
+        table-layout: fixed;
+        width: 100%;
+        font-size: 0.72rem;
+        th, td {
+            padding: 0.5rem 0.25rem;
+            white-space: normal;
+            word-wrap: break-word;
+            overflow-wrap: anywhere;
+            vertical-align: middle;
+        }
+        thead th { font-size: 0.62rem; letter-spacing: 0.02em; }
+        thead th small { font-size: 0.58rem; line-height: 1.2; }
+        th:first-child { width: 34%; text-align: left; }
+        .wiz-ico { width: 0.8rem; height: 0.8rem; }
+    }
+}
+
 // Testimonials
 .wiz-testimonial .wiz-quote { color: #E2E8F0; font-size: 1.5rem; transition: color 0.2s ease; }
 .wiz-testimonial:hover .wiz-quote { color: #0047AB; }

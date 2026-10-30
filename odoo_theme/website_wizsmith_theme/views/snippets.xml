@@ -716,7 +716,7 @@
                     </div>
                 </div>
 
-                <div class="rounded-5 border p-4 p-sm-5" style="background-color: #F8FAFC;">
+                <div class="rounded-5 border p-3 p-sm-5" style="background-color: #F8FAFC;">
                     <h3 class="h5 fw-bold mb-1" style="color: #1A1A2E;">Comparatif détaillé des fonctionnalités</h3>
                     <p class="small text-secondary mb-4">Chaque abonnement comprend le matériel, l'installation par un technicien et le support.</p>
                     <div class="table-responsive">
