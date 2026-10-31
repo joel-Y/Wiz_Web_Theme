@@ -354,18 +354,28 @@ section[id] { scroll-margin-top: 5rem; }
 }
 .wiz-navbar .wiz-nav-pill {
     position: relative;
-    // Opaque enough (0.82+) that white text always keeps >= 4.5:1 contrast, whatever scrolls underneath
-    background: linear-gradient(135deg, rgba(0, 71, 171, 0.86) 0%, rgba(0, 48, 135, 0.82) 100%);
-    -webkit-backdrop-filter: blur(14px) saturate(160%);
-    backdrop-filter: blur(14px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.28);
+    // True glass: a light royal-blue tint, strong blur, and the backdrop slightly darkened (brightness)
+    // so white text stays readable even over white page sections.
+    background: linear-gradient(135deg, rgba(20, 90, 200, 0.46) 0%, rgba(0, 55, 150, 0.40) 100%);
+    -webkit-backdrop-filter: blur(22px) saturate(190%) brightness(0.62);
+    backdrop-filter: blur(22px) saturate(190%) brightness(0.62);
+    border: 1px solid rgba(255, 255, 255, 0.38);
     border-radius: 2rem;
     padding: 0.5rem 0.75rem 0.5rem 1rem;
-    box-shadow: 0 10px 30px -10px rgba(0, 40, 120, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    box-shadow: 0 12px 32px -12px rgba(0, 30, 100, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(255, 255, 255, 0.08);
     transition: box-shadow 0.3s ease;
+    // Soft sheen across the top edge, like light catching the glass
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 55%);
+    }
 }
 .wiz-navbar.wiz-scrolled .wiz-nav-pill {
-    box-shadow: 0 16px 36px -12px rgba(0, 40, 120, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    box-shadow: 0 18px 38px -12px rgba(0, 30, 100, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(255, 255, 255, 0.08);
 }
 // Browsers without backdrop-filter, or users who asked for less transparency: plain solid royal blue
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -376,7 +386,7 @@ section[id] { scroll-margin-top: 5rem; }
 }
 
 // Brand on blue: "Wiz" turns white, "Smith" stays orange, the shield sits on a light glass tile
-.wiz-navbar .wiz-logo-text { color: #FFFFFF; }
+.wiz-navbar .wiz-logo-text { color: #FFFFFF; text-shadow: 0 1px 6px rgba(0, 20, 80, 0.45); }
 .wiz-navbar .wiz-logo-sub { color: rgba(255, 255, 255, 0.72); }
 .wiz-navbar .wiz-logo-mark { background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.35); box-shadow: none; }
 
@@ -384,7 +394,8 @@ section[id] { scroll-margin-top: 5rem; }
     border-radius: 999px;
     padding-top: 0.55rem;
     padding-bottom: 0.55rem;
-    color: rgba(255, 255, 255, 0.92);
+    color: #FFFFFF;
+    text-shadow: 0 1px 6px rgba(0, 20, 80, 0.5);
     transition: background-color 0.2s ease, color 0.2s ease;
     &:hover, &:focus-visible {
         background-color: rgba(255, 255, 255, 0.16);
@@ -392,8 +403,9 @@ section[id] { scroll-margin-top: 5rem; }
     }
     &.active,
     &.active:hover {
-        background-color: #FFFFFF;
+        background-color: rgba(255, 255, 255, 0.92);
         color: #0047AB;
+        text-shadow: none;
     }
 }
 .wiz-navbar .nav-item.active > .nav-link { background-color: #FFFFFF; color: #0047AB; }
