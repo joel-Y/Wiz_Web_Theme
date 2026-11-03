@@ -9,3 +9,6 @@ coverage/
 
 # AI Studio scratch artifacts
 .aistudio/
+
+__pycache__/
+*.pyc
