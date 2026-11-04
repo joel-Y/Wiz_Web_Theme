@@ -7,10 +7,13 @@ DB="${1:?usage: sudo bash rollback.sh <database> <dumpfile>}"; DUMP="${2:?dump f
 [ -s "$DUMP" ] || { echo "Dump not found: $DUMP"; exit 1; }
 OWNER="$(cat "$DUMP.owner" 2>/dev/null || echo odoo18)"
 echo "Restoring $DB from $DUMP (owner $OWNER)"
+# Prove the dump is a readable, valid archive BEFORE anything is stopped or dropped.
+# (Read as root via stdin: the postgres user cannot open files inside /home/weaponx.)
+pg_restore -l < "$DUMP" > /dev/null 2>&1 || { echo "Dump is unreadable or not a valid backup - NOTHING was changed."; exit 1; }
 [ "$DB" = "Wiz" ] && systemctl stop odoo18 || pkill -f "http-port=8070" || true
 sudo -u postgres psql -qc "select pg_terminate_backend(pid) from pg_stat_activity where datname='$DB' and pid<>pg_backend_pid()" >/dev/null
 sudo -u postgres dropdb "$DB"
 sudo -u postgres createdb -O "$OWNER" "$DB"
-sudo -u postgres pg_restore --no-owner --role="$OWNER" -d "$DB" "$DUMP"
+sudo -u postgres pg_restore --no-owner --role="$OWNER" -d "$DB" < "$DUMP"
 [ "$DB" = "Wiz" ] && systemctl start odoo18 || true
 echo "Restored. $( [ "$DB" = "Wiz" ] && echo 'odoo18 service started.' || echo 'Start the test server again if needed.')"
