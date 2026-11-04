@@ -1,0 +1,126 @@
+// WizSmith header: floating frosted-blue pill (logo + menu + CTA inside one rounded bar).
+// Odoo's SCSS compiler (libsass) is stricter than browsers: NO min()/max()/clamp() with mixed units,
+// NO @use, NO :is()/:where(). Plain nesting, calc() with one unit pair, and fixed lengths only.
+
+// Layout: the nav itself is transparent, the .container inside it is the pill.
+.navbar.navbar-light.wiz-navbar,
+.navbar.navbar-light.wiz-navbar.wiz-scrolled {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 0;
+}
+
+.wiz-navbar > .container.wiz-nav-pill {
+    width: calc(100% - 1.5rem);
+    max-width: 1520px;
+    padding: 0.5rem 0.75rem 0.5rem 1rem;
+    border-radius: 1.75rem;
+    background: rgba(20, 52, 120, 0.72);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(14px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.wiz-navbar.wiz-scrolled > .container.wiz-nav-pill {
+    background: rgba(18, 46, 108, 0.82);
+    box-shadow: 0 14px 34px -12px rgba(15, 23, 42, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+// Brand
+.wiz-navbar .wiz-logo-mark {
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #FFFFFF;
+}
+.wiz-navbar .wiz-logo-text { color: #FFFFFF; }
+.wiz-navbar .wiz-logo-sub { color: rgba(255, 255, 255, 0.78); }
+
+// Menu links (specificity beats the older .navbar.navbar-light .navbar-nav .nav-link rules in theme.scss)
+.navbar.navbar-light.wiz-navbar .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.94);
+    border-radius: 999px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    &:hover,
+    &:focus-visible {
+        color: #FFFFFF;
+        background-color: rgba(255, 255, 255, 0.18);
+    }
+    &.active,
+    &.active:hover {
+        color: #0047AB;
+        background-color: #FFFFFF;
+        box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.3);
+    }
+    &[href="/rendez-vous"]::before { content: none; }
+}
+.wiz-navbar .nav-item.active > .nav-link {
+    color: #0047AB;
+    background-color: #FFFFFF;
+}
+
+// Mobile / tablet toggler (white icon on the blue pill)
+.wiz-navbar .navbar-toggler {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 999px;
+    &:focus { box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.35); }
+}
+.wiz-navbar .navbar-toggler-icon { filter: invert(1); }
+
+// Collapsed menu: no second white card inside the pill (theme.scss gives .navbar-collapse one on phones)
+.wiz-navbar .navbar-collapse {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0.75rem 0 0.5rem;
+    margin-top: 0;
+}
+.wiz-navbar .navbar-collapse .btn { white-space: nowrap; }
+
+// Below 1400px the menu collapses (Bootstrap navbar-expand-xxl): stack the links
+@media (max-width: 1399.98px) {
+    .navbar.navbar-light.wiz-navbar .navbar-nav .nav-link { padding-left: 1rem; padding-right: 1rem; }
+}
+
+// 1400px and up: one single row, fully rounded
+@media (min-width: 1400px) {
+    .wiz-navbar > .container.wiz-nav-pill {
+        border-radius: 999px;
+        padding: 0.45rem 0.6rem 0.45rem 1.1rem;
+    }
+    .wiz-navbar .navbar-collapse { padding: 0; }
+    .wiz-navbar .navbar-nav { flex-wrap: nowrap; }
+    .navbar.navbar-light.wiz-navbar .navbar-nav .nav-link {
+        font-size: 0.84rem;
+        padding-left: 0.6rem;
+        padding-right: 0.6rem;
+    }
+}
+
+// 1400-1599px: tighten so the 8 entries + CTA still fit on one row
+@media (min-width: 1400px) and (max-width: 1599.98px) {
+    .navbar.navbar-light.wiz-navbar .navbar-nav .nav-link {
+        font-size: 0.8rem;
+        padding-left: 0.45rem;
+        padding-right: 0.45rem;
+    }
+    .wiz-navbar .wiz-logo-text { font-size: 1.4rem !important; }
+}
+
+// 1400-1499px is the tightest range: slimmer links, smaller logo and CTA
+@media (min-width: 1400px) and (max-width: 1499.98px) {
+    .navbar.navbar-light.wiz-navbar .navbar-nav .nav-link {
+        font-size: 0.76rem;
+        padding-left: 0.3rem;
+        padding-right: 0.3rem;
+    }
+    .wiz-navbar .wiz-logo-text { font-size: 1.3rem !important; }
+    .wiz-navbar .wiz-logo-sub { letter-spacing: 0.1em; }
+    .wiz-navbar .navbar-brand { margin-right: 0.5rem; }
+    .wiz-navbar .navbar-collapse .btn { padding-left: 0.9rem !important; padding-right: 0.9rem !important; font-size: 0.78rem; }
+}

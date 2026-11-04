@@ -46,6 +46,7 @@ Caractéristiques principales :
             'website_wizsmith_theme/static/src/scss/snippets.scss',
             'website_wizsmith_theme/static/src/scss/animations.scss',
             'website_wizsmith_theme/static/src/scss/pages.scss',
+            'website_wizsmith_theme/static/src/scss/header.scss',
             'website_wizsmith_theme/static/src/js/shuri_chat.js',
             'website_wizsmith_theme/static/src/js/cookie_consent.js',
             'website_wizsmith_theme/static/src/js/property_assessment.js',
