@@ -58,6 +58,10 @@ update website_page set url = url || '-ancien', is_published = false
  where website_id is not null
    and url in ('/packs','/residences-airbnb','/hotels-intelligents','/comment-ca-fonctionne','/rendez-vous')
    and view_id not in (select res_id from ir_model_data where module='website_wizsmith_theme' and model='ir.ui.view');
+-- menu items that were attached to those old pages would now be HIDDEN from visitors (Odoo hides a menu whose
+-- page is unpublished). Detach them: they keep their URL, which now resolves to the new theme page.
+update website_menu set page_id = null
+ where page_id in (select id from website_page where url like '%-ancien');
 -- the home page(s) use the new homepage template
 update website_page set view_id = (select res_id from ir_model_data
         where module='website_wizsmith_theme' and name='wizsmith_homepage' and model='ir.ui.view')
