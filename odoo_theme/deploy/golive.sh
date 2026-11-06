@@ -16,10 +16,21 @@ SRC="$HERE/../$MODULE"
 STAMP="$(date +%F_%H%M)"
 DUMP="/home/weaponx/${DB}_before_golive_${STAMP}.dump"
 LOG="/tmp/golive_${DB}_${STAMP}.log"
+# Odoo runs as odoo18 and inherits our working directory. If that is somewhere odoo18 cannot read
+# (e.g. /home/weaponx) docutils crashes with "PermissionError: html4css1.css" while loading the module.
+cd /tmp
 
 [ "$(id -u)" = 0 ] || { echo "Run with sudo."; exit 1; }
 [ -d "$SRC" ] || { echo "Module folder not found next to this script: $SRC"; exit 1; }
 PSQL() { sudo -u postgres psql -d "$DB" -v ON_ERROR_STOP=1 -tA "$@"; }
+# Odoo writes its real log to the logfile set in the config, not to our $LOG: show its latest errors on failure.
+odoo_errors() {
+    local f; f="$(awk -F= '/^ *logfile *=/ {gsub(/ /,"",$2); print $2}' "$CONF" 2>/dev/null || true)"
+    if [ -n "$f" ] && [ -r "$f" ]; then
+        echo "   Odoo's own log ($f), latest errors:"
+        tail -n 400 "$f" | grep -E "ERROR|CRITICAL|Error:" | tail -8 | sed 's/^/     /' || true
+    fi
+}
 DBLIST="$(sudo -u postgres psql -lqt | cut -d'|' -f1)"
 echo "$DBLIST" | grep -qw "$DB" || { echo "Database $DB does not exist."; exit 1; }
 
@@ -48,7 +59,7 @@ if grep -E " (ERROR|CRITICAL) " "$LOG" | head -5 | grep .; then
     echo "!! Errors during install (see $LOG). NOTHING restarted. Rollback not needed yet: the site is unchanged until restart."
     exit 1
 fi
-[ "$(PSQL -c "select state from ir_module_module where name='$MODULE'")" = "installed" ] || { echo "!! Module is not 'installed'. See $LOG"; exit 1; }
+[ "$(PSQL -c "select state from ir_module_module where name='$MODULE'")" = "installed" ] || { echo "!! Module is not 'installed'. NOTHING restarted; the site is unchanged. See $LOG"; odoo_errors; exit 1; }
 echo "   module installed"
 
 echo "== 4/7 Make the new pages win over old site-specific copies"
