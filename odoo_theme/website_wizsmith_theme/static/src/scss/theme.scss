@@ -138,6 +138,8 @@ section[id] { scroll-margin-top: 5rem; }
 // Real WizSmith diamond-S logo inside the tile (replaces the generic shield icon)
 .wiz-logo-mark .wiz-logo-img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .wiz-logo-text { color: #0047AB; letter-spacing: -0.03em; }
+// "Smith" uses the exact orange of the diamond-S logo (sampled from the logo file)
+.wiz-logo-accent, .wiz-logo-text > span { color: #FA904E !important; }
 .wiz-logo-sub { font-size: 0.62rem; letter-spacing: 0.18em; color: #94A3B8; margin-top: 0.15rem; }
 
 // Header: active page pill + calendar icon on the appointment entry

@@ -131,7 +131,7 @@
                     <a class="navbar-brand d-flex align-items-center gap-2" href="/" aria-label="WizSmith Accueil">
                         <span class="wiz-logo-mark d-inline-flex align-items-center justify-content-center rounded-3 text-white flex-shrink-0"><img src="/website_wizsmith_theme/static/src/img/wiz_logo_mark.png" alt="" width="28" height="28" class="wiz-logo-img"/></span>
                         <span class="d-flex flex-column lh-1">
-                            <span class="wiz-logo-text fw-black fs-3">Wiz<span style="color: #E8630A;">Smith</span></span>
+                            <span class="wiz-logo-text fw-black fs-3">Wiz<span class="wiz-logo-accent">Smith</span></span>
                             <span class="wiz-logo-sub text-uppercase fw-bold">Property Tech</span>
                         </span>
                     </a>
@@ -182,7 +182,7 @@
                         <!-- Col 1: Brand & Mission -->
                         <div class="col-lg-4 col-md-6">
                             <div class="mb-3">
-                                <span class="d-inline-flex align-items-center gap-2"><span class="wiz-logo-mark d-inline-flex align-items-center justify-content-center rounded-3 text-white flex-shrink-0"><img src="/website_wizsmith_theme/static/src/img/wiz_logo_mark.png" alt="" width="28" height="28" class="wiz-logo-img"/></span><span class="fw-black fs-3 text-white">Wiz<span style="color: #E8630A;">Smith</span></span></span>
+                                <span class="d-inline-flex align-items-center gap-2"><span class="wiz-logo-mark d-inline-flex align-items-center justify-content-center rounded-3 text-white flex-shrink-0"><img src="/website_wizsmith_theme/static/src/img/wiz_logo_mark.png" alt="" width="28" height="28" class="wiz-logo-img"/></span><span class="fw-black fs-3 text-white">Wiz<span class="wiz-logo-accent">Smith</span></span></span>
                             </div>
                             <p class="text-white-50 pe-lg-4 small mb-4" style="line-height: 1.7;">
                                 WizSmith transforme et protège vos propriétés immobilières en Côte d’Ivoire et en Afrique de l'Ouest. Caméras intelligentes, serrures connectées, contrôle d'accès sans clé et IA proactive au service de votre tranquillité.
