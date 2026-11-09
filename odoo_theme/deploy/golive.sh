@@ -68,7 +68,9 @@ PSQL <<'SQL'
 update website_page set url = url || '-ancien', is_published = false
  where website_id is not null
    and url in ('/packs','/residences-airbnb','/hotels-intelligents','/comment-ca-fonctionne','/rendez-vous')
-   and view_id not in (select res_id from ir_model_data where module='website_wizsmith_theme' and model='ir.ui.view');
+   and view_id not in (select res_id from ir_model_data where module='website_wizsmith_theme' and model='ir.ui.view')
+   -- a website-specific COPY of one of OUR theme views is not an old page: leave it alone (renaming it hides the real page)
+   and not exists (select 1 from ir_ui_view v where v.id = website_page.view_id and v.key like 'website\_wizsmith\_theme.%');
 -- menu items that were attached to those old pages would now be HIDDEN from visitors (Odoo hides a menu whose
 -- page is unpublished). Detach them: they keep their URL, which now resolves to the new theme page.
 update website_menu set page_id = null
@@ -82,6 +84,8 @@ update website_menu set url='/packs' where url in ('/#packs','/solutions') and n
 update website_menu set url='/rendez-vous' where url in ('/page/appointment') ;
 delete from ir_attachment where url like '/web/assets/%';
 SQL
+echo "   site-specific copies of theme pages (these shadow theme updates; delete the page + view if a page looks stale):"
+PSQL -c "select p.id, p.url, p.view_id, v.key from website_page p join ir_ui_view v on v.id=p.view_id where p.website_id is not null and v.key like 'website\\_wizsmith\\_theme.%'" | sed 's/^/     /'
 echo "   main menu now:"
 PSQL -c "select m.sequence, m.name->>'en_US', m.url from website_menu m join website_menu p on p.id=m.parent_id where p.parent_id is null and m.website_id is not null order by m.sequence" | sed 's/^/     /'
 
